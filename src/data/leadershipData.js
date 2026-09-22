@@ -220,6 +220,29 @@ export const leadershipOfficials = [
     }
   },
   {
+    id: 'dir-salisu-adamu',
+    name: 'QS Salisu Adamu',
+    popularName: 'QS Salisu Adamu',
+    rankTitle: 'Director of Logistics & Youth Mobilization',
+    category: 'directorate',
+    state: 'Jigawa / North-West',
+    badgeCode: 'DIR-LYM',
+    // photoUrl: '/images/officials/salisu-adamu.png', // Commented out for now
+    photoUrl: '',
+    initials: 'SA',
+    portfolioRoles: [
+      'Quantity Surveyor & QC Engineer @ CCCC',
+      'Founder @ Jigawa Future Makers (JFM)',
+      'Co-founder @ Chadi Youth Cooperative Association (CYCA)',
+      'Grassroots Mobilization & Climate Resilience Lead'
+    ],
+    quote: 'Real change happens when young people are given the platform, the tools, the knowledge, and the trust to lead.',
+    bio: 'Quantity Surveyor and Quality Control Engineer at China Communications Construction Company (CCCC) from Hadejia, Jigawa State. Founder of Jigawa Future Makers (JFM) and Co-founder of Chadi Youth Cooperative Association (CYCA). Dedicated to grassroots mobilization, youth leadership, sustainable infrastructure, climate resilience, and field logistics across Northern Nigeria.',
+    socials: {
+      email: 'logistics.mobilization@anyv.ng'
+    }
+  },
+  {
     id: 'dir-03',
     name: '[Official Name Pending]',
     rankTitle: 'Director of Policy, Research & Strategy',
