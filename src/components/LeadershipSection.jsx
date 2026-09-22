@@ -86,7 +86,7 @@ export default function LeadershipSection({ onEnlistClick }) {
                 {/* Header bar of official card */}
                 <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#e7e0cb]">
                   <span className="font-mono text-[10px] text-[#b6842a] font-semibold tracking-wider uppercase">
-                    {official.badgeCode} &bull; {official.state} Chapter
+                    {official.badgeCode} &bull; {official.category === 'executive' ? 'National Executive' : official.state}
                   </span>
                   <span className="font-mono text-[10px] text-[#7c9473] flex items-center gap-1 uppercase">
                     <Sparkle size={12} weight="fill" className="text-[#b6842a]" />

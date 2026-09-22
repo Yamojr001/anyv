@@ -57,9 +57,10 @@ export const leadershipOfficials = [
     name: 'Dr. Benjamin Maina, PhD',
     rankTitle: 'National Coordinator',
     category: 'executive',
-    state: 'Gombe / North-East',
+    state: 'National Secretariat (National Officer)',
     badgeCode: 'NAT-02',
-    photoUrl: '/images/officials/benjamin-maina.png',
+    // photoUrl: '/images/officials/benjamin-maina.png', // Commented out for now
+    photoUrl: '',
     initials: 'BM',
     portfolioRoles: [
       'Lecturer, Researcher & Development Practitioner',
