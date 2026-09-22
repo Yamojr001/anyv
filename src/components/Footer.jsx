@@ -8,9 +8,11 @@ export default function Footer({ onVerifyClick }) {
           
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-[2px] bg-[#b6842a] text-[#10241f] font-mono font-bold flex items-center justify-center text-xs">
-                ANYV
-              </div>
+              <img
+                src="/logo.png"
+                alt="Atiku Northern Youth Vanguard Logo"
+                className="w-10 h-10 object-contain drop-shadow-[1px_1px_0px_rgba(182,132,42,0.6)]"
+              />
               <span className="font-display text-xl font-semibold text-[#fffdf7]">
                 Atiku Northern Youth Vanguard
               </span>

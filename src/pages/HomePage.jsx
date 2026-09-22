@@ -95,9 +95,21 @@ export default function HomePage({ onOpenReg }) {
                   </span>
                 </div>
 
-                <h3 className="font-display text-xl font-semibold text-[#10241f] mb-1.5 leading-snug">
-                  The Atiku Northern Youth Vanguard
-                </h3>
+                <div className="flex items-center gap-3 mb-3">
+                  <img
+                    src="/logo.png"
+                    alt="ANYV Official Emblem"
+                    className="w-12 h-12 object-contain drop-shadow-[1px_1px_0px_rgba(182,132,42,0.8)] shrink-0"
+                  />
+                  <div>
+                    <h3 className="font-display text-lg sm:text-xl font-semibold text-[#10241f] leading-tight">
+                      The Atiku Northern Youth Vanguard
+                    </h3>
+                    <span className="font-mono text-[9px] text-[#b6842a] uppercase tracking-widest font-semibold block mt-0.5">
+                      Organise &bull; Mobilise &bull; Lead
+                    </span>
+                  </div>
+                </div>
                 <p className="text-xs text-[#666c5c] mb-5 leading-relaxed">
                   A platform for Northern youths to transition from passive election observers to active contributors to governance, enterprise, and civic leadership.
                 </p>

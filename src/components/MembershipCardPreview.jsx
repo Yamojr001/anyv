@@ -32,9 +32,11 @@ export default function MembershipCardPreview({ member, onPrint }) {
         {/* Card Top Row */}
         <div className="flex items-start justify-between mb-6 relative z-10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-[2px] bg-[#b6842a] text-[#10241f] flex items-center justify-center font-mono font-bold text-xs shadow-sm">
-              ANYV
-            </div>
+            <img
+              src="/logo.png"
+              alt="ANYV Official Seal"
+              className="w-12 h-12 object-contain drop-shadow-[1px_1px_0px_rgba(182,132,42,0.8)]"
+            />
             <div>
               <span className="font-display font-semibold text-sm text-[#fffdf7] block leading-tight">
                 Atiku Northern Youth Vanguard

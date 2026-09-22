@@ -51,15 +51,17 @@ export default function Navbar({ onVerifyClick }) {
           
           {/* Logo & Brand */}
           <Link to="/" className="flex items-center gap-3.5 group">
-            <div className="w-11 h-11 rounded-[2px] border border-[#10241f] bg-[#10241f] text-[#f1ecde] flex flex-col items-center justify-center font-mono font-bold text-xs tracking-wider shadow-[2px_2px_0px_rgba(182,132,42,0.6)] group-hover:bg-[#b6842a] group-hover:border-[#b6842a] transition-colors">
-              <span>ANYV</span>
-            </div>
+            <img
+              src="/logo.png"
+              alt="Atiku Northern Youth Vanguard Logo"
+              className="w-12 h-12 object-contain drop-shadow-[2px_2px_0px_rgba(182,132,42,0.6)] group-hover:scale-105 transition-transform"
+            />
             <div>
               <span className="font-display font-semibold text-lg sm:text-xl text-[#10241f] tracking-tight block leading-tight">
                 Atiku Northern Youth Vanguard
               </span>
-              <span className="font-mono text-[10px] tracking-widest text-[#b6842a] uppercase block">
-                Connect &bull; Grow &bull; Lead &bull; 2026&ndash;2027
+              <span className="font-mono text-[10px] tracking-widest text-[#b6842a] uppercase block font-medium">
+                Organise &bull; Mobilise &bull; Lead
               </span>
             </div>
           </Link>
