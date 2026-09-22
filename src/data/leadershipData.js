@@ -198,6 +198,28 @@ export const leadershipOfficials = [
     }
   },
   {
+    id: 'dir-zaharadeen-sabo',
+    name: 'Zaharadeen Ismail Sabo (Zaheer)',
+    popularName: 'Zaheer',
+    rankTitle: 'Deputy Director Media, Strategy & Operations',
+    category: 'directorate',
+    state: 'Bauchi / North-East',
+    badgeCode: 'DEP-MSO',
+    // photoUrl: '/images/officials/zaharadeen-sabo.png', // Commented out for now
+    photoUrl: '',
+    initials: 'ZS',
+    portfolioRoles: [
+      'CEO @ ZAHEER BESPOKE',
+      'Societal Engineer & Political Media Activist',
+      'Youth Advocate & Creative Entrepreneur'
+    ],
+    quote: 'Young people are not just leaders of tomorrow; they are important stakeholders in building today.',
+    bio: 'Societal Engineer, political media activist, youth advocate, and CEO of ZAHEER BESPOKE from Bauchi State. Dedicated to constructive communication, public awareness, youth empowerment, unity, and creative enterprise across Northern Nigeria.',
+    socials: {
+      email: 'media.operations@anyv.ng'
+    }
+  },
+  {
     id: 'dir-03',
     name: '[Official Name Pending]',
     rankTitle: 'Director of Policy, Research & Strategy',
