@@ -181,21 +181,25 @@ export const leadershipOfficials = [
     }
   },
   {
-    id: 'dir-01',
-    name: '[Official Name Pending]',
+    id: 'dir-aisha-kachalla',
+    name: 'Aisha Muhammad Kachalla',
     rankTitle: 'Director of Women Leadership & Inclusion',
     category: 'directorate',
-    state: 'Borno',
+    state: 'Borno / North-East',
     badgeCode: 'DIR-WLI',
+    // photoUrl: '/images/officials/aisha-kachalla.png', // Commented out for now
     photoUrl: '',
-    initials: 'WL',
-    quote: 'Northern women are the backbone of community stability and economic resilience.',
-    bio: 'Heads dedicated leadership incubators, mentoring programs, and advocacy for women across all 19 Northern states.',
+    initials: 'AK',
+    portfolioRoles: [
+      'Executive Director @ SEYEF (Sadaqa Education & Youth Empowerment)',
+      'Educationist & Humanitarian (11+ Years Experience)',
+      'Quality Education & Youth Policy Influencer',
+      'Advocate for Women Inclusion in Governance & Leadership'
+    ],
+    quote: 'True transformation in Northern Nigeria begins when women and youth are actively equipped and included in policy formulation and leadership.',
+    bio: 'Executive Director of Sadaqa Education and Youth Empowerment Foundation (SEYEF) from Maiduguri, Borno State. Accomplished educationist and humanitarian with over eleven years of dedicated field experience. Renowned advocate for quality education, youth inclusion in policymaking, and women\'s leadership development across Borno State and the North-East.',
     socials: {
-      twitter: '#',
-      facebook: '#',
-      linkedin: '#',
-      email: 'women@anyv.ng'
+      email: 'women.inclusion@anyv.ng'
     }
   },
   {
