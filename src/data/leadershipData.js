@@ -177,39 +177,42 @@ export const leadershipOfficials = [
     }
   },
   {
-    id: 'dir-02',
-    name: '[Official Name Pending]',
-    rankTitle: 'Director of Policy, Research & Strategy',
+    id: 'dir-ibrahim-akibu',
+    name: 'Ibrahim Akibu Jaafaru',
+    rankTitle: 'Director of Media, Strategy, and Operations',
     category: 'directorate',
-    state: 'Niger',
-    badgeCode: 'DIR-PRS',
+    state: 'Niger / North-Central',
+    badgeCode: 'DIR-MSO',
+    // photoUrl: '/images/officials/ibrahim-akibu-jaafaru.png', // Commented out for now
     photoUrl: '',
-    initials: 'PS',
-    quote: 'Bridging grassroots citizen needs with evidence-based public policy proposals.',
-    bio: 'Directs policy white papers, legislative monitoring, and the ANYV Think Tank.',
+    initials: 'IJ',
+    portfolioRoles: [
+      'Coordinator @ Regional Center of Expertise (RCE) Minna, Nigeria',
+      'Acknowledged Center by UN University (UNU-IAS)',
+      'Development Advocate & Strategic Operations Specialist'
+    ],
+    quote: 'Coordinating strategic media, clear vision, and disciplined operations is essential to building an indispensable vanguard for Arewa and Nigeria.',
+    bio: 'Coordinator of the Regional Center of Expertise (RCE) Minna, Nigeria—an acknowledged center by the United Nations University Institute for the Advanced Study of Sustainability (UNU-IAS). Accomplished advocate and practitioner dedicated to grassroots engagement, sustainable development, media coordination, and strategic operations across Niger State and the North-Central region.',
     socials: {
-      twitter: '#',
-      facebook: '#',
-      linkedin: '#',
-      email: 'policy@anyv.ng'
+      email: 'media.operations@anyv.ng'
     }
   },
   {
     id: 'dir-03',
     name: '[Official Name Pending]',
-    rankTitle: 'Director of Media & Strategic Communications',
+    rankTitle: 'Director of Policy, Research & Strategy',
     category: 'directorate',
     state: 'Bauchi',
-    badgeCode: 'DIR-MSC',
+    badgeCode: 'DIR-PRS',
     photoUrl: '',
-    initials: 'MC',
-    quote: 'Telling the true story of Northern youth ingenuity, civic courage, and regional unity.',
-    bio: 'Manages press relations, digital media operations, and official public communiques.',
+    initials: 'PS',
+    quote: 'Bridging grassroots citizen needs with evidence-based policy research and public discourse.',
+    bio: 'Directs policy white papers, legislative monitoring, and ANYV strategic studies.',
     socials: {
       twitter: '#',
       facebook: '#',
       linkedin: '#',
-      email: 'media@anyv.ng'
+      email: 'policy@anyv.ng'
     }
   }
 ]
