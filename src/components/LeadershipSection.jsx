@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import {
   leadershipCategories,
-  leadershipOfficials
+  leadershipOfficials,
+  presidentialPrincipals
 } from '../data/leadershipData'
 import {
   Sparkle,
@@ -29,6 +30,126 @@ export default function LeadershipSection({ onEnlistClick }) {
     <section id="leadership" className="py-20 bg-[#faf7ef] border-b border-[#cfc6a6]">
       <div className="max-w-6xl mx-auto px-6">
         
+        {/* Presidential Principals Ticket Showcase */}
+        <div className="mb-20 pb-16 border-b border-[#cfc6a6]">
+          <div className="mb-8">
+            <span className="eyebrow text-[#b6842a]">PRESIDENTIAL TICKET &bull; 2027</span>
+            <h3 className="font-display text-2xl sm:text-3xl font-semibold text-[#10241f] mt-1">
+              Our Presidential Principals
+            </h3>
+            <p className="text-xs sm:text-sm text-[#666c5c] mt-1.5 max-w-xl">
+              The national standard bearers anchoring the vision, democratic ethos, and economic renaissance championed by the Atiku Northern Youth Vanguard.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {presidentialPrincipals.map((principal) => (
+              <motion.div
+                key={principal.id}
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.2 }}
+                className="bg-[#fffdf7] border border-[#cfc6a6] rounded-[2px] p-6 sm:p-7 flex flex-col sm:flex-row gap-6 hover:border-[#b6842a] transition-all specimen-shadow"
+              >
+                {/* Large Portrait Frame */}
+                <div className="sm:w-52 sm:h-72 w-full h-64 shrink-0">
+                  {principal.photoUrl ? (
+                    <img
+                      src={principal.photoUrl}
+                      alt={principal.name}
+                      className="w-full h-full object-cover object-top rounded-[2px] border border-[#10241f] shadow-[3px_3px_0px_rgba(182,132,42,0.6)]"
+                    />
+                  ) : (
+                    <div className="w-full h-full rounded-[2px] bg-[#10241f] text-[#e3c375] flex flex-col items-center justify-center p-4 border border-[#10241f] shadow-[3px_3px_0px_rgba(182,132,42,0.6)] text-center">
+                      <span className="font-display text-4xl font-bold">{principal.initials || 'VP'}</span>
+                      <span className="font-mono text-[9px] text-[#aebf9e] uppercase tracking-wider mt-3">
+                        Official Ticket Portrait Pending
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-col justify-between flex-1">
+                  <div>
+                    <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#e7e0cb]">
+                      <span className="font-mono text-[10px] text-[#b6842a] font-bold tracking-wider uppercase">
+                        {principal.roleLabel}
+                      </span>
+                      <span className="font-mono text-[9px] text-[#7c9473] flex items-center gap-1 uppercase font-semibold">
+                        <Sparkle size={11} weight="fill" className="text-[#b6842a]" />
+                        {principal.badge}
+                      </span>
+                    </div>
+
+                    <h4 className="font-display text-xl sm:text-2xl font-bold text-[#10241f] leading-snug">
+                      {principal.name}
+                    </h4>
+                    <p className="font-mono text-xs text-[#b6842a] font-medium mt-1">
+                      {principal.rankTitle}
+                    </p>
+
+                    <div className="mt-2 inline-block px-2.5 py-0.5 bg-[#f1ecde] text-[#10241f] font-mono text-[10px] rounded-[2px] border border-[#cfc6a6]">
+                      {principal.state}
+                    </div>
+
+                    {principal.quote && (
+                      <p className="text-xs text-[#10241f] italic font-serif bg-[#f5f8f3] p-2.5 border-l-2 border-[#7c9473] my-3 leading-relaxed">
+                        &ldquo;{principal.quote}&rdquo;
+                      </p>
+                    )}
+
+                    <p className="text-xs text-[#666c5c] leading-relaxed">
+                      {principal.bio}
+                    </p>
+                  </div>
+
+                  {/* Socials / Links */}
+                  <div className="mt-4 pt-3 border-t border-[#e7e0cb] flex items-center justify-between">
+                    <span className="font-mono text-[10px] text-[#7c9473] uppercase tracking-wider font-semibold">
+                      Standard Bearer
+                    </span>
+                    <div className="flex items-center gap-2 text-[#10241f]">
+                      {principal.socials?.website && (
+                        <a
+                          href={principal.socials.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+                          title="Official Website"
+                        >
+                          <Globe size={15} weight="bold" />
+                        </a>
+                      )}
+                      {principal.socials?.twitter && (
+                        <a
+                          href={principal.socials.twitter}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+                          title="X (Twitter)"
+                        >
+                          <X size={15} weight="bold" />
+                        </a>
+                      )}
+                      {principal.socials?.facebook && (
+                        <a
+                          href={principal.socials.facebook}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+                          title="Facebook"
+                        >
+                          <FacebookLogo size={16} weight="bold" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div>

@@ -7,25 +7,41 @@ export const leadershipCategories = [
   { id: 'advisory', label: 'Board of Patrons & Advisory' }
 ]
 
-export const leadershipOfficials = [
+export const presidentialPrincipals = [
   {
-    id: 'patron-01',
-    name: 'Alhaji Atiku Abubakar, GCON',
-    rankTitle: 'Grand Patron & Inspiration',
-    category: 'advisory',
-    state: 'Adamawa',
-    badgeCode: 'PAT-01',
-    photoUrl: '', // Ready for official portrait
+    id: 'principal-president',
+    roleLabel: 'PRESIDENTIAL CANDIDATE',
+    name: 'H.E. Alhaji Atiku Abubakar, GCON',
+    rankTitle: 'Presidential Candidate & Movement Inspiration',
+    badge: 'STANDARD BEARER',
+    state: 'Adamawa State',
+    photoUrl: '/images/principals/atiku-abubakar.jpg',
     initials: 'AA',
     quote: 'The youth of Northern Nigeria are not merely tomorrow’s leaders; they must become active architects of today’s governance and economic renaissance.',
-    bio: 'Former Vice President of the Federal Republic of Nigeria, seasoned statesman, and champion of human capital development and youth empowerment.',
+    bio: 'Former Vice President of the Federal Republic of Nigeria (1999–2007), veteran democratic reformer, educationist, and premier advocate for economic diversification, fiscal federalism, and national unity.',
     socials: {
       twitter: 'https://twitter.com/atiku',
       facebook: 'https://facebook.com/atiku',
-      linkedin: 'https://linkedin.com',
-      email: 'patron@anyv.ng'
+      website: 'https://atiku.org'
     }
   },
+  {
+    id: 'principal-vp',
+    roleLabel: 'VICE PRESIDENTIAL CANDIDATE',
+    name: 'Vice Presidential Candidate',
+    rankTitle: 'Running Mate & Co-Standard Bearer',
+    badge: 'VICE PRESIDENTIAL TICKET',
+    state: 'National Ticket',
+    // photoUrl: '', // Ready for official portrait
+    photoUrl: '',
+    initials: 'VP',
+    quote: 'Unified purpose, competent governance, and shared economic opportunities for all regions of the Nigerian federation.',
+    bio: 'The Co-Standard Bearer of the Presidential Ticket, partnering in the national mission for democratic restoration, regional stability, youth enterprise, and economic resurgence.',
+    socials: {}
+  }
+]
+
+export const leadershipOfficials = [
   {
     id: 'exec-salim-ontop',
     name: 'Engr. Salim Sharubutu Yusuf (Ontop)',
