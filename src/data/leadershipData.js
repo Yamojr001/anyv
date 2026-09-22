@@ -30,11 +30,11 @@ export const leadershipOfficials = [
     id: 'exec-salim-ontop',
     name: 'Engr. Salim Sharubutu Yusuf (Ontop)',
     popularName: 'Engr. Salim (ONTOP) Sharubutu',
-    rankTitle: 'National Convener / Coordinator',
+    rankTitle: 'National Convener',
     category: 'executive',
     state: 'Plateau / Northern Liaison',
     badgeCode: 'NAT-01',
-    photoUrl: '/images/officials/salim-ontop.png',
+    photoUrl: '', // Ready for official portrait
     initials: 'SO',
     portfolioRoles: [
       'Managing Director @ Tiptop Constructions',
@@ -53,21 +53,25 @@ export const leadershipOfficials = [
     }
   },
   {
-    id: 'exec-02',
-    name: '[Official Name Pending]',
-    rankTitle: 'Deputy National Coordinator (Administration)',
+    id: 'exec-benjamin-maina',
+    name: 'Dr. Benjamin Maina, PhD',
+    rankTitle: 'National Coordinator',
     category: 'executive',
-    state: 'Kano',
+    state: 'Gombe / North-East',
     badgeCode: 'NAT-02',
-    photoUrl: '',
-    initials: 'DC',
-    quote: 'Discipline, structure, and accountability are the bedrock of lasting civic movements.',
-    bio: 'Oversees operational administration, state chapter compliance, and secretariat governance.',
+    photoUrl: '/images/officials/benjamin-maina.png',
+    initials: 'BM',
+    portfolioRoles: [
+      'Lecturer, Researcher & Development Practitioner',
+      'Team Lead @ Foundation for Community Empowerment Initiative (FOCEI)',
+      'Deputy President @ University of Jos Alumni Association (UJAA)',
+      'Secretary @ Gombe Network of Civil Society (GONET)',
+      'PhD & M.Sc (UniJos) | B.Sc Hons (Gombe State University)'
+    ],
+    quote: 'Passionate about turning knowledge and evidence into practical solutions, strengthening citizen participation, and creating opportunities for young people to lead sustainable development.',
+    bio: 'Lecturer, Researcher, Civil Society Advocate, and Development Practitioner with expertise in governance, social inclusion, youth development, environmental sustainability, peacebuilding, and community empowerment. Holds a B.Sc from GSU, and an M.Sc and PhD from the University of Jos. Former President of the Nigeria Association of Geography Students and Students’ Representative Council.',
     socials: {
-      twitter: '#',
-      facebook: '#',
-      linkedin: '#',
-      email: 'deputy.coordinator@anyv.ng'
+      email: 'benjamin.maina@anyv.ng'
     }
   },
   {
