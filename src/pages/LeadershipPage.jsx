@@ -129,10 +129,10 @@ export default function LeadershipPage() {
                       <img
                         src={official.photoUrl}
                         alt={official.name}
-                        className="w-16 h-16 object-cover rounded-[2px] border border-[#10241f]"
+                        className="w-20 h-20 object-cover object-top rounded-[2px] border border-[#10241f] shadow-[2px_2px_0px_rgba(182,132,42,0.6)] shrink-0"
                       />
                     ) : (
-                      <div className="w-14 h-14 rounded-[2px] bg-[#10241f] text-[#e3c375] font-display font-bold text-xl flex items-center justify-center border border-[#10241f] shrink-0">
+                      <div className="w-16 h-16 rounded-[2px] bg-[#10241f] text-[#e3c375] font-display font-bold text-xl flex items-center justify-center border border-[#10241f] shadow-[2px_2px_0px_rgba(182,132,42,0.6)] shrink-0">
                         {official.initials}
                       </div>
                     )}

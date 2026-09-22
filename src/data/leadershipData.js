@@ -30,11 +30,11 @@ export const leadershipOfficials = [
     id: 'exec-salim-ontop',
     name: 'Engr. Salim Sharubutu Yusuf (Ontop)',
     popularName: 'Engr. Salim (ONTOP) Sharubutu',
-    rankTitle: 'National Convener & Emerging Youth Leader',
+    rankTitle: 'National Convener / Coordinator',
     category: 'executive',
     state: 'Plateau / Northern Liaison',
     badgeCode: 'NAT-01',
-    photoUrl: '', // Initial fallback with elegant monogram
+    photoUrl: '/images/officials/salim-ontop.png',
     initials: 'SO',
     portfolioRoles: [
       'Managing Director @ Tiptop Constructions',
