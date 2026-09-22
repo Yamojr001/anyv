@@ -55,10 +55,10 @@ export const leadershipOfficials = [
   {
     id: 'exec-benjamin-maina',
     name: 'Dr. Benjamin Maina, PhD',
-    rankTitle: 'National Coordinator',
+    rankTitle: '[Role to be announced]',
     category: 'executive',
-    state: 'National Secretariat (National Officer)',
-    badgeCode: 'NAT-02',
+    state: 'National Leadership',
+    badgeCode: 'OFF-02',
     // photoUrl: '/images/officials/benjamin-maina.png', // Commented out for now
     photoUrl: '',
     initials: 'BM',
