@@ -15,28 +15,27 @@ export const presidentialPrincipals = [
     rankTitle: 'Presidential Candidate & Movement Inspiration',
     badge: 'STANDARD BEARER',
     state: 'Adamawa State',
-    photoUrl: '/images/principals/atiku-abubakar.jpg',
+    // photoUrl: '/images/principals/atiku-abubakar.jpg', // Commented out for now
+    photoUrl: '',
     initials: 'AA',
     quote: 'The youth of Northern Nigeria are not merely tomorrow’s leaders; they must become active architects of today’s governance and economic renaissance.',
     bio: 'Former Vice President of the Federal Republic of Nigeria (1999–2007), veteran democratic reformer, educationist, and premier advocate for economic diversification, fiscal federalism, and national unity.',
-    socials: {
-      twitter: 'https://twitter.com/atiku',
-      facebook: 'https://facebook.com/atiku',
-      website: 'https://atiku.org'
-    }
+    // socials: { twitter: 'https://twitter.com/atiku', facebook: 'https://facebook.com/atiku', website: 'https://atiku.org' }, // Commented out for now
+    socials: {}
   },
   {
     id: 'principal-vp',
     roleLabel: 'VICE PRESIDENTIAL CANDIDATE',
-    name: 'Vice Presidential Candidate',
-    rankTitle: 'Running Mate & Co-Standard Bearer',
+    name: 'Rt. Hon. Chibuike Rotimi Amaechi, CON',
+    rankTitle: 'Vice Presidential Candidate & Running Mate',
     badge: 'VICE PRESIDENTIAL TICKET',
-    state: 'National Ticket',
-    // photoUrl: '', // Ready for official portrait
+    state: 'Rivers State / South-South',
+    // photoUrl: '/images/principals/chibuike-amaechi.jpg', // Commented out for now
     photoUrl: '',
-    initials: 'VP',
-    quote: 'Unified purpose, competent governance, and shared economic opportunities for all regions of the Nigerian federation.',
-    bio: 'The Co-Standard Bearer of the Presidential Ticket, partnering in the national mission for democratic restoration, regional stability, youth enterprise, and economic resurgence.',
+    initials: 'CA',
+    quote: 'National development is anchored on strong infrastructure, democratic resilience, and opening up opportunities for the next generation across every geopolitical zone.',
+    bio: 'Former Governor of Rivers State (2007–2015), former Speaker of the Rivers State House of Assembly (1999–2007), and former Minister of Transportation of the Federal Republic of Nigeria (2015–2022). Distinguished statesman and co-standard bearer committed to national unity, economic development, and youth inclusion.',
+    // socials: {}, // Commented out for now
     socials: {}
   }
 ]

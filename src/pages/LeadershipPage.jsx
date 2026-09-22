@@ -83,9 +83,9 @@ export default function LeadershipPage() {
                     />
                   ) : (
                     <div className="w-full h-full rounded-[2px] bg-[#10241f] text-[#e3c375] flex flex-col items-center justify-center p-4 border border-[#10241f] shadow-[3px_3px_0px_rgba(182,132,42,0.6)] text-center">
-                      <span className="font-display text-4xl font-bold">{principal.initials || 'VP'}</span>
-                      <span className="font-mono text-[9px] text-[#aebf9e] uppercase tracking-wider mt-3">
-                        Official Ticket Portrait Pending
+                      <span className="font-display text-4xl sm:text-5xl font-bold tracking-wider">{principal.initials}</span>
+                      <span className="font-mono text-[9px] text-[#aebf9e] uppercase tracking-widest mt-3">
+                        Accredited Principal
                       </span>
                     </div>
                   )}
@@ -126,46 +126,14 @@ export default function LeadershipPage() {
                     </p>
                   </div>
 
-                  {/* Socials / Links */}
+                  {/* Social Logos commented out for now as requested */}
                   <div className="mt-4 pt-3 border-t border-[#e7e0cb] flex items-center justify-between">
                     <span className="font-mono text-[10px] text-[#7c9473] uppercase tracking-wider font-semibold">
                       Standard Bearer
                     </span>
-                    <div className="flex items-center gap-2 text-[#10241f]">
-                      {principal.socials?.website && (
-                        <a
-                          href={principal.socials.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
-                          title="Official Website"
-                        >
-                          <Globe size={15} weight="bold" />
-                        </a>
-                      )}
-                      {principal.socials?.twitter && (
-                        <a
-                          href={principal.socials.twitter}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
-                          title="X (Twitter)"
-                        >
-                          <X size={15} weight="bold" />
-                        </a>
-                      )}
-                      {principal.socials?.facebook && (
-                        <a
-                          href={principal.socials.facebook}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
-                          title="Facebook"
-                        >
-                          <FacebookLogo size={16} weight="bold" />
-                        </a>
-                      )}
-                    </div>
+                    <span className="font-mono text-[9px] text-[#b6842a] uppercase tracking-wider font-semibold">
+                      Presidency &bull; 2027
+                    </span>
                   </div>
                 </div>
               </motion.div>
