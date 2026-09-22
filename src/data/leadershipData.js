@@ -34,7 +34,8 @@ export const leadershipOfficials = [
     category: 'executive',
     state: 'Plateau / Northern Liaison',
     badgeCode: 'NAT-01',
-    photoUrl: '', // Ready for official portrait
+    // photoUrl: '/images/officials/salim-ontop.png', // Commented out for now
+    photoUrl: '',
     initials: 'SO',
     portfolioRoles: [
       'Managing Director @ Tiptop Constructions',
@@ -82,7 +83,8 @@ export const leadershipOfficials = [
     category: 'executive',
     state: 'Kebbi / North-West',
     badgeCode: 'NAT-03',
-    photoUrl: '/images/officials/nafiu-gulumbe.png',
+    // photoUrl: '/images/officials/nafiu-gulumbe.png', // Commented out for now
+    photoUrl: '',
     initials: 'NG',
     portfolioRoles: [
       'Polytechnic Lecturer & Applied Chemist',
