@@ -121,104 +121,6 @@ export const leadershipOfficials = [
     }
   },
   {
-    id: 'exec-samuel-daleng',
-    name: 'Samuel Christopher Daleng',
-    rankTitle: 'Personal Assistant to the National Convener',
-    category: 'executive',
-    state: 'Plateau / North-Central',
-    badgeCode: 'PA-CONV',
-    // photoUrl: '/images/officials/samuel-daleng.png', // Commented out for now
-    photoUrl: '',
-    initials: 'SD',
-    portfolioRoles: [
-      'Personal Assistant to the National Convener',
-      'Statistician & Data-Driven Youth Mobilizer',
-      'Graduate @ Plateau State Polytechnic, Barkin Ladi',
-      'Community Engagement & Coordination Lead (Qua\'an Pan LGA)'
-    ],
-    quote: 'Effective youth organizing requires pairing data-driven analytical clarity with continuous grassroots communication and active coordination.',
-    bio: 'Graduate of Statistics from Plateau State Polytechnic, Barkin Ladi, hailing from Qua\'an Pan Local Government Area of Plateau State. Serves as Personal Assistant to the National Convener of the Atiku Northern Youth Vanguard, supporting strategic coordination, secretariat communications, youth mobilization, and field operations across the Northern states.',
-    socials: {
-      email: 'pa.convener@anyv.ng'
-    }
-  },
-  {
-    id: 'zonal-01',
-    name: '[Official Name Pending]',
-    rankTitle: 'Zonal Vice Coordinator (North-West)',
-    category: 'zonal',
-    state: 'Sokoto',
-    badgeCode: 'ZON-NW',
-    photoUrl: '',
-    initials: 'NW',
-    quote: 'Connecting 7 North-West states: Jigawa, Kaduna, Kano, Katsina, Kebbi, Sokoto, and Zamfara.',
-    bio: 'Leads mobilization, grassroots ward councils, and economic forums across the North-West zone.',
-    socials: {
-      twitter: '#',
-      facebook: '#',
-      linkedin: '#',
-      email: 'northwest@anyv.ng'
-    }
-  },
-  {
-    id: 'zonal-02',
-    name: '[Official Name Pending]',
-    rankTitle: 'Zonal Vice Coordinator (North-East)',
-    category: 'zonal',
-    state: 'Gombe',
-    badgeCode: 'ZON-NE',
-    photoUrl: '',
-    initials: 'NE',
-    quote: 'Catalyzing reconstruction, youth innovation, and educational revival across the North-East.',
-    bio: 'Coordinates chapters across Adamawa, Bauchi, Borno, Gombe, Taraba, and Yobe.',
-    socials: {
-      twitter: '#',
-      facebook: '#',
-      linkedin: '#',
-      email: 'northeast@anyv.ng'
-    }
-  },
-  {
-    id: 'zonal-03',
-    name: '[Official Name Pending]',
-    rankTitle: 'Zonal Vice Coordinator (North-Central)',
-    category: 'zonal',
-    state: 'Kwara',
-    badgeCode: 'ZON-NC',
-    photoUrl: '',
-    initials: 'NC',
-    quote: 'Promoting peacebuilding, civic engagement, and agricultural entrepreneurship in the Middle Belt.',
-    bio: 'Oversees chapters in Benue, Kogi, Kwara, Nasarawa, Niger, Plateau, and FCT Abuja.',
-    socials: {
-      twitter: '#',
-      facebook: '#',
-      linkedin: '#',
-      email: 'northcentral@anyv.ng'
-    }
-  },
-  {
-    id: 'dir-aisha-kachalla',
-    name: 'Aisha Muhammad Kachalla',
-    rankTitle: 'Director of Women Leadership & Inclusion',
-    category: 'directorate',
-    state: 'Borno / North-East',
-    badgeCode: 'DIR-WLI',
-    // photoUrl: '/images/officials/aisha-kachalla.png', // Commented out for now
-    photoUrl: '',
-    initials: 'AK',
-    portfolioRoles: [
-      'Executive Director @ SEYEF (Sadaqa Education & Youth Empowerment)',
-      'Educationist & Humanitarian (11+ Years Experience)',
-      'Quality Education & Youth Policy Influencer',
-      'Advocate for Women Inclusion in Governance & Leadership'
-    ],
-    quote: 'True transformation in Northern Nigeria begins when women and youth are actively equipped and included in policy formulation and leadership.',
-    bio: 'Executive Director of Sadaqa Education and Youth Empowerment Foundation (SEYEF) from Maiduguri, Borno State. Accomplished educationist and humanitarian with over eleven years of dedicated field experience. Renowned advocate for quality education, youth inclusion in policymaking, and women\'s leadership development across Borno State and the North-East.',
-    socials: {
-      email: 'women.inclusion@anyv.ng'
-    }
-  },
-  {
     id: 'dir-ibrahim-akibu',
     name: 'Ibrahim Akibu Jaafaru',
     rankTitle: 'Director of Media, Strategy, and Operations',
@@ -303,6 +205,104 @@ export const leadershipOfficials = [
     bio: 'Development professional and Political Science scholar from Kaduna State specializing in programme management, governance, policy research, and community-driven solutions. Dedicated to advancing youth empowerment, civic technology, grassroots mobilization, and inclusive regional development.',
     socials: {
       email: 'logistics.mobilization@anyv.ng'
+    }
+  },
+  {
+    id: 'exec-samuel-daleng',
+    name: 'Samuel Christopher Daleng',
+    rankTitle: 'Personal Assistant to the National Convener',
+    category: 'executive',
+    state: 'Plateau / North-Central',
+    badgeCode: 'PA-CONV',
+    // photoUrl: '/images/officials/samuel-daleng.png', // Commented out for now
+    photoUrl: '',
+    initials: 'SD',
+    portfolioRoles: [
+      'Personal Assistant to the National Convener',
+      'Statistician & Data-Driven Youth Mobilizer',
+      'Graduate @ Plateau State Polytechnic, Barkin Ladi',
+      'Community Engagement & Coordination Lead (Qua\'an Pan LGA)'
+    ],
+    quote: 'Effective youth organizing requires pairing data-driven analytical clarity with continuous grassroots communication and active coordination.',
+    bio: 'Graduate of Statistics from Plateau State Polytechnic, Barkin Ladi, hailing from Qua\'an Pan Local Government Area of Plateau State. Serves as Personal Assistant to the National Convener of the Atiku Northern Youth Vanguard, supporting strategic coordination, secretariat communications, youth mobilization, and field operations across the Northern states.',
+    socials: {
+      email: 'pa.convener@anyv.ng'
+    }
+  },
+  {
+    id: 'dir-aisha-kachalla',
+    name: 'Aisha Muhammad Kachalla',
+    rankTitle: 'Director of Women Leadership & Inclusion',
+    category: 'directorate',
+    state: 'Borno / North-East',
+    badgeCode: 'DIR-WLI',
+    // photoUrl: '/images/officials/aisha-kachalla.png', // Commented out for now
+    photoUrl: '',
+    initials: 'AK',
+    portfolioRoles: [
+      'Executive Director @ SEYEF (Sadaqa Education & Youth Empowerment)',
+      'Educationist & Humanitarian (11+ Years Experience)',
+      'Quality Education & Youth Policy Influencer',
+      'Advocate for Women Inclusion in Governance & Leadership'
+    ],
+    quote: 'True transformation in Northern Nigeria begins when women and youth are actively equipped and included in policy formulation and leadership.',
+    bio: 'Executive Director of Sadaqa Education and Youth Empowerment Foundation (SEYEF) from Maiduguri, Borno State. Accomplished educationist and humanitarian with over eleven years of dedicated field experience. Renowned advocate for quality education, youth inclusion in policymaking, and women\'s leadership development across Borno State and the North-East.',
+    socials: {
+      email: 'women.inclusion@anyv.ng'
+    }
+  },
+  {
+    id: 'zonal-01',
+    name: '[Official Name Pending]',
+    rankTitle: 'Zonal Vice Coordinator (North-West)',
+    category: 'zonal',
+    state: 'Sokoto',
+    badgeCode: 'ZON-NW',
+    photoUrl: '',
+    initials: 'NW',
+    quote: 'Connecting 7 North-West states: Jigawa, Kaduna, Kano, Katsina, Kebbi, Sokoto, and Zamfara.',
+    bio: 'Leads mobilization, grassroots ward councils, and economic forums across the North-West zone.',
+    socials: {
+      twitter: '#',
+      facebook: '#',
+      linkedin: '#',
+      email: 'northwest@anyv.ng'
+    }
+  },
+  {
+    id: 'zonal-02',
+    name: '[Official Name Pending]',
+    rankTitle: 'Zonal Vice Coordinator (North-East)',
+    category: 'zonal',
+    state: 'Gombe',
+    badgeCode: 'ZON-NE',
+    photoUrl: '',
+    initials: 'NE',
+    quote: 'Catalyzing reconstruction, youth innovation, and educational revival across the North-East.',
+    bio: 'Coordinates chapters across Adamawa, Bauchi, Borno, Gombe, Taraba, and Yobe.',
+    socials: {
+      twitter: '#',
+      facebook: '#',
+      linkedin: '#',
+      email: 'northeast@anyv.ng'
+    }
+  },
+  {
+    id: 'zonal-03',
+    name: '[Official Name Pending]',
+    rankTitle: 'Zonal Vice Coordinator (North-Central)',
+    category: 'zonal',
+    state: 'Kwara',
+    badgeCode: 'ZON-NC',
+    photoUrl: '',
+    initials: 'NC',
+    quote: 'Promoting peacebuilding, civic engagement, and agricultural entrepreneurship in the Middle Belt.',
+    bio: 'Oversees chapters in Benue, Kogi, Kwara, Nasarawa, Niger, Plateau, and FCT Abuja.',
+    socials: {
+      twitter: '#',
+      facebook: '#',
+      linkedin: '#',
+      email: 'northcentral@anyv.ng'
     }
   },
   {
