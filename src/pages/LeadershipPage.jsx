@@ -15,6 +15,7 @@ import {
   ArrowRight,
   LinkedinLogo,
   InstagramLogo,
+  FacebookLogo,
   X,
   At
 } from '@phosphor-icons/react'
@@ -198,6 +199,17 @@ export default function LeadershipPage() {
                         title="X (Twitter)"
                       >
                         <X size={15} weight="bold" />
+                      </a>
+                    )}
+                    {official.socials.facebook && official.socials.facebook !== '#' && (
+                      <a
+                        href={official.socials.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+                        title="Facebook"
+                      >
+                        <FacebookLogo size={16} weight="bold" />
                       </a>
                     )}
                     {official.socials.instagram && official.socials.instagram !== '#' && (

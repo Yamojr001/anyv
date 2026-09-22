@@ -55,10 +55,10 @@ export const leadershipOfficials = [
   {
     id: 'exec-benjamin-maina',
     name: 'Dr. Benjamin Maina, PhD',
-    rankTitle: '[Role to be announced]',
+    rankTitle: 'Vice National Coordinator / Convener',
     category: 'executive',
     state: 'National Leadership',
-    badgeCode: 'OFF-02',
+    badgeCode: 'NAT-02',
     // photoUrl: '/images/officials/benjamin-maina.png', // Commented out for now
     photoUrl: '',
     initials: 'BM',
@@ -76,21 +76,30 @@ export const leadershipOfficials = [
     }
   },
   {
-    id: 'exec-03',
-    name: '[Official Name Pending]',
-    rankTitle: 'Secretary General',
+    id: 'exec-nafiu-gulumbe',
+    name: 'Nafiu Sani Gulumbe',
+    rankTitle: 'National Secretary',
     category: 'executive',
-    state: 'Plateau',
+    state: 'Kebbi / North-West',
     badgeCode: 'NAT-03',
-    photoUrl: '',
-    initials: 'SG',
-    quote: 'Every resolution, communique, and member record must be archived with institutional rigor.',
-    bio: 'Custodian of official charters, secretariat correspondence, and regional congress documentation.',
+    photoUrl: '/images/officials/nafiu-gulumbe.png',
+    initials: 'NG',
+    portfolioRoles: [
+      'Polytechnic Lecturer & Applied Chemist',
+      'McKinsey Fellow, ONE Champion & Climate Reality Leader',
+      'Executive Director @ Kebbi Open Defecation Free Initiative (KOD-Fi)',
+      'Co-founder & Sec. Gen. @ KIDCA | Lead Strategic Comms @ OGP Kebbi',
+      'Ph.D. Candidate (UDUS) | EMBA (Quantic DC) | M.Sc (ABU) | B.Sc (AFUSTA)',
+      'Youth Leader @ NASME Kebbi | Pioneer President @ JPI Kebbi'
+    ],
+    quote: 'Let\'s get to work... on establishing and strengthening a formidable, reliable, progressive, regionally strategic, and politically indispensable vanguard to reckon with for the development of Arewa and Nigeria.',
+    bio: 'Applied chemist, environmentalist, youth development activist, ONE champion, climate reality leader, McKinsey Fellow, Electoral College of Nigeria (ECN) Associate, polytechnic lecturer, and Tony Elumelu Foundation mentor. Founder and Executive Director of KOD-Fi, Co-founder and Secretary General of KIDCA, and Lead Strategic Communications at the Open Government Partnership (OGP) Secretariat in Kebbi State. Holds an Executive MBA from the Quantic School of Business and Technology (Washington, DC), an M.Sc in Color Chemistry from ABU Zaria, and is pursuing a Ph.D. in Petroleum Chemistry at Usmanu Danfodiyo University Sokoto.',
     socials: {
-      twitter: '#',
-      facebook: '#',
-      linkedin: '#',
-      email: 'secretary@anyv.ng'
+      email: 'nsgulumbe@gmail.com',
+      linkedin: 'https://www.linkedin.com/in/nafiu-sani-gulumbe-b3771057',
+      facebook: 'https://www.facebook.com/nafiu.gulumbe',
+      instagram: 'https://www.instagram.com/nsgulumbe/',
+      twitter: 'https://twitter.com/nsgulumbe'
     }
   },
   {
