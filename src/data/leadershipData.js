@@ -105,6 +105,28 @@ export const leadershipOfficials = [
     }
   },
   {
+    id: 'exec-samuel-daleng',
+    name: 'Samuel Christopher Daleng',
+    rankTitle: 'Personal Assistant to the National Convener',
+    category: 'executive',
+    state: 'Plateau / North-Central',
+    badgeCode: 'PA-CONV',
+    // photoUrl: '/images/officials/samuel-daleng.png', // Commented out for now
+    photoUrl: '',
+    initials: 'SD',
+    portfolioRoles: [
+      'Personal Assistant to the National Convener',
+      'Statistician & Data-Driven Youth Mobilizer',
+      'Graduate @ Plateau State Polytechnic, Barkin Ladi',
+      'Community Engagement & Coordination Lead (Qua\'an Pan LGA)'
+    ],
+    quote: 'Effective youth organizing requires pairing data-driven analytical clarity with continuous grassroots communication and active coordination.',
+    bio: 'Graduate of Statistics from Plateau State Polytechnic, Barkin Ladi, hailing from Qua\'an Pan Local Government Area of Plateau State. Serves as Personal Assistant to the National Convener of the Atiku Northern Youth Vanguard, supporting strategic coordination, secretariat communications, youth mobilization, and field operations across the Northern states.',
+    socials: {
+      email: 'pa.convener@anyv.ng'
+    }
+  },
+  {
     id: 'zonal-01',
     name: '[Official Name Pending]',
     rankTitle: 'Zonal Vice Coordinator (North-West)',
