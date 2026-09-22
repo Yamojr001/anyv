@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-forest-950: #10241f;
+  --color-forest-900: #16302b;
+  --color-forest-800: #1f3f37;
+  --color-forest-700: #2c5347;
+  --color-forest-600: #3b6b5c;
+  --color-forest-100: #e2ede8;
+  --color-forest-50: #f2f7f5;
+
+  --color-sage-600: #5c7255;
+  --color-sage-500: #7c9473;
+  --color-sage-400: #93ab8a;
+  --color-sage-300: #aebf9e;
+  --color-sage-100: #e8eee4;
+  --color-sage-50: #f5f8f3;
+
+  --color-parchment: #f1ecde;
+  --color-parchment-dim: #e7e0cb;
+  --color-parchment-light: #faf7ef;
+  --color-paper-line: #cfc6a6;
+  --color-paper-line-dark: #b8af8d;
+
+  --color-gold-700: #9a6d1e;
+  --color-gold-600: #b6842a;
+  --color-gold-500: #c9963c;
+  --color-gold-400: #d8ab54;
+  --color-gold-300: #e3c375;
+  --color-gold-100: #fbf5e6;
+  --color-gold-50: #fdfaf2;
+
+  --color-clay-600: #a64b2a;
+  --color-clay-500: #bf5c34;
+
+  --color-ink-950: #141712;
+  --color-ink-900: #20241d;
+  --color-ink-700: #3c4136;
+  --color-ink-500: #666c5c;
+  --color-ink-400: #8c9383;
+}
+
+:root {
+  --radius: 2px;
+  --forest-950: #10241f;
+  --forest-900: #16302b;
+  --forest-800: #1f3f37;
+  --forest-700: #2c5347;
+  --sage-500: #7c9473;
+  --sage-300: #aebf9e;
+  --parchment: #f1ecde;
+  --parchment-dim: #e7e0cb;
+  --paper-line: #cfc6a6;
+  --gold-600: #b6842a;
+  --gold-500: #c9963c;
+  --gold-300: #e3c375;
+  --clay-600: #a64b2a;
+  --clay-500: #bf5c34;
+  --ink-900: #20241d;
+  --ink-700: #3c4136;
+  --ink-500: #666c5c;
+  --white: #fffdf7;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Crisp button system with strict 2px radius */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  padding: 11px 22px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--parchment);
+  color: var(--ink-900);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Helpers */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Eyebrow badge styling mirroring reference */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  display: inline-block;
+  opacity: 0.8;
+}
+
+/* Specimen Card Shadow (Signature design of reference) */
+.specimen-shadow {
+  box-shadow: 6px 6px 0 rgba(182, 132, 42, 0.45);
+}
+
+.specimen-shadow-dark {
+  box-shadow: 6px 6px 0 rgba(16, 36, 31, 0.55);
+}
+
+/* Fine hairline borders */
+.border-paper {
+  border-color: var(--paper-line);
+}
+
+/* Shimmer accent line */
+@keyframes gold-shine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gold-shine {
+  background-size: 200% 200%;
+  animation: gold-shine 6s ease infinite;
+}
