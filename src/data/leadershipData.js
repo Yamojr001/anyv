@@ -243,6 +243,27 @@ export const leadershipOfficials = [
     }
   },
   {
+    id: 'dir-micah-musa',
+    name: 'Micah Musa',
+    rankTitle: 'Deputy Director of Logistics & Youth Mobilization',
+    category: 'directorate',
+    state: 'Kaduna / North-West',
+    badgeCode: 'DEP-LYM',
+    // photoUrl: '/images/officials/micah-musa.png', // Commented out for now
+    photoUrl: '',
+    initials: 'MM',
+    portfolioRoles: [
+      'Development Professional & Political Scientist',
+      'Governance, Tech & Civic Participation Specialist',
+      'Community Mobilization & Programme Management Lead'
+    ],
+    quote: 'Our strength comes from our ability to collaborate, support one another, and translate ideas into tangible impact.',
+    bio: 'Development professional and Political Science scholar from Kaduna State specializing in programme management, governance, policy research, and community-driven solutions. Dedicated to advancing youth empowerment, civic technology, grassroots mobilization, and inclusive regional development.',
+    socials: {
+      email: 'logistics.mobilization@anyv.ng'
+    }
+  },
+  {
     id: 'dir-03',
     name: '[Official Name Pending]',
     rankTitle: 'Director of Policy, Research & Strategy',
