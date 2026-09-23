@@ -14,7 +14,8 @@ import {
   FacebookLogo,
   At,
   X,
-  Info
+  Info,
+  Phone
 } from '@phosphor-icons/react'
 import {
   leadershipOfficials,
@@ -368,6 +369,16 @@ export default function ChaptersPage() {
                               Direct Connect
                             </span>
                             <div className="flex items-center gap-2 text-[#10241f]">
+                              {leader.socials.phone && (
+                                <a
+                                  href={`tel:${leader.socials.phone}`}
+                                  className="px-2 py-1 rounded-[2px] bg-[#f1ecde] hover:bg-[#10241f] text-[#10241f] hover:text-[#e3c375] transition-colors flex items-center gap-1.5 font-mono text-[11px] font-semibold border border-[#cfc6a6]"
+                                  title={`Call: ${leader.socials.phone}`}
+                                >
+                                  <Phone size={14} weight="bold" />
+                                  <span>{leader.socials.phone}</span>
+                                </a>
+                              )}
                               {leader.socials.email && (
                                 <a
                                   href={`mailto:${leader.socials.email}`}

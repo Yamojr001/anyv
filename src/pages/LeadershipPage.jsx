@@ -19,7 +19,8 @@ import {
   FacebookLogo,
   Globe,
   X,
-  At
+  At,
+  Phone
 } from '@phosphor-icons/react'
 
 export default function LeadershipPage() {
@@ -332,6 +333,15 @@ export default function LeadershipPage() {
                         title="Threads"
                       >
                         <At size={16} weight="bold" />
+                      </a>
+                    )}
+                    {official.socials.phone && (
+                      <a
+                        href={`tel:${official.socials.phone}`}
+                        className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+                        title={`Phone: ${official.socials.phone}`}
+                      >
+                        <Phone size={15} weight="bold" />
                       </a>
                     )}
                     {official.socials.email && (

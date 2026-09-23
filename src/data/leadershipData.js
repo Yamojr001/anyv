@@ -268,6 +268,7 @@ export const leadershipOfficials = [
     quote: 'Youth • Unity • Leadership • Progress. Organise, mobilise, and lead for a brighter future.',
     bio: 'Comrade Nasiru Abdulhamid serves as the Kaduna State Coordinator for the Atiku Northern Youth Vanguard (Kaduna Chapter). An energetic grassroots mobilizer, civic leader, and youth advocate dedicated to organizing, mobilizing, and inspiring youth leadership across all 23 local government areas in Kaduna State.',
     socials: {
+      phone: '08036710737',
       email: 'kaduna@anyv.ng'
     }
   }
