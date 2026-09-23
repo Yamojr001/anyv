@@ -327,15 +327,15 @@ export const stateChapterOfficials = [
     initials: 'JM',
     portfolioRoles: [
       'Jigawa State Coordinator @ Atiku Northern Youth Vanguard (ANYV)',
-      'Software Engineer & AI Engineer (Founder @ Phronix AI)',
-      'Co-Founder & Lead Software Engineer @ Startup Jigawa',
-      'Lead AI Engineer @ Dreama (Clinical Expert Systems)',
-      'BSc Software Engineering (Federal University Dutse - FUD)'
+      'Founder & Lead AI Engineer @ Phronix AI (EdTech Platform)',
+      'Co-Founder @ Startup Jigawa (Youth Tech Ecosystem & Enterprise)',
+      'Former Director of Software @ NACOS (Federal University Dutse)',
+      'Software Engineering Scholar @ Federal University Dutse (FUD)'
     ],
-    quote: 'Leveraging technology, artificial intelligence, and grassroots digital innovation to transform youth productivity and governance in Jigawa State.',
-    bio: 'Software Engineer and AI Engineer with over 4 years of full-stack systems experience and specialized expertise in AI systems, academic technology, and clinical expert platforms. Founder of Phronix AI and Co-Founder at Startup Jigawa, leading digital product architecture across web, mobile, and intelligent data systems. Serving as Jigawa State Coordinator for the Atiku Northern Youth Vanguard to empower young people through tech enablement, leadership, and grassroots civic engagement.',
+    quote: 'Northern youth renaissance begins with equipping our generation with technology, digital innovation, and accountable grassroots leadership across Jigawa State.',
+    bio: 'Jamilu Yusuf Musa is a Software and AI Engineer, tech ecosystem builder, and civic youth leader serving as the Jigawa State Coordinator for the Atiku Northern Youth Vanguard. As Founder of Phronix AI and Co-Founder at Startup Jigawa, he has spearheaded digital initiatives in education, startup incubation, and community technology mentorship. A Software Engineering scholar at Federal University Dutse (FUD) and former Director of Software for NACOS FUD, he champions youth tech enablement, grassroots mobilization, and policy-driven development across all 27 local government areas of Jigawa State.',
     socials: {
-      phone: '+2349018710083',
+      phone: '+234 901 871 0083',
       email: 'yamojr001@gmail.com',
       linkedin: 'https://linkedin.com/in/jamilu-yusuf-musa-0b19b137a',
       github: 'https://github.com/yamojr001',
