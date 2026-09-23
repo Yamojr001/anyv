@@ -2,7 +2,8 @@
 export const leadershipCategories = [
   { id: 'all', label: 'All Leadership' },
   { id: 'executive', label: 'National Executive Council' },
-  { id: 'directorate', label: 'National Directorates' }
+  { id: 'directorate', label: 'National Directorates' },
+  { id: 'coordinators', label: 'State Coordinators' }
 ]
 
 export const presidentialPrincipals = [
@@ -246,6 +247,28 @@ export const leadershipOfficials = [
     bio: 'Executive Director of Sadaqa Education and Youth Empowerment Foundation (SEYEF) from Maiduguri, Borno State. Accomplished educationist and humanitarian with over eleven years of dedicated field experience. Renowned advocate for quality education, youth inclusion in policymaking, and women\'s leadership development across Borno State and the North-East.',
     socials: {
       email: 'women.inclusion@anyv.ng'
+    }
+  },
+  {
+    id: 'coord-nasiru-abdulhamid',
+    name: 'Comrade Nasiru Abdulhamid',
+    rankTitle: 'Kaduna State Coordinator',
+    category: 'coordinators',
+    state: 'Kaduna State / North-West',
+    badgeCode: 'COORD-KD',
+    // photoUrl: '/images/officials/nasiru_abdulhamid.png', // Commented out for now
+    photoUrl: '',
+    initials: 'NA',
+    portfolioRoles: [
+      'Kaduna State Coordinator @ Atiku Northern Youth Vanguard (ANYV)',
+      'State Chapter Operations Lead (Kaduna)',
+      'Grassroots Mobilizer & Civic Activist',
+      'Youth Inclusion & Community Development Advocate'
+    ],
+    quote: 'Youth • Unity • Leadership • Progress. Organise, mobilise, and lead for a brighter future.',
+    bio: 'Comrade Nasiru Abdulhamid serves as the Kaduna State Coordinator for the Atiku Northern Youth Vanguard (Kaduna Chapter). An energetic grassroots mobilizer, civic leader, and youth advocate dedicated to organizing, mobilizing, and inspiring youth leadership across all 23 local government areas in Kaduna State.',
+    socials: {
+      email: 'kaduna@anyv.ng'
     }
   }
 ]

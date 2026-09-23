@@ -50,12 +50,18 @@ export default function ChaptersPage() {
   ]
 
   const getStateLeaders = (stateName) => {
-    const officials = leadershipOfficials.filter(o => {
-      const stateMatch = o.state?.toLowerCase().includes(stateName.toLowerCase())
-      const bioMatch = o.bio?.toLowerCase().includes(stateName.toLowerCase())
-      const rolesMatch = o.portfolioRoles?.some(r => r.toLowerCase().includes(stateName.toLowerCase()))
-      return stateMatch || (stateName === 'Gombe' && (rolesMatch || bioMatch))
-    })
+    const officials = leadershipOfficials
+      .filter(o => {
+        const stateMatch = o.state?.toLowerCase().includes(stateName.toLowerCase())
+        const bioMatch = o.bio?.toLowerCase().includes(stateName.toLowerCase())
+        const rolesMatch = o.portfolioRoles?.some(r => r.toLowerCase().includes(stateName.toLowerCase()))
+        return stateMatch || (stateName === 'Gombe' && (rolesMatch || bioMatch))
+      })
+      .sort((a, b) => {
+        const aIsCoord = a.category === 'coordinators' ? -1 : 1
+        const bIsCoord = b.category === 'coordinators' ? -1 : 1
+        return aIsCoord - bIsCoord
+      })
 
     const principals = presidentialPrincipals.filter(p =>
       p.state?.toLowerCase().includes(stateName.toLowerCase())
@@ -154,12 +160,19 @@ export default function ChaptersPage() {
                     <p className="text-xs text-[#666c5c] mt-0.5">Capital: {state.capital}</p>
 
                     {/* Leaders indicator badge */}
-                    <div className="mt-3">
+                    <div className="mt-3 flex flex-wrap gap-1.5">
                       {stateLeaders.length > 0 ? (
-                        <span className="font-mono text-[10px] text-[#b6842a] bg-[#fcf8ed] px-2 py-0.5 rounded-[2px] border border-[#cfc6a6] font-semibold inline-flex items-center gap-1">
-                          <Users size={11} weight="bold" />
-                          {stateLeaders.length} Accredited {stateLeaders.length === 1 ? 'Leader' : 'Leaders'}
-                        </span>
+                        <>
+                          <span className="font-mono text-[10px] text-[#b6842a] bg-[#fcf8ed] px-2 py-0.5 rounded-[2px] border border-[#cfc6a6] font-semibold inline-flex items-center gap-1">
+                            <Users size={11} weight="bold" />
+                            {stateLeaders.length} Accredited {stateLeaders.length === 1 ? 'Leader' : 'Leaders'}
+                          </span>
+                          {stateLeaders.some(l => l.category === 'coordinators') && (
+                            <span className="font-mono text-[10px] text-[#10241f] bg-[#e7e0cb] px-2 py-0.5 rounded-[2px] font-semibold inline-flex items-center gap-1">
+                              Coordinator Assigned
+                            </span>
+                          )}
+                        </>
                       ) : (
                         <span className="font-mono text-[10px] text-[#7c9473] bg-[#f5f8f3] px-2 py-0.5 rounded-[2px] border border-[#cfc6a6] font-semibold inline-flex items-center gap-1">
                           Council In Formation
@@ -295,9 +308,11 @@ export default function ChaptersPage() {
                           <span className="font-mono text-[10px] text-[#b6842a] font-semibold tracking-wider uppercase">
                             {leader.badgeCode || leader.badge || 'OFF-REC'} &bull; {leader.state}
                           </span>
-                          <span className="font-mono text-[10px] text-[#7c9473] flex items-center gap-1 uppercase font-semibold">
+                          <span className={`font-mono text-[10px] flex items-center gap-1 uppercase font-semibold ${
+                            leader.category === 'coordinators' ? 'text-[#b6842a]' : 'text-[#7c9473]'
+                          }`}>
                             <Sparkle size={12} weight="fill" className="text-[#b6842a]" />
-                            Accredited Leader
+                            {leader.category === 'coordinators' ? 'State Coordinator' : 'Accredited Leader'}
                           </span>
                         </div>
 
