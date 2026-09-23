@@ -15,7 +15,9 @@ import {
   At,
   X,
   Info,
-  Phone
+  Phone,
+  GithubLogo,
+  Globe
 } from '@phosphor-icons/react'
 import {
   stateChapterOfficials
@@ -416,6 +418,28 @@ export default function ChaptersPage() {
                                   title="Threads"
                                 >
                                   <At size={16} weight="bold" />
+                                </a>
+                              )}
+                              {leader.socials.github && (
+                                <a
+                                  href={leader.socials.github}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+                                  title="GitHub"
+                                >
+                                  <GithubLogo size={16} weight="bold" />
+                                </a>
+                              )}
+                              {leader.socials.website && (
+                                <a
+                                  href={leader.socials.website}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+                                  title="Personal/Product Website"
+                                >
+                                  <Globe size={16} weight="bold" />
                                 </a>
                               )}
                             </div>

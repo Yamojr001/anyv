@@ -314,5 +314,32 @@ export const stateChapterOfficials = [
     bio: 'Veronica James serves as the State Secretary for the Atiku Northern Youth Vanguard (Kaduna Chapter). She oversees administrative operations, official secretariat correspondence, executive documentation, and chapter record coordination across Kaduna State.',
     // socials: {}, // Commented out for now
     socials: {}
+  },
+  {
+    id: 'jg-coordinator',
+    state: 'Jigawa',
+    roleType: 'coordinator',
+    name: 'Jamilu Yusuf Musa',
+    rankTitle: 'Jigawa State Coordinator',
+    badgeCode: 'STA-JG-01',
+    // photoUrl: '/images/officials/jamilu_yusuf_musa.png', // Commented out for now
+    photoUrl: '',
+    initials: 'JM',
+    portfolioRoles: [
+      'Jigawa State Coordinator @ Atiku Northern Youth Vanguard (ANYV)',
+      'Software Engineer & AI Engineer (Founder @ Phronix AI)',
+      'Co-Founder & Lead Software Engineer @ Startup Jigawa',
+      'Lead AI Engineer @ Dreama (Clinical Expert Systems)',
+      'BSc Software Engineering (Federal University Dutse - FUD)'
+    ],
+    quote: 'Leveraging technology, artificial intelligence, and grassroots digital innovation to transform youth productivity and governance in Jigawa State.',
+    bio: 'Software Engineer and AI Engineer with over 4 years of full-stack systems experience and specialized expertise in AI systems, academic technology, and clinical expert platforms. Founder of Phronix AI and Co-Founder at Startup Jigawa, leading digital product architecture across web, mobile, and intelligent data systems. Serving as Jigawa State Coordinator for the Atiku Northern Youth Vanguard to empower young people through tech enablement, leadership, and grassroots civic engagement.',
+    socials: {
+      phone: '+2349018710083',
+      email: 'yamojr001@gmail.com',
+      linkedin: 'https://linkedin.com/in/jamilu-yusuf-musa-0b19b137a',
+      github: 'https://github.com/yamojr001',
+      website: 'https://phronixai.app'
+    }
   }
 ]
