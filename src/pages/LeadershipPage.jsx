@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   leadershipCategories,
@@ -23,8 +23,16 @@ import {
 } from '@phosphor-icons/react'
 
 export default function LeadershipPage() {
+  const [searchParams] = useSearchParams()
   const [activeCategory, setActiveCategory] = useState('all')
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || searchParams.get('state') || '')
+
+  useEffect(() => {
+    const q = searchParams.get('search') || searchParams.get('state')
+    if (q) {
+      setSearchQuery(q)
+    }
+  }, [searchParams])
 
   const filteredOfficials = leadershipOfficials.filter((official) => {
     const matchesCategory = activeCategory === 'all' || official.category === activeCategory

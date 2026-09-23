@@ -2,9 +2,7 @@
 export const leadershipCategories = [
   { id: 'all', label: 'All Leadership' },
   { id: 'executive', label: 'National Executive Council' },
-  { id: 'zonal', label: 'Zonal Vice Coordinators' },
-  { id: 'directorate', label: 'National Directorates' },
-  { id: 'advisory', label: 'Board of Patrons & Advisory' }
+  { id: 'directorate', label: 'National Directorates' }
 ]
 
 export const presidentialPrincipals = [
@@ -248,78 +246,6 @@ export const leadershipOfficials = [
     bio: 'Executive Director of Sadaqa Education and Youth Empowerment Foundation (SEYEF) from Maiduguri, Borno State. Accomplished educationist and humanitarian with over eleven years of dedicated field experience. Renowned advocate for quality education, youth inclusion in policymaking, and women\'s leadership development across Borno State and the North-East.',
     socials: {
       email: 'women.inclusion@anyv.ng'
-    }
-  },
-  {
-    id: 'zonal-01',
-    name: '[Official Name Pending]',
-    rankTitle: 'Zonal Vice Coordinator (North-West)',
-    category: 'zonal',
-    state: 'Sokoto',
-    badgeCode: 'ZON-NW',
-    photoUrl: '',
-    initials: 'NW',
-    quote: 'Connecting 7 North-West states: Jigawa, Kaduna, Kano, Katsina, Kebbi, Sokoto, and Zamfara.',
-    bio: 'Leads mobilization, grassroots ward councils, and economic forums across the North-West zone.',
-    socials: {
-      twitter: '#',
-      facebook: '#',
-      linkedin: '#',
-      email: 'northwest@anyv.ng'
-    }
-  },
-  {
-    id: 'zonal-02',
-    name: '[Official Name Pending]',
-    rankTitle: 'Zonal Vice Coordinator (North-East)',
-    category: 'zonal',
-    state: 'Gombe',
-    badgeCode: 'ZON-NE',
-    photoUrl: '',
-    initials: 'NE',
-    quote: 'Catalyzing reconstruction, youth innovation, and educational revival across the North-East.',
-    bio: 'Coordinates chapters across Adamawa, Bauchi, Borno, Gombe, Taraba, and Yobe.',
-    socials: {
-      twitter: '#',
-      facebook: '#',
-      linkedin: '#',
-      email: 'northeast@anyv.ng'
-    }
-  },
-  {
-    id: 'zonal-03',
-    name: '[Official Name Pending]',
-    rankTitle: 'Zonal Vice Coordinator (North-Central)',
-    category: 'zonal',
-    state: 'Kwara',
-    badgeCode: 'ZON-NC',
-    photoUrl: '',
-    initials: 'NC',
-    quote: 'Promoting peacebuilding, civic engagement, and agricultural entrepreneurship in the Middle Belt.',
-    bio: 'Oversees chapters in Benue, Kogi, Kwara, Nasarawa, Niger, Plateau, and FCT Abuja.',
-    socials: {
-      twitter: '#',
-      facebook: '#',
-      linkedin: '#',
-      email: 'northcentral@anyv.ng'
-    }
-  },
-  {
-    id: 'dir-03',
-    name: '[Official Name Pending]',
-    rankTitle: 'Director of Policy, Research & Strategy',
-    category: 'directorate',
-    state: 'Bauchi',
-    badgeCode: 'DIR-PRS',
-    photoUrl: '',
-    initials: 'PS',
-    quote: 'Bridging grassroots citizen needs with evidence-based policy research and public discourse.',
-    bio: 'Directs policy white papers, legislative monitoring, and ANYV strategic studies.',
-    socials: {
-      twitter: '#',
-      facebook: '#',
-      linkedin: '#',
-      email: 'policy@anyv.ng'
     }
   }
 ]
