@@ -2,7 +2,8 @@
 export const leadershipCategories = [
   { id: 'all', label: 'All Leadership' },
   { id: 'executive', label: 'National Executive Council' },
-  { id: 'directorate', label: 'National Directorates' }
+  { id: 'directorate', label: 'National Directorates' },
+  { id: 'state', label: 'State Chapter Executives' }
 ]
 
 export const presidentialPrincipals = [
@@ -256,6 +257,7 @@ export const stateChapterOfficials = [
     id: 'kd-coordinator',
     state: 'Kaduna',
     roleType: 'coordinator',
+    category: 'state',
     name: 'Comrade Nasiru Abdulhamid',
     rankTitle: 'Kaduna State Coordinator',
     badgeCode: 'STA-KD-01',
@@ -279,6 +281,7 @@ export const stateChapterOfficials = [
     id: 'kd-deputy-coordinator',
     state: 'Kaduna',
     roleType: 'vice_coordinator',
+    category: 'state',
     name: 'Gaddafi Adamu',
     rankTitle: 'Deputy State Coordinator',
     badgeCode: 'STA-KD-02',
@@ -299,6 +302,7 @@ export const stateChapterOfficials = [
     id: 'kd-secretary',
     state: 'Kaduna',
     roleType: 'secretary',
+    category: 'state',
     name: 'Veronica James',
     rankTitle: 'State Secretary',
     badgeCode: 'STA-KD-03',
@@ -319,6 +323,7 @@ export const stateChapterOfficials = [
     id: 'jg-coordinator',
     state: 'Jigawa',
     roleType: 'coordinator',
+    category: 'state',
     name: 'Jamilu Yusuf Musa',
     rankTitle: 'Jigawa State Coordinator',
     badgeCode: 'STA-JG-01',
@@ -329,11 +334,13 @@ export const stateChapterOfficials = [
       'Jigawa State Coordinator @ Atiku Northern Youth Vanguard (ANYV)',
       'Founder & Lead AI Engineer @ Phronix AI (EdTech Platform)',
       'Co-Founder @ Startup Jigawa (Youth Tech Ecosystem & Enterprise)',
+      'Community Disaster Resilience Lead @ FloodShield Jigawa',
+      'Youth Tech Mentor @ Dutse Capital School',
       'Former Director of Software @ NACOS (Federal University Dutse)',
       'Software Engineering Scholar @ Federal University Dutse (FUD)'
     ],
-    quote: 'Northern youth renaissance begins with equipping our generation with technology, digital innovation, and accountable grassroots leadership across Jigawa State.',
-    bio: 'Jamilu Yusuf Musa is a Software and AI Engineer, tech ecosystem builder, and civic youth leader serving as the Jigawa State Coordinator for the Atiku Northern Youth Vanguard. As Founder of Phronix AI and Co-Founder at Startup Jigawa, he has spearheaded digital initiatives in education, startup incubation, and community technology mentorship. A Software Engineering scholar at Federal University Dutse (FUD) and former Director of Software for NACOS FUD, he champions youth tech enablement, grassroots mobilization, and policy-driven development across all 27 local government areas of Jigawa State.',
+    quote: 'Northern youth renaissance begins with equipping our generation with technology, digital skills, and active grassroots community engagement across Jigawa State.',
+    bio: 'Jamilu Yusuf Musa is a Software and AI Engineer, tech ecosystem builder, and civic youth leader serving as the Jigawa State Coordinator for the Atiku Northern Youth Vanguard. A dedicated champion of grassroots community engagement, he co-founded Startup Jigawa to incubate local enterprises and mentor youth across Dutse, engineered FloodShield Jigawa to deliver AI disaster warnings protecting flood-prone communities, mentored young students at Dutse Capital School, and served as Director of Software for NACOS at Federal University Dutse (FUD). As Founder of Phronix AI, he unites technological innovation with grassroots community organizing to expand civic participation and economic opportunity across all 27 local government areas of Jigawa State.',
     socials: {
       phone: '+234 901 871 0083',
       email: 'yamojr001@gmail.com',

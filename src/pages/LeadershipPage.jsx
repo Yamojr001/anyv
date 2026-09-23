@@ -4,7 +4,8 @@ import { motion } from 'framer-motion'
 import {
   leadershipCategories,
   leadershipOfficials,
-  presidentialPrincipals
+  presidentialPrincipals,
+  stateChapterOfficials
 } from '../data/leadershipData'
 import {
   Sparkle,
@@ -20,8 +21,185 @@ import {
   Globe,
   X,
   At,
-  Phone
+  Phone,
+  GithubLogo
 } from '@phosphor-icons/react'
+
+function OfficialCard({ official }) {
+  return (
+    <motion.div
+      key={official.id}
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.2 }}
+      className="bg-[#fffdf7] border border-[#cfc6a6] p-7 rounded-[2px] flex flex-col justify-between hover:border-[#b6842a] transition-all specimen-shadow"
+    >
+      <div>
+        {/* Official Card Top Bar */}
+        <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#e7e0cb]">
+          <span className="font-mono text-[10px] text-[#b6842a] font-semibold tracking-wider uppercase">
+            {official.badgeCode} &bull; {official.category === 'executive' ? 'National Executive' : official.category === 'state' ? `${official.state} Chapter` : official.state}
+          </span>
+          <span className="font-mono text-[10px] text-[#7c9473] flex items-center gap-1 uppercase">
+            <Sparkle size={12} weight="fill" className="text-[#b6842a]" />
+            Accredited
+          </span>
+        </div>
+
+        {/* Profile Header */}
+        <div className="flex items-start gap-4 mb-4">
+          {official.photoUrl ? (
+            <img
+              src={official.photoUrl}
+              alt={official.name}
+              className="w-20 h-20 object-cover object-top rounded-[2px] border border-[#10241f] shadow-[2px_2px_0px_rgba(182,132,42,0.6)] shrink-0"
+            />
+          ) : (
+            <div className="w-16 h-16 rounded-[2px] bg-[#10241f] text-[#e3c375] font-display font-bold text-xl flex items-center justify-center border border-[#10241f] shadow-[2px_2px_0px_rgba(182,132,42,0.6)] shrink-0">
+              {official.initials}
+            </div>
+          )}
+
+          <div>
+            <h3 className="font-display text-lg font-semibold text-[#10241f] leading-snug">
+              {official.name}
+            </h3>
+            <p className="font-mono text-xs text-[#b6842a] font-medium mt-0.5">
+              {official.rankTitle}
+            </p>
+          </div>
+        </div>
+
+        {/* Portfolio Highlights / Badges if present */}
+        {official.portfolioRoles && official.portfolioRoles.length > 0 && (
+          <div className="mb-4 pt-2 border-t border-[#e7e0cb] space-y-1">
+            {official.portfolioRoles.map((role, rIdx) => (
+              <div key={rIdx} className="font-mono text-[10px] text-[#10241f] flex items-start gap-1.5">
+                <span className="text-[#b6842a] font-bold">&bull;</span>
+                <span className="leading-tight">{role}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Quote Banner */}
+        {official.quote && (
+          <p className="text-xs text-[#10241f] italic font-serif bg-[#f5f8f3] p-3 border-l-2 border-[#7c9473] mb-4 leading-relaxed">
+            &ldquo;{official.quote}&rdquo;
+          </p>
+        )}
+
+        <p className="text-xs text-[#666c5c] leading-relaxed">
+          {official.bio}
+        </p>
+      </div>
+
+      {/* Footer Bar with Socials */}
+      <div className="mt-6 pt-4 border-t border-[#e7e0cb] flex items-center justify-between text-xs">
+        <span className="font-mono text-[10px] text-[#7c9473] uppercase tracking-wider font-semibold">
+          {official.category === 'state' ? `${official.state} Chapter` : official.category.toUpperCase()}
+        </span>
+
+        <div className="flex items-center gap-2.5 text-[#10241f]">
+          {official.socials?.phone && (
+            <a
+              href={`tel:${official.socials.phone}`}
+              className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+              title={`Phone: ${official.socials.phone}`}
+            >
+              <Phone size={15} weight="bold" />
+            </a>
+          )}
+          {official.socials?.linkedin && official.socials.linkedin !== '#' && (
+            <a
+              href={official.socials.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+              title="LinkedIn Profile"
+            >
+              <LinkedinLogo size={16} weight="bold" />
+            </a>
+          )}
+          {official.socials?.github && (
+            <a
+              href={official.socials.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+              title="GitHub Profile"
+            >
+              <GithubLogo size={16} weight="bold" />
+            </a>
+          )}
+          {official.socials?.website && (
+            <a
+              href={official.socials.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+              title="Personal/Product Website"
+            >
+              <Globe size={16} weight="bold" />
+            </a>
+          )}
+          {official.socials?.twitter && official.socials.twitter !== '#' && (
+            <a
+              href={official.socials.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+              title="X (Twitter)"
+            >
+              <X size={15} weight="bold" />
+            </a>
+          )}
+          {official.socials?.facebook && official.socials.facebook !== '#' && (
+            <a
+              href={official.socials.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+              title="Facebook"
+            >
+              <FacebookLogo size={16} weight="bold" />
+            </a>
+          )}
+          {official.socials?.instagram && official.socials.instagram !== '#' && (
+            <a
+              href={official.socials.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+              title="Instagram"
+            >
+              <InstagramLogo size={16} weight="bold" />
+            </a>
+          )}
+          {official.socials?.threads && official.socials.threads !== '#' && (
+            <a
+              href={official.socials.threads}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors font-mono text-[11px] font-bold"
+              title="Threads"
+            >
+              <At size={16} weight="bold" />
+            </a>
+          )}
+          {official.socials?.email && (
+            <a
+              href={`mailto:${official.socials.email}`}
+              className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
+              title={`Email: ${official.socials.email}`}
+            >
+              <EnvelopeSimple size={16} weight="bold" />
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  )
+}
 
 export default function LeadershipPage() {
   const [searchParams] = useSearchParams()
@@ -35,7 +213,7 @@ export default function LeadershipPage() {
     }
   }, [searchParams])
 
-  const filteredOfficials = leadershipOfficials.filter((official) => {
+  const filteredNationalOfficials = leadershipOfficials.filter((official) => {
     const matchesCategory = activeCategory === 'all' || official.category === activeCategory
     const matchesSearch =
       official.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -44,6 +222,18 @@ export default function LeadershipPage() {
       official.badgeCode.toLowerCase().includes(searchQuery.toLowerCase())
     return matchesCategory && matchesSearch
   })
+
+  const filteredStateOfficials = stateChapterOfficials.filter((official) => {
+    const matchesCategory = activeCategory === 'all' || activeCategory === 'state'
+    const matchesSearch =
+      official.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      official.rankTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      official.state.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      official.badgeCode.toLowerCase().includes(searchQuery.toLowerCase())
+    return matchesCategory && matchesSearch
+  })
+
+  const totalFilteredCount = filteredNationalOfficials.length + filteredStateOfficials.length
 
   return (
     <div className="space-y-0">
@@ -204,162 +394,57 @@ export default function LeadershipPage() {
             </span>
           </div>
 
-          {/* Officials Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredOfficials.map((official) => (
-              <motion.div
-                key={official.id}
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.2 }}
-                className="bg-[#fffdf7] border border-[#cfc6a6] p-7 rounded-[2px] flex flex-col justify-between hover:border-[#b6842a] transition-all specimen-shadow"
-              >
+          {/* National Governing Councils Section */}
+          {filteredNationalOfficials.length > 0 && (
+            <div className="mb-16">
+              <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#cfc6a6]">
                 <div>
-                  {/* Official Card Top Bar */}
-                  <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#e7e0cb]">
-                    <span className="font-mono text-[10px] text-[#b6842a] font-semibold tracking-wider uppercase">
-                      {official.badgeCode} &bull; {official.category === 'executive' ? 'National Executive' : official.state}
-                    </span>
-                    <span className="font-mono text-[10px] text-[#7c9473] flex items-center gap-1 uppercase">
-                      <Sparkle size={12} weight="fill" className="text-[#b6842a]" />
-                      Accredited
-                    </span>
-                  </div>
+                  <span className="eyebrow text-[#b6842a]">NATIONAL GOVERNING BODIES</span>
+                  <h3 className="font-display text-2xl font-bold text-[#10241f] mt-0.5">
+                    National Executive Council &amp; Directorates
+                  </h3>
+                </div>
+                <span className="font-mono text-xs text-[#666c5c]">
+                  {filteredNationalOfficials.length} Accredited National Officials
+                </span>
+              </div>
 
-                  {/* Profile Header */}
-                  <div className="flex items-start gap-4 mb-4">
-                    {official.photoUrl ? (
-                      <img
-                        src={official.photoUrl}
-                        alt={official.name}
-                        className="w-20 h-20 object-cover object-top rounded-[2px] border border-[#10241f] shadow-[2px_2px_0px_rgba(182,132,42,0.6)] shrink-0"
-                      />
-                    ) : (
-                      <div className="w-16 h-16 rounded-[2px] bg-[#10241f] text-[#e3c375] font-display font-bold text-xl flex items-center justify-center border border-[#10241f] shadow-[2px_2px_0px_rgba(182,132,42,0.6)] shrink-0">
-                        {official.initials}
-                      </div>
-                    )}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredNationalOfficials.map(official => (
+                  <OfficialCard key={official.id} official={official} />
+                ))}
+              </div>
+            </div>
+          )}
 
-                    <div>
-                      <h3 className="font-display text-lg font-semibold text-[#10241f] leading-snug">
-                        {official.name}
-                      </h3>
-                      <p className="font-mono text-xs text-[#b6842a] font-medium mt-0.5">
-                        {official.rankTitle}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Portfolio Highlights / Badges if present */}
-                  {official.portfolioRoles && official.portfolioRoles.length > 0 && (
-                    <div className="mb-4 pt-2 border-t border-[#e7e0cb] space-y-1">
-                      {official.portfolioRoles.map((role, rIdx) => (
-                        <div key={rIdx} className="font-mono text-[10px] text-[#10241f] flex items-start gap-1.5">
-                          <span className="text-[#b6842a] font-bold">&bull;</span>
-                          <span className="leading-tight">{role}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Quote Banner */}
-                  {official.quote && (
-                    <p className="text-xs text-[#10241f] italic font-serif bg-[#f5f8f3] p-3 border-l-2 border-[#7c9473] mb-4 leading-relaxed">
-                      &ldquo;{official.quote}&rdquo;
-                    </p>
-                  )}
-
-                  <p className="text-xs text-[#666c5c] leading-relaxed">
-                    {official.bio}
+          {/* State Chapter Executives Section (Rendered after National Officials) */}
+          {filteredStateOfficials.length > 0 && (
+            <div className="mb-16">
+              <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#cfc6a6]">
+                <div>
+                  <span className="eyebrow text-[#b6842a]">GRASSROOTS CHAPTER LEADERSHIP</span>
+                  <h3 className="font-display text-2xl font-bold text-[#10241f] mt-0.5">
+                    State Chapter Executive Councils
+                  </h3>
+                  <p className="text-xs text-[#666c5c] mt-0.5">
+                    Accredited State Coordinators, Deputy Coordinators, and Secretaries across Northern states.
                   </p>
                 </div>
+                <span className="font-mono text-xs text-[#b6842a] font-semibold bg-[#fcf8ed] px-2.5 py-1 border border-[#cfc6a6] rounded-[2px] self-start sm:self-auto">
+                  {filteredStateOfficials.length} State Chapter Executives
+                </span>
+              </div>
 
-                {/* Footer Bar with Socials */}
-                <div className="mt-6 pt-4 border-t border-[#e7e0cb] flex items-center justify-between text-xs">
-                  <span className="font-mono text-[10px] text-[#7c9473] uppercase tracking-wider font-semibold">
-                    {official.category.toUpperCase()}
-                  </span>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredStateOfficials.map(official => (
+                  <OfficialCard key={official.id} official={official} />
+                ))}
+              </div>
+            </div>
+          )}
 
-                  <div className="flex items-center gap-2.5 text-[#10241f]">
-                    {official.socials.linkedin && official.socials.linkedin !== '#' && (
-                      <a
-                        href={official.socials.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
-                        title="LinkedIn Profile"
-                      >
-                        <LinkedinLogo size={16} weight="bold" />
-                      </a>
-                    )}
-                    {official.socials.twitter && official.socials.twitter !== '#' && (
-                      <a
-                        href={official.socials.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
-                        title="X (Twitter)"
-                      >
-                        <X size={15} weight="bold" />
-                      </a>
-                    )}
-                    {official.socials.facebook && official.socials.facebook !== '#' && (
-                      <a
-                        href={official.socials.facebook}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
-                        title="Facebook"
-                      >
-                        <FacebookLogo size={16} weight="bold" />
-                      </a>
-                    )}
-                    {official.socials.instagram && official.socials.instagram !== '#' && (
-                      <a
-                        href={official.socials.instagram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
-                        title="Instagram"
-                      >
-                        <InstagramLogo size={16} weight="bold" />
-                      </a>
-                    )}
-                    {official.socials.threads && official.socials.threads !== '#' && (
-                      <a
-                        href={official.socials.threads}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors font-mono text-[11px] font-bold"
-                        title="Threads"
-                      >
-                        <At size={16} weight="bold" />
-                      </a>
-                    )}
-                    {official.socials.phone && (
-                      <a
-                        href={`tel:${official.socials.phone}`}
-                        className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
-                        title={`Phone: ${official.socials.phone}`}
-                      >
-                        <Phone size={15} weight="bold" />
-                      </a>
-                    )}
-                    {official.socials.email && (
-                      <a
-                        href={`mailto:${official.socials.email}`}
-                        className="p-1 rounded-[2px] hover:bg-[#10241f] hover:text-[#e3c375] transition-colors"
-                        title={`Email: ${official.socials.email}`}
-                      >
-                        <EnvelopeSimple size={16} weight="bold" />
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {filteredOfficials.length === 0 && (
+          {/* Empty State */}
+          {totalFilteredCount === 0 && (
             <div className="text-center py-16 bg-[#fffdf7] border border-[#cfc6a6] rounded-[2px] p-8">
               <p className="font-display text-lg text-[#10241f]">No officials found matching &ldquo;{searchQuery}&rdquo;</p>
               <p className="text-xs text-[#666c5c] mt-1">Try another search term or reset category filters.</p>
