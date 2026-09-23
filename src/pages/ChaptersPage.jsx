@@ -18,8 +18,7 @@ import {
   Phone
 } from '@phosphor-icons/react'
 import {
-  leadershipOfficials,
-  presidentialPrincipals
+  stateChapterOfficials
 } from '../data/leadershipData'
 
 export default function ChaptersPage() {
@@ -51,24 +50,9 @@ export default function ChaptersPage() {
   ]
 
   const getStateLeaders = (stateName) => {
-    const officials = leadershipOfficials
-      .filter(o => {
-        const stateMatch = o.state?.toLowerCase().includes(stateName.toLowerCase())
-        const bioMatch = o.bio?.toLowerCase().includes(stateName.toLowerCase())
-        const rolesMatch = o.portfolioRoles?.some(r => r.toLowerCase().includes(stateName.toLowerCase()))
-        return stateMatch || (stateName === 'Gombe' && (rolesMatch || bioMatch))
-      })
-      .sort((a, b) => {
-        if (a.category === 'coordinators' && b.category !== 'coordinators') return -1
-        if (a.category !== 'coordinators' && b.category === 'coordinators') return 1
-        return 0
-      })
-
-    const principals = presidentialPrincipals.filter(p =>
-      p.state?.toLowerCase().includes(stateName.toLowerCase())
+    return stateChapterOfficials.filter(
+      o => o.state.toLowerCase() === stateName.toLowerCase()
     )
-
-    return [...principals, ...officials]
   }
 
   const filteredStates = northernStates.filter(s => {
@@ -166,11 +150,11 @@ export default function ChaptersPage() {
                         <>
                           <span className="font-mono text-[10px] text-[#b6842a] bg-[#fcf8ed] px-2 py-0.5 rounded-[2px] border border-[#cfc6a6] font-semibold inline-flex items-center gap-1">
                             <Users size={11} weight="bold" />
-                            {stateLeaders.length} Accredited {stateLeaders.length === 1 ? 'Leader' : 'Leaders'}
+                            {stateLeaders.length}/3 State Executives
                           </span>
-                          {stateLeaders.some(l => l.category === 'coordinators') && (
-                            <span className="font-mono text-[10px] text-[#10241f] bg-[#e7e0cb] px-2 py-0.5 rounded-[2px] font-semibold inline-flex items-center gap-1">
-                              Coordinator Assigned
+                          {stateLeaders.length === 3 && (
+                            <span className="font-mono text-[10px] text-[#7c9473] bg-[#f5f8f3] px-2 py-0.5 rounded-[2px] border border-[#7c9473]/40 font-semibold inline-flex items-center gap-1">
+                              Council Formed
                             </span>
                           )}
                         </>
@@ -290,9 +274,9 @@ export default function ChaptersPage() {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-display text-lg font-bold text-[#10241f] flex items-center gap-2">
-                    <span>Accredited State &amp; National Executives</span>
+                    <span>State Chapter Executive Council</span>
                     <span className="font-mono text-xs text-[#b6842a] font-normal">
-                      ({getStateLeaders(selectedState.name).length})
+                      ({getStateLeaders(selectedState.name).length}/3 Appointed)
                     </span>
                   </h3>
                 </div>
@@ -307,13 +291,15 @@ export default function ChaptersPage() {
                         {/* Leader Top Bar */}
                         <div className="flex items-center justify-between pb-3 border-b border-[#e7e0cb]">
                           <span className="font-mono text-[10px] text-[#b6842a] font-semibold tracking-wider uppercase">
-                            {leader.badgeCode || leader.badge || 'OFF-REC'} &bull; {leader.state}
+                            {leader.badgeCode || 'STA-REC'} &bull; {leader.state} Chapter
                           </span>
-                          <span className={`font-mono text-[10px] flex items-center gap-1 uppercase font-semibold ${
-                            leader.category === 'coordinators' ? 'text-[#b6842a]' : 'text-[#7c9473]'
-                          }`}>
+                          <span className="font-mono text-[10px] text-[#b6842a] flex items-center gap-1 uppercase font-semibold">
                             <Sparkle size={12} weight="fill" className="text-[#b6842a]" />
-                            {leader.category === 'coordinators' ? 'State Coordinator' : 'Accredited Leader'}
+                            {leader.roleType === 'coordinator'
+                              ? 'State Coordinator'
+                              : leader.roleType === 'vice_coordinator'
+                              ? 'Deputy State Coordinator'
+                              : 'State Secretary'}
                           </span>
                         </div>
 
@@ -444,10 +430,10 @@ export default function ChaptersPage() {
                       <Info size={20} weight="bold" />
                     </div>
                     <h4 className="font-display text-base font-semibold text-[#10241f]">
-                      State Coordinating Council &amp; Ward Liaisons In Formation
+                      State Chapter Executive Council In Formation
                     </h4>
                     <p className="text-xs text-[#666c5c] max-w-md mx-auto leading-relaxed">
-                      The State Coordinating Council and Ward Executive Liaisons across all {selectedState.lgas} Local Government Areas in {selectedState.name} State are undergoing formal vetting and accreditation by the National Secretariat in Abuja.
+                      The three state chapter executive offices (State Coordinator, Deputy State Coordinator, and State Secretary) across all {selectedState.lgas} Local Government Areas in {selectedState.name} State are undergoing formal vetting and appointment by the National Secretariat in Abuja.
                     </p>
                     <div className="pt-2">
                       <Link
@@ -465,11 +451,11 @@ export default function ChaptersPage() {
               {/* Modal Footer Controls */}
               <div className="mt-8 pt-4 border-t border-[#cfc6a6] flex flex-col sm:flex-row items-center justify-between gap-3">
                 <Link
-                  to={`/leadership?search=${selectedState.name}`}
+                  to="/leadership"
                   className="w-full sm:w-auto px-4 py-2.5 rounded-[2px] bg-[#b6842a] hover:bg-[#c9963c] text-[#10241f] font-mono text-xs uppercase tracking-wider font-semibold transition-colors flex items-center justify-center gap-2"
                 >
                   <IdentificationBadge size={15} weight="bold" />
-                  <span>Open in Leadership Directory</span>
+                  <span>View National Leadership Directory</span>
                 </Link>
 
                 <button

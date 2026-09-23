@@ -2,8 +2,7 @@
 export const leadershipCategories = [
   { id: 'all', label: 'All Leadership' },
   { id: 'executive', label: 'National Executive Council' },
-  { id: 'directorate', label: 'National Directorates' },
-  { id: 'coordinators', label: 'State Coordinators' }
+  { id: 'directorate', label: 'National Directorates' }
 ]
 
 export const presidentialPrincipals = [
@@ -248,14 +247,18 @@ export const leadershipOfficials = [
     socials: {
       email: 'women.inclusion@anyv.ng'
     }
-  },
+  }
+]
+
+// State Chapter Officials (Exactly 3 positions per state: Coordinator, Vice/Deputy Coordinator, Secretary)
+export const stateChapterOfficials = [
   {
-    id: 'coord-nasiru-abdulhamid',
+    id: 'kd-coordinator',
+    state: 'Kaduna',
+    roleType: 'coordinator',
     name: 'Comrade Nasiru Abdulhamid',
     rankTitle: 'Kaduna State Coordinator',
-    category: 'coordinators',
-    state: 'Kaduna State / North-West',
-    badgeCode: 'COORD-KD',
+    badgeCode: 'STA-KD-01',
     // photoUrl: '/images/officials/nasiru_abdulhamid.png', // Commented out for now
     photoUrl: '',
     initials: 'NA',
@@ -273,12 +276,12 @@ export const leadershipOfficials = [
     }
   },
   {
-    id: 'dep-coord-gaddafi-adamu',
+    id: 'kd-deputy-coordinator',
+    state: 'Kaduna',
+    roleType: 'vice_coordinator',
     name: 'Gaddafi Adamu',
     rankTitle: 'Deputy State Coordinator',
-    category: 'coordinators',
-    state: 'Kaduna State / North-West',
-    badgeCode: 'DEP-KD',
+    badgeCode: 'STA-KD-02',
     // photoUrl: '/images/officials/gaddafi_adamu.png', // Commented out for now
     photoUrl: '',
     initials: 'GA',
@@ -289,6 +292,26 @@ export const leadershipOfficials = [
     ],
     quote: 'Effective youth mobilization requires teamwork, strategic coordination across all wards, and empowering local communities.',
     bio: 'Gaddafi Adamu serves as the Deputy State Coordinator for the Atiku Northern Youth Vanguard (Kaduna Chapter). Working closely with the State Coordinator, he drives grassroots mobilization, youth engagement, and structural chapter coordination across the 23 local government areas of Kaduna State.',
+    // socials: {}, // Commented out for now
+    socials: {}
+  },
+  {
+    id: 'kd-secretary',
+    state: 'Kaduna',
+    roleType: 'secretary',
+    name: 'Veronica James',
+    rankTitle: 'State Secretary',
+    badgeCode: 'STA-KD-03',
+    // photoUrl: '/images/officials/veronica_james.png', // Commented out for now
+    photoUrl: '',
+    initials: 'VJ',
+    portfolioRoles: [
+      'State Secretary @ Atiku Northern Youth Vanguard (Kaduna Chapter)',
+      'State Secretariat Administration & Official Correspondence',
+      'Chapter Documentation & Local Government Liaison'
+    ],
+    quote: 'A dedicated secretariat and transparent communication empower youth across every local government area.',
+    bio: 'Veronica James serves as the State Secretary for the Atiku Northern Youth Vanguard (Kaduna Chapter). She oversees administrative operations, official secretariat correspondence, executive documentation, and chapter record coordination across Kaduna State.',
     // socials: {}, // Commented out for now
     socials: {}
   }
