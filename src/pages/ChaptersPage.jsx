@@ -59,9 +59,9 @@ export default function ChaptersPage() {
         return stateMatch || (stateName === 'Gombe' && (rolesMatch || bioMatch))
       })
       .sort((a, b) => {
-        const aIsCoord = a.category === 'coordinators' ? -1 : 1
-        const bIsCoord = b.category === 'coordinators' ? -1 : 1
-        return aIsCoord - bIsCoord
+        if (a.category === 'coordinators' && b.category !== 'coordinators') return -1
+        if (a.category !== 'coordinators' && b.category === 'coordinators') return 1
+        return 0
       })
 
     const principals = presidentialPrincipals.filter(p =>

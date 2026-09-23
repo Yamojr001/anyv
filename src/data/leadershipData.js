@@ -271,5 +271,25 @@ export const leadershipOfficials = [
       phone: '08036710737',
       email: 'kaduna@anyv.ng'
     }
+  },
+  {
+    id: 'dep-coord-gaddafi-adamu',
+    name: 'Gaddafi Adamu',
+    rankTitle: 'Deputy State Coordinator',
+    category: 'coordinators',
+    state: 'Kaduna State / North-West',
+    badgeCode: 'DEP-KD',
+    // photoUrl: '/images/officials/gaddafi_adamu.png', // Commented out for now
+    photoUrl: '',
+    initials: 'GA',
+    portfolioRoles: [
+      'Deputy State Coordinator @ Atiku Northern Youth Vanguard (Kaduna Chapter)',
+      'Grassroots Mobilization & Local Government Operations',
+      'Youth Civic Engagement & Chapter Liaison (Kaduna)'
+    ],
+    quote: 'Effective youth mobilization requires teamwork, strategic coordination across all wards, and empowering local communities.',
+    bio: 'Gaddafi Adamu serves as the Deputy State Coordinator for the Atiku Northern Youth Vanguard (Kaduna Chapter). Working closely with the State Coordinator, he drives grassroots mobilization, youth engagement, and structural chapter coordination across the 23 local government areas of Kaduna State.',
+    // socials: {}, // Commented out for now
+    socials: {}
   }
 ]
