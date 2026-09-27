@@ -629,21 +629,22 @@ export const stateChapterOfficials = [
     state: 'Kogi',
     roleType: 'vice_coordinator',
     category: 'state',
-    name: '[Official Name Pending]',
-    rankTitle: 'Deputy State Coordinator',
+    name: 'Salihu Sumaiya',
+    rankTitle: 'Assistant State Coordinator',
     badgeCode: 'STA-KG-02',
-    // photoUrl: '', // Commented out for now
+    // photoUrl: '/images/officials/salihu_sumaiya.png', // Commented out for now
     photoUrl: '',
-    initials: 'KG',
+    initials: 'SS',
     portfolioRoles: [
-      'Deputy State Coordinator @ Atiku Northern Youth Vanguard (Kogi Chapter)',
+      'Assistant State Coordinator @ Atiku Northern Youth Vanguard (Kogi Chapter)',
       'Grassroots Mobilization & Local Government Operations (Kogi)',
-      'Youth Civic Engagement & Chapter Liaison'
+      'Women & Youth Civic Engagement & Chapter Liaison'
     ],
-    quote: 'Youth • Unity • Leadership • Progress. Mobilizing youth leadership across all 21 local government areas of Kogi State.',
-    bio: 'The Deputy State Coordinator for the Atiku Northern Youth Vanguard (Kogi Chapter) works in coordination with the State Coordinator to drive grassroots mobilization, youth engagement, and structural chapter coordination across the 21 local government areas of Kogi State.',
-    // socials: {}, // Commented out for now
-    socials: {}
+    quote: 'Youth • Unity • Leadership • Progress. Mobilizing grassroots youth leadership, women inclusion, and active civic participation across all 21 local government areas of Kogi State.',
+    bio: 'Salihu Sumaiya serves as the Assistant State Coordinator for the Atiku Northern Youth Vanguard (Kogi Chapter). Working closely with the State Coordinator and executive council, she champions youth leadership, grassroots mobilization, women and youth inclusion, and civic engagement across all 21 local government areas of Kogi State.',
+    socials: {
+      email: 'kogi@anyv.ng'
+    }
   },
   {
     id: 'kg-secretary',
