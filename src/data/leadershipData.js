@@ -531,5 +531,140 @@ export const stateChapterOfficials = [
     socials: {
       email: 'zamfara@anyv.ng'
     }
+  },
+  {
+    id: 'kw-coordinator',
+    state: 'Kwara',
+    roleType: 'coordinator',
+    category: 'state',
+    name: 'Smart Olaitan',
+    rankTitle: 'Kwara State Coordinator',
+    badgeCode: 'STA-KW-01',
+    // photoUrl: '/images/officials/smart_olaitan.png', // Commented out for now
+    photoUrl: '',
+    initials: 'SO',
+    portfolioRoles: [
+      'Kwara State Coordinator @ Atiku Northern Youth Vanguard (ANYV)',
+      'State Chapter Operations Lead (Kwara)',
+      'Grassroots Mobilizer & Civic Activist',
+      'Youth Inclusion & Community Development Advocate'
+    ],
+    quote: 'Youth • Unity • Leadership • Progress. Mobilizing youth leadership, enterprise, and civic engagement across all 16 local government areas of Kwara State.',
+    bio: 'Smart Olaitan serves as the Kwara State Coordinator for the Atiku Northern Youth Vanguard (Kwara Chapter). A dynamic grassroots mobilizer, civic leader, and youth advocate dedicated to organizing, mobilizing, and inspiring youth leadership across all 16 local government areas in Kwara State.',
+    socials: {
+      phone: '07068995671',
+      email: 'kwara@anyv.ng'
+    }
+  },
+  {
+    id: 'kw-deputy-coordinator',
+    state: 'Kwara',
+    roleType: 'vice_coordinator',
+    category: 'state',
+    name: 'Idris Usman Mohammed',
+    rankTitle: 'Assistant State Coordinator',
+    badgeCode: 'STA-KW-02',
+    // photoUrl: '/images/officials/idris_usman_mohammed.png', // Commented out for now
+    photoUrl: '',
+    initials: 'IM',
+    portfolioRoles: [
+      'Assistant State Coordinator @ Atiku Northern Youth Vanguard (Kwara Chapter)',
+      'Grassroots Mobilization & Local Government Operations (Kwara)',
+      'Youth Civic Engagement & Chapter Liaison'
+    ],
+    quote: 'Youth • Unity • Leadership • Progress. Mobilizing youth leadership, active participation, and civic responsibility across all 16 local government areas of Kwara State.',
+    bio: 'Idris Usman Mohammed serves as the Assistant State Coordinator for the Atiku Northern Youth Vanguard (Kwara Chapter). Working closely with the State Coordinator, he drives grassroots mobilization, local government liaison, youth civic engagement, and structural chapter coordination across the 16 local government areas of Kwara State.',
+    socials: {
+      email: 'kwara@anyv.ng'
+    }
+  },
+  {
+    id: 'kw-secretary',
+    state: 'Kwara',
+    roleType: 'secretary',
+    category: 'state',
+    name: 'Jejelola Abdulganiyu O.',
+    rankTitle: 'State Secretary',
+    badgeCode: 'STA-KW-03',
+    // photoUrl: '/images/officials/jejelola_abdulganiyu.png', // Commented out for now
+    photoUrl: '',
+    initials: 'JA',
+    portfolioRoles: [
+      'State Secretary @ Atiku Northern Youth Vanguard (Kwara Chapter)',
+      'State Secretariat Administration & Official Correspondence',
+      'Chapter Documentation & Local Government Liaison (Kwara)'
+    ],
+    quote: 'Transparent secretariat administration and dedicated youth coordination across all 16 local governments power our mission for progress in Kwara State.',
+    bio: 'Jejelola Abdulganiyu O. serves as the State Secretary for the Atiku Northern Youth Vanguard (Kwara Chapter). He oversees administrative operations, official secretariat correspondence, executive documentation, and chapter record coordination across the 16 local government areas of Kwara State.',
+    socials: {
+      email: 'kwara@anyv.ng'
+    }
+  },
+  {
+    id: 'kg-coordinator',
+    state: 'Kogi',
+    roleType: 'coordinator',
+    category: 'state',
+    name: 'Adam Ustaz Ubaidullah',
+    rankTitle: 'Kogi State Coordinator',
+    badgeCode: 'STA-KG-01',
+    // photoUrl: '/images/officials/adam_ustaz_ubaidullah.png', // Commented out for now
+    photoUrl: '',
+    initials: 'AU',
+    portfolioRoles: [
+      'Kogi State Coordinator @ Atiku Northern Youth Vanguard (ANYV)',
+      'State Chapter Operations Lead (Kogi)',
+      'Grassroots Mobilizer & Civic Activist',
+      'Youth Inclusion & Community Development Advocate'
+    ],
+    quote: 'Youth • Unity • Leadership • Progress. Mobilizing youth leadership, active participation, and civic responsibility across all 21 local government areas of Kogi State.',
+    bio: 'Adam Ustaz Ubaidullah serves as the Kogi State Coordinator for the Atiku Northern Youth Vanguard (Kogi Chapter). A dynamic grassroots mobilizer, civic leader, and youth advocate dedicated to organizing, mobilizing, and inspiring youth leadership across all 21 local government areas in Kogi State.',
+    socials: {
+      phone: '08140337306',
+      email: 'kogi@anyv.ng'
+    }
+  },
+  {
+    id: 'kg-deputy-coordinator',
+    state: 'Kogi',
+    roleType: 'vice_coordinator',
+    category: 'state',
+    name: '[Official Name Pending]',
+    rankTitle: 'Deputy State Coordinator',
+    badgeCode: 'STA-KG-02',
+    // photoUrl: '', // Commented out for now
+    photoUrl: '',
+    initials: 'KG',
+    portfolioRoles: [
+      'Deputy State Coordinator @ Atiku Northern Youth Vanguard (Kogi Chapter)',
+      'Grassroots Mobilization & Local Government Operations (Kogi)',
+      'Youth Civic Engagement & Chapter Liaison'
+    ],
+    quote: 'Youth • Unity • Leadership • Progress. Mobilizing youth leadership across all 21 local government areas of Kogi State.',
+    bio: 'The Deputy State Coordinator for the Atiku Northern Youth Vanguard (Kogi Chapter) works in coordination with the State Coordinator to drive grassroots mobilization, youth engagement, and structural chapter coordination across the 21 local government areas of Kogi State.',
+    // socials: {}, // Commented out for now
+    socials: {}
+  },
+  {
+    id: 'kg-secretary',
+    state: 'Kogi',
+    roleType: 'secretary',
+    category: 'state',
+    name: 'Zakari Idozi',
+    rankTitle: 'State Secretary',
+    badgeCode: 'STA-KG-03',
+    // photoUrl: '/images/officials/zakari_idozi.png', // Commented out for now
+    photoUrl: '',
+    initials: 'ZI',
+    portfolioRoles: [
+      'State Secretary @ Atiku Northern Youth Vanguard (Kogi Chapter)',
+      'State Secretariat Administration & Official Correspondence',
+      'Chapter Documentation & Local Government Liaison (Idozi / Kogi)'
+    ],
+    quote: 'Transparent secretariat administration, disciplined coordination, and unwavering grassroots dedication empower youth across all 21 local governments of Kogi State.',
+    bio: 'Zakari Idozi serves as the State Secretary for the Atiku Northern Youth Vanguard (Kogi Chapter). Hailing from Idozi, he oversees administrative operations, official secretariat correspondence, executive documentation, and local chapter liaison across the 21 local government areas of Kogi State.',
+    socials: {
+      email: 'kogi@anyv.ng'
+    }
   }
 ]
