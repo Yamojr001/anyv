@@ -348,5 +348,183 @@ export const stateChapterOfficials = [
       github: 'https://github.com/yamojr001',
       website: 'https://phronixai.app'
     }
+  },
+  {
+    id: 'jg-deputy-coordinator',
+    state: 'Jigawa',
+    roleType: 'vice_coordinator',
+    category: 'state',
+    name: '[Official Name Pending]',
+    rankTitle: 'Deputy State Coordinator',
+    badgeCode: 'STA-JG-02',
+    // photoUrl: '', // Commented out for now
+    photoUrl: '',
+    initials: 'JG',
+    portfolioRoles: [
+      'Deputy State Coordinator @ Atiku Northern Youth Vanguard (Jigawa Chapter)',
+      'Grassroots Mobilization & Local Government Operations (Jigawa)',
+      'Youth Civic Engagement & Chapter Liaison'
+    ],
+    quote: 'Youth • Unity • Leadership • Progress. Mobilizing youth leadership across all 27 local government areas of Jigawa State.',
+    bio: 'The Deputy State Coordinator for the Atiku Northern Youth Vanguard (Jigawa Chapter) works in coordination with the State Coordinator to drive grassroots mobilization, youth engagement, and structural chapter coordination across the 27 local government areas of Jigawa State.',
+    // socials: {}, // Commented out for now
+    socials: {}
+  },
+  {
+    id: 'jg-secretary',
+    state: 'Jigawa',
+    roleType: 'secretary',
+    category: 'state',
+    name: '[Official Name Pending]',
+    rankTitle: 'State Secretary',
+    badgeCode: 'STA-JG-03',
+    // photoUrl: '', // Commented out for now
+    photoUrl: '',
+    initials: 'JG',
+    portfolioRoles: [
+      'State Secretary @ Atiku Northern Youth Vanguard (Jigawa Chapter)',
+      'State Secretariat Administration & Official Correspondence',
+      'Chapter Documentation & Local Government Liaison'
+    ],
+    quote: 'A dedicated secretariat and transparent communication empower youth across every local government area.',
+    bio: 'The State Secretary for the Atiku Northern Youth Vanguard (Jigawa Chapter) oversees administrative operations, official secretariat correspondence, executive documentation, and chapter record coordination across Jigawa State.',
+    // socials: {}, // Commented out for now
+    socials: {}
+  },
+  {
+    id: 'kt-coordinator',
+    state: 'Katsina',
+    roleType: 'coordinator',
+    category: 'state',
+    name: 'Halliru Ibrahim Sk',
+    rankTitle: 'Katsina State Coordinator',
+    badgeCode: 'STA-KT-01',
+    // photoUrl: '/images/officials/halliru_ibrahim_sk.png', // Commented out for now
+    photoUrl: '',
+    initials: 'HI',
+    portfolioRoles: [
+      'Katsina State Coordinator @ Atiku Northern Youth Vanguard (ANYV)',
+      'State Chapter Operations Lead (Katsina)',
+      'Grassroots Mobilizer & Civic Activist',
+      'Youth Inclusion & Community Development Advocate'
+    ],
+    quote: 'Youth • Unity • Leadership • Progress. Organise, mobilise, and lead for a brighter future across Katsina State.',
+    bio: 'Halliru Ibrahim Sk serves as the Katsina State Coordinator for the Atiku Northern Youth Vanguard (Katsina Chapter). A dynamic grassroots mobilizer, civic leader, and youth advocate dedicated to organizing, mobilizing, and inspiring youth leadership across all 34 local government areas in Katsina State.',
+    socials: {
+      phone: '08035337510',
+      email: 'katsina@anyv.ng'
+    }
+  },
+  {
+    id: 'kt-deputy-coordinator',
+    state: 'Katsina',
+    roleType: 'vice_coordinator',
+    category: 'state',
+    name: 'Abubakar Ibrahim Marke',
+    rankTitle: 'Assistant State Coordinator',
+    badgeCode: 'STA-KT-02',
+    // photoUrl: '/images/officials/abubakar_ibrahim_marke.png', // Commented out for now
+    photoUrl: '',
+    initials: 'AM',
+    portfolioRoles: [
+      'Assistant State Coordinator @ Atiku Northern Youth Vanguard (Katsina Chapter)',
+      'Grassroots Mobilization & Local Government Operations (Marke / Katsina)',
+      'Youth Civic Engagement & Chapter Liaison'
+    ],
+    quote: 'Youth • Unity • Leadership • Progress. Mobilizing youth leadership and civic engagement across all 34 local government areas of Katsina State.',
+    bio: 'Abubakar Ibrahim Marke serves as the Assistant State Coordinator for the Atiku Northern Youth Vanguard (Katsina Chapter). Working closely with the State Coordinator, he drives grassroots mobilization, local government liaison, youth civic engagement, and structural chapter coordination across the 34 local government areas of Katsina State.',
+    socials: {
+      email: 'katsina@anyv.ng'
+    }
+  },
+  {
+    id: 'kt-secretary',
+    state: 'Katsina',
+    roleType: 'secretary',
+    category: 'state',
+    name: 'Ahmad Abdulrazak Bakori',
+    rankTitle: 'State Secretary',
+    badgeCode: 'STA-KT-03',
+    // photoUrl: '/images/officials/ahmad_abdulrazak_bakori.png', // Commented out for now
+    photoUrl: '',
+    initials: 'AB',
+    portfolioRoles: [
+      'State Secretary @ Atiku Northern Youth Vanguard (Katsina Chapter)',
+      'State Secretariat Administration & Official Correspondence',
+      'Chapter Documentation & Local Government Liaison (Bakori / Katsina)'
+    ],
+    quote: 'Transparent secretariat administration and active youth coordination across all 34 local governments build the foundation for regional transformation.',
+    bio: 'Ahmad Abdulrazak Bakori serves as the State Secretary for the Atiku Northern Youth Vanguard (Katsina Chapter). Hailing from Bakori Local Government Area, he oversees state secretariat administration, official communications, documentation, and local chapter liaison across the 34 local government areas of Katsina State.',
+    socials: {
+      email: 'katsina@anyv.ng'
+    }
+  },
+  {
+    id: 'zm-coordinator',
+    state: 'Zamfara',
+    roleType: 'coordinator',
+    category: 'state',
+    name: 'Saifullahi Sule Sanda',
+    rankTitle: 'Zamfara State Coordinator',
+    badgeCode: 'STA-ZM-01',
+    // photoUrl: '/images/officials/saifullahi_sule_sanda.png', // Commented out for now
+    photoUrl: '',
+    initials: 'SS',
+    portfolioRoles: [
+      'Zamfara State Coordinator @ Atiku Northern Youth Vanguard (ANYV)',
+      'State Chapter Operations Lead (Zamfara)',
+      'Grassroots Mobilizer & Civic Activist',
+      'Youth Inclusion & Community Development Advocate'
+    ],
+    quote: 'Youth • Unity • Leadership • Progress. Organise, mobilise, and lead for peace, enterprise, and progress across Zamfara State.',
+    bio: 'Saifullahi Sule Sanda serves as the Zamfara State Coordinator for the Atiku Northern Youth Vanguard (Zamfara Chapter). A dedicated youth advocate, civic leader, and grassroots mobilizer committed to empowering young people, advancing peacebuilding, and coordinating leadership across all 14 local government areas in Zamfara State.',
+    socials: {
+      phone: '07079220159',
+      email: 'zamfara@anyv.ng'
+    }
+  },
+  {
+    id: 'zm-deputy-coordinator',
+    state: 'Zamfara',
+    roleType: 'vice_coordinator',
+    category: 'state',
+    name: 'Hidayatu Lawal',
+    rankTitle: 'Assistant State Coordinator',
+    badgeCode: 'STA-ZM-02',
+    // photoUrl: '/images/officials/hidayatu_lawal.png', // Commented out for now
+    photoUrl: '',
+    initials: 'HL',
+    portfolioRoles: [
+      'Assistant State Coordinator @ Atiku Northern Youth Vanguard (Zamfara Chapter)',
+      'Grassroots Mobilization & Local Government Operations (Zamfara)',
+      'Women & Youth Civic Engagement Advocate'
+    ],
+    quote: 'Youth • Unity • Leadership • Progress. Fostering inclusive youth and women leadership across all 14 local government areas of Zamfara State.',
+    bio: 'Hidayatu Lawal serves as the Assistant State Coordinator for the Atiku Northern Youth Vanguard (Zamfara Chapter). Dedicated to grassroots mobilization, youth empowerment, and women\'s civic inclusion, she works in close coordination with the State Coordinator across the 14 local government areas of Zamfara State.',
+    socials: {
+      email: 'zamfara@anyv.ng'
+    }
+  },
+  {
+    id: 'zm-secretary',
+    state: 'Zamfara',
+    roleType: 'secretary',
+    category: 'state',
+    name: 'Samaila Sani Janbako',
+    rankTitle: 'State Secretary General',
+    badgeCode: 'STA-ZM-03',
+    // photoUrl: '/images/officials/samaila_sani_janbako.png', // Commented out for now
+    photoUrl: '',
+    initials: 'SJ',
+    portfolioRoles: [
+      'State Secretary General @ Atiku Northern Youth Vanguard (Zamfara Chapter)',
+      'State Secretariat Administration & Official Correspondence',
+      'Chapter Documentation & Local Government Liaison (Janbako / Maradun)'
+    ],
+    quote: 'Institutional discipline, transparent secretariat documentation, and active grassroots engagement power our vanguard across Zamfara State.',
+    bio: 'Samaila Sani Janbako serves as the State Secretary General for the Atiku Northern Youth Vanguard (Zamfara Chapter). Hailing from Janbako, he directs official secretariat correspondence, administrative operations, executive record-keeping, and local chapter liaison across all 14 local government areas of Zamfara State.',
+    socials: {
+      email: 'zamfara@anyv.ng'
+    }
   }
 ]
