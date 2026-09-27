@@ -785,20 +785,22 @@ export const stateChapterOfficials = [
     state: 'Bauchi',
     roleType: 'secretary',
     category: 'state',
-    name: '[Official Name Pending]',
+    name: 'Zechariah Nehemiah',
     rankTitle: 'State Secretary',
     badgeCode: 'STA-BA-03',
-    // photoUrl: '', // Commented out for now
+    // photoUrl: '/images/officials/zechariah_nehemiah.png', // Commented out for now
     photoUrl: '',
-    initials: 'BA',
+    initials: 'ZN',
     portfolioRoles: [
       'State Secretary @ Atiku Northern Youth Vanguard (Bauchi Chapter)',
       'State Secretariat Administration & Official Correspondence',
       'Chapter Documentation & Local Government Liaison (Bauchi)'
     ],
     quote: 'Transparent secretariat administration, disciplined coordination, and unwavering grassroots dedication empower youth across all 20 local governments of Bauchi State.',
-    bio: 'The State Secretary for the Atiku Northern Youth Vanguard (Bauchi Chapter) oversees administrative operations, official secretariat correspondence, executive documentation, and local chapter liaison across the 20 local government areas of Bauchi State.',
-    // socials: {}, // Commented out for now
-    socials: {}
+    bio: 'Zechariah Nehemiah serves as the State Secretary for the Atiku Northern Youth Vanguard (Bauchi Chapter). He oversees administrative operations, official secretariat correspondence, executive documentation, and chapter record coordination across the 20 local government areas of Bauchi State.',
+    socials: {
+      phone: '08036398658',
+      email: 'bauchi@anyv.ng'
+    }
   }
 ]
