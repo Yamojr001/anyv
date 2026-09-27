@@ -734,5 +734,71 @@ export const stateChapterOfficials = [
     socials: {
       email: 'benue@anyv.ng'
     }
+  },
+  {
+    id: 'ba-coordinator',
+    state: 'Bauchi',
+    roleType: 'coordinator',
+    category: 'state',
+    name: 'Hon. Babayo Musa',
+    rankTitle: 'Bauchi State Coordinator',
+    badgeCode: 'STA-BA-01',
+    // photoUrl: '/images/officials/babayo_musa.png', // Commented out for now
+    photoUrl: '',
+    initials: 'BM',
+    portfolioRoles: [
+      'Bauchi State Coordinator @ Atiku Northern Youth Vanguard (ANYV)',
+      'State Chapter Operations Lead (Bauchi)',
+      'Grassroots Mobilizer & Civic Leader',
+      'Youth Inclusion & Community Development Advocate'
+    ],
+    quote: 'Youth • Unity • Leadership • Progress. Mobilizing youth leadership, enterprise, and civic engagement across all 20 local government areas of Bauchi State.',
+    bio: 'Hon. Babayo Musa serves as the Bauchi State Coordinator for the Atiku Northern Youth Vanguard (Bauchi Chapter). A distinguished grassroots mobilizer, civic leader, and youth advocate dedicated to organizing, mobilizing, and inspiring youth leadership across all 20 local government areas in Bauchi State.',
+    socials: {
+      phone: '08031844595',
+      email: 'bauchi@anyv.ng'
+    }
+  },
+  {
+    id: 'ba-deputy-coordinator',
+    state: 'Bauchi',
+    roleType: 'vice_coordinator',
+    category: 'state',
+    name: '[Official Name Pending]',
+    rankTitle: 'Deputy State Coordinator',
+    badgeCode: 'STA-BA-02',
+    // photoUrl: '', // Commented out for now
+    photoUrl: '',
+    initials: 'BA',
+    portfolioRoles: [
+      'Deputy State Coordinator @ Atiku Northern Youth Vanguard (Bauchi Chapter)',
+      'Grassroots Mobilization & Local Government Operations (Bauchi)',
+      'Youth Civic Engagement & Chapter Liaison'
+    ],
+    quote: 'Youth • Unity • Leadership • Progress. Mobilizing youth leadership across all 20 local government areas of Bauchi State.',
+    bio: 'The Deputy State Coordinator for the Atiku Northern Youth Vanguard (Bauchi Chapter) works in coordination with the State Coordinator to drive grassroots mobilization, youth engagement, and structural chapter coordination across the 20 local government areas of Bauchi State.',
+    // socials: {}, // Commented out for now
+    socials: {}
+  },
+  {
+    id: 'ba-secretary',
+    state: 'Bauchi',
+    roleType: 'secretary',
+    category: 'state',
+    name: '[Official Name Pending]',
+    rankTitle: 'State Secretary',
+    badgeCode: 'STA-BA-03',
+    // photoUrl: '', // Commented out for now
+    photoUrl: '',
+    initials: 'BA',
+    portfolioRoles: [
+      'State Secretary @ Atiku Northern Youth Vanguard (Bauchi Chapter)',
+      'State Secretariat Administration & Official Correspondence',
+      'Chapter Documentation & Local Government Liaison (Bauchi)'
+    ],
+    quote: 'Transparent secretariat administration, disciplined coordination, and unwavering grassroots dedication empower youth across all 20 local governments of Bauchi State.',
+    bio: 'The State Secretary for the Atiku Northern Youth Vanguard (Bauchi Chapter) oversees administrative operations, official secretariat correspondence, executive documentation, and local chapter liaison across the 20 local government areas of Bauchi State.',
+    // socials: {}, // Commented out for now
+    socials: {}
   }
 ]
