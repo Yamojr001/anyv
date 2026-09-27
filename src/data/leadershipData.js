@@ -667,5 +667,70 @@ export const stateChapterOfficials = [
     socials: {
       email: 'kogi@anyv.ng'
     }
+  },
+  {
+    id: 'bn-coordinator',
+    state: 'Benue',
+    roleType: 'coordinator',
+    category: 'state',
+    name: 'Hon. Dr. Levi Aondohemba Orhii',
+    rankTitle: 'Benue State Coordinator',
+    badgeCode: 'STA-BN-01',
+    // photoUrl: '/images/officials/levi_aondohemba_orhii.png', // Commented out for now
+    photoUrl: '',
+    initials: 'LO',
+    portfolioRoles: [
+      'Benue State Coordinator @ Atiku Northern Youth Vanguard (ANYV)',
+      'State Chapter Operations Lead (Benue)',
+      'Grassroots Mobilizer & Civic Activist',
+      'Youth Inclusion & Community Development Advocate'
+    ],
+    quote: 'Youth • Unity • Leadership • Progress. Mobilizing youth leadership, active participation, and civic responsibility across all 23 local government areas of Benue State.',
+    bio: 'Hon. Dr. Levi Aondohemba Orhii serves as the Benue State Coordinator for the Atiku Northern Youth Vanguard (Benue Chapter). A dynamic grassroots mobilizer, civic leader, and youth advocate dedicated to organizing, mobilizing, and inspiring youth leadership across all 23 local government areas in Benue State.',
+    socials: {
+      email: 'benue@anyv.ng'
+    }
+  },
+  {
+    id: 'bn-deputy-coordinator',
+    state: 'Benue',
+    roleType: 'vice_coordinator',
+    category: 'state',
+    name: '[Official Name Pending]',
+    rankTitle: 'Deputy State Coordinator',
+    badgeCode: 'STA-BN-02',
+    // photoUrl: '', // Commented out for now
+    photoUrl: '',
+    initials: 'BN',
+    portfolioRoles: [
+      'Deputy State Coordinator @ Atiku Northern Youth Vanguard (Benue Chapter)',
+      'Grassroots Mobilization & Local Government Operations (Benue)',
+      'Youth Civic Engagement & Chapter Liaison'
+    ],
+    quote: 'Youth • Unity • Leadership • Progress. Mobilizing youth leadership across all 23 local government areas of Benue State.',
+    bio: 'The Deputy State Coordinator for the Atiku Northern Youth Vanguard (Benue Chapter) works in coordination with the State Coordinator to drive grassroots mobilization, youth engagement, and structural chapter coordination across the 23 local government areas of Benue State.',
+    // socials: {}, // Commented out for now
+    socials: {}
+  },
+  {
+    id: 'bn-secretary',
+    state: 'Benue',
+    roleType: 'secretary',
+    category: 'state',
+    name: '[Official Name Pending]',
+    rankTitle: 'State Secretary',
+    badgeCode: 'STA-BN-03',
+    // photoUrl: '', // Commented out for now
+    photoUrl: '',
+    initials: 'BN',
+    portfolioRoles: [
+      'State Secretary @ Atiku Northern Youth Vanguard (Benue Chapter)',
+      'State Secretariat Administration & Official Correspondence',
+      'Chapter Documentation & Local Government Liaison (Benue)'
+    ],
+    quote: 'Transparent secretariat administration, disciplined coordination, and unwavering grassroots dedication empower youth across all 23 local governments of Benue State.',
+    bio: 'The State Secretary for the Atiku Northern Youth Vanguard (Benue Chapter) oversees administrative operations, official secretariat correspondence, executive documentation, and local chapter liaison across the 23 local government areas of Benue State.',
+    // socials: {}, // Commented out for now
+    socials: {}
   }
 ]
