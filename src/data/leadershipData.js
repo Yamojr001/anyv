@@ -354,42 +354,47 @@ export const stateChapterOfficials = [
     state: 'Jigawa',
     roleType: 'vice_coordinator',
     category: 'state',
-    name: '[Official Name Pending]',
+    name: 'Rukayya Musa Muhammad',
     rankTitle: 'Deputy State Coordinator',
     badgeCode: 'STA-JG-02',
-    // photoUrl: '', // Commented out for now
+    // photoUrl: '/images/officials/rukayya_musa_muhammad.png', // Commented out for now
     photoUrl: '',
-    initials: 'JG',
+    initials: 'RM',
     portfolioRoles: [
       'Deputy State Coordinator @ Atiku Northern Youth Vanguard (Jigawa Chapter)',
       'Grassroots Mobilization & Local Government Operations (Jigawa)',
-      'Youth Civic Engagement & Chapter Liaison'
+      'Women Leadership & Civic Inclusion Advocate'
     ],
-    quote: 'Youth • Unity • Leadership • Progress. Mobilizing youth leadership across all 27 local government areas of Jigawa State.',
-    bio: 'The Deputy State Coordinator for the Atiku Northern Youth Vanguard (Jigawa Chapter) works in coordination with the State Coordinator to drive grassroots mobilization, youth engagement, and structural chapter coordination across the 27 local government areas of Jigawa State.',
-    // socials: {}, // Commented out for now
-    socials: {}
+    quote: 'Youth • Unity • Leadership • Progress. Mobilizing youth and empowering women to lead development across all 27 local government areas of Jigawa State.',
+    bio: 'Rukayya Musa Muhammad serves as the Deputy State Coordinator (Vice Coordinator) for the Atiku Northern Youth Vanguard (Jigawa Chapter). Working closely with the State Coordinator, she drives grassroots mobilization, women\'s leadership inclusion, youth civic engagement, and structural chapter coordination across the 27 local government areas of Jigawa State.',
+    socials: {
+      email: 'jigawa@anyv.ng'
+    }
   },
   {
     id: 'jg-secretary',
     state: 'Jigawa',
     roleType: 'secretary',
     category: 'state',
-    name: '[Official Name Pending]',
-    rankTitle: 'State Secretary',
+    name: 'Hon. Sulaiman Uwaisu Idris (Kafin Hausa)',
+    rankTitle: 'Jigawa State Secretary',
     badgeCode: 'STA-JG-03',
-    // photoUrl: '', // Commented out for now
+    // photoUrl: '/images/officials/sulaiman_uwaisu_idris.png', // Commented out for now
     photoUrl: '',
-    initials: 'JG',
+    initials: 'SI',
     portfolioRoles: [
-      'State Secretary @ Atiku Northern Youth Vanguard (Jigawa Chapter)',
-      'State Secretariat Administration & Official Correspondence',
-      'Chapter Documentation & Local Government Liaison'
+      'Jigawa State Secretary @ Atiku Northern Youth Vanguard (ANYV)',
+      'National Chairman & Convener @ Coalition of Grassroots Democrats (CGD)',
+      'State Secretariat Administration & Political Communications',
+      'Ex-Secretary-General @ Federal University Dutse SUG',
+      'Ex-National Ex-Officio @ National Association of University Students (NAUS)',
+      'Aspiring Legislator (Bulangu Constituency, Jigawa State Assembly)'
     ],
-    quote: 'A dedicated secretariat and transparent communication empower youth across every local government area.',
-    bio: 'The State Secretary for the Atiku Northern Youth Vanguard (Jigawa Chapter) oversees administrative operations, official secretariat correspondence, executive documentation, and chapter record coordination across Jigawa State.',
-    // socials: {}, // Commented out for now
-    socials: {}
+    quote: 'Youth leadership, political awareness, and transparent representation are the catalysts needed to empower communities across Jigawa State.',
+    bio: 'Hon. Sulaiman Uwaisu Idris (Kafin Hausa) is a grassroots political mobiliser, youth advocate, media communicator, and emerging political leader serving as the State Secretary for the Atiku Northern Youth Vanguard (Jigawa Chapter). He is the National Chairman and Convener of the Coalition of Grassroots Democrats (CGD), focusing on political awareness, citizen engagement, and community mobilisation across Nigeria. A microbiologist by training and active political communicator, he previously served as Secretary-General of the Federal University Dutse Students’ Union Government (SUG) and National Ex-Officio of the National Association of University Students (NAUS). With aspirations to represent Bulangu Constituency in the Jigawa State House of Assembly, he champions youth inclusion, community development, and accountable leadership across all 27 local government areas of Jigawa State.',
+    socials: {
+      email: 'jigawa@anyv.ng'
+    }
   },
   {
     id: 'kt-coordinator',
