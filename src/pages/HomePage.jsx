@@ -21,7 +21,8 @@ import {
   CaretDown,
   CaretUp,
   Tag,
-  Buildings
+  Buildings,
+  ShareNetwork
 } from '@phosphor-icons/react'
 import { northernStates, stateChapterOfficials } from '../data/leadershipData'
 import SEO from '../components/SEO'
@@ -86,142 +87,216 @@ export default function HomePage({ onOpenReg }) {
         keywords="atikunorthernyouthvanguard.com, www.atikunorthernyouthvanguard.com, Atiku Northern Youth Vanguard, ANYV, anyv.ng, Atiku Abubakar, Atiku Abubakar 2027, Atiku Youth Vanguard, Northern Youth Vanguard, Arewa Youths for Atiku, Atiku Campaign Organisation, Wazirin Adamawa, Hon. Dr. Levi Aondohemba Orhii, Hon. Babayo Musa, Zechariah Nehemiah, Adam Ustaz Ubaidullah, Salihu Sumaiya, Zakari Idozi, Smart Olaitan, Idris Usman Mohammed, Jejelola Abdulganiyu O., Halliru Ibrahim Sk, Abubakar Ibrahim Marke, Ahmad Abdulrazak Bakori, Saifullahi Sule Sanda, Hidayatu Lawal, Samaila Sani Janbako, Jamilu Yusuf Musa, Rukayya Musa Muhammad, Hon. Sulaiman Uwaisu Idris, Comrade Nasiru Abdulhamid, Gaddafi Adamu, Veronica James, Engr. Salim Sharubutu Yusuf, Dr. Benjamin Maina, Nafiu Sani Gulumbe, Ibrahim Akibu Jaafaru, Zaharadeen Ismail Sabo, QS Salisu Adamu, Micah Musa, Samuel Christopher Daleng, Aisha Muhammad Kachalla, Kano ANYV, Kaduna ANYV, Katsina ANYV, Jigawa ANYV, Bauchi ANYV, Benue ANYV, Kogi ANYV, Kwara ANYV, Zamfara ANYV, Sokoto ANYV, Kebbi ANYV, Plateau ANYV, Taraba ANYV, Adamawa ANYV, Borno ANYV, Yobe ANYV, Gombe ANYV, Niger ANYV, Nasarawa ANYV, Abuja FCT ANYV"
       />
       
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#10241f] text-[#f1ecde] py-20 lg:py-28 border-b border-[#1f3f37]">
+      {/* Hero Section — 5 Essentials Immediately Established */}
+      <section className="relative overflow-hidden bg-[#10241f] text-[#f1ecde] py-16 lg:py-24 border-b border-[#1f3f37]">
         <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-[#c9963c]/10 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-[#7c9473]/10 blur-3xl pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             
-            {/* Left Content */}
+            {/* Left Column: Immediate Narrative Answers */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 space-y-6"
             >
-              <div className="eyebrow text-[#c9963c]">
-                <span>A NORTHERN YOUTH GENERATION READY TO LEAD</span>
+              {/* WHO Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[2px] bg-[#1f3f37] border border-[#2c5347] text-[#e3c375] font-mono text-xs uppercase tracking-wider">
+                <span className="font-bold text-[#b6842a]">WHO:</span>
+                <span>Atiku Northern Youth Vanguard (ANYV)</span>
               </div>
 
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#fffdf7] font-medium leading-[1.08] tracking-tight">
-                Building a platform for Northern youths to connect, grow and lead.
+              {/* WHAT & WHERE Headline */}
+              <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl text-[#fffdf7] font-medium leading-[1.1] tracking-tight">
+                A youth-focused platform connecting young people across the 19 Northern States.
               </h1>
 
-              <p className="text-[#aebf9e] text-base sm:text-lg leading-relaxed max-w-xl font-light">
-                Northern Nigeria has one of the largest and most dynamic youth populations in Africa.
-                The Atiku Northern Youth Vanguard (ANYV) unites young leaders across 19 states and the FCT into an active, continuous force for development, innovation, and national progress.
-              </p>
-
-              <div className="pt-3 flex flex-wrap gap-4 items-center">
-                <Link
-                  to="/membership"
-                  className="px-6 py-3.5 rounded-[2px] bg-[#b6842a] hover:bg-[#c9963c] text-[#10241f] font-semibold text-sm transition-all hover:shadow-[4px_4px_0px_rgba(255,253,247,0.85)] hover:-translate-y-0.5 flex items-center gap-2"
-                >
-                  <span>Enlist in the Vanguard</span>
-                  <CaretRight size={16} weight="bold" />
-                </Link>
-
-                <Link
-                  to="/about"
-                  className="px-6 py-3.5 rounded-[2px] bg-transparent border border-[#aebf9e]/40 hover:border-[#fffdf7] text-[#fffdf7] font-medium text-sm transition-all hover:-translate-y-0.5 inline-flex items-center gap-2"
-                >
-                  <span>Read The Charter</span>
-                </Link>
+              {/* WHAT DOES IT DO Description */}
+              <div className="bg-[#1f3f37]/40 border-l-2 border-[#b6842a] pl-4 py-1">
+                <span className="font-mono text-[10px] text-[#c9963c] uppercase tracking-wider block font-semibold mb-1">
+                  WHAT DOES IT DO?
+                </span>
+                <p className="text-[#aebf9e] text-sm sm:text-base leading-relaxed font-light">
+                  Advancing <strong className="text-[#fffdf7] font-medium">leadership</strong>, <strong className="text-[#fffdf7] font-medium">mentorship</strong>, <strong className="text-[#fffdf7] font-medium">human capital development</strong>, <strong className="text-[#fffdf7] font-medium">innovation</strong>, <strong className="text-[#fffdf7] font-medium">youth participation</strong>, and <strong className="text-[#fffdf7] font-medium">community development</strong> across Northern Nigeria.
+                </p>
               </div>
 
-              {/* Metric Counters Strip */}
-              <div className="grid grid-cols-3 gap-px bg-[#cfc6a6]/20 border border-[#cfc6a6]/20 mt-10 rounded-[2px] overflow-hidden">
-                <div className="bg-[#10241f] p-4 text-center">
-                  <div className="font-display text-2xl sm:text-3xl text-[#e3c375] font-semibold">19 + FCT</div>
-                  <div className="font-mono text-[10px] text-[#aebf9e] uppercase tracking-wider mt-1">States Unified</div>
-                </div>
-                <div className="bg-[#10241f] p-4 text-center">
-                  <div className="font-display text-2xl sm:text-3xl text-[#e3c375] font-semibold">365 Days</div>
-                  <div className="font-mono text-[10px] text-[#aebf9e] uppercase tracking-wider mt-1">Continuous Action</div>
-                </div>
-                <div className="bg-[#10241f] p-4 text-center">
-                  <div className="font-display text-2xl sm:text-3xl text-[#e3c375] font-semibold">8 Directives</div>
-                  <div className="font-mono text-[10px] text-[#aebf9e] uppercase tracking-wider mt-1">Action Mandates</div>
+              {/* WHAT CAN I DO? Action Suite */}
+              <div className="pt-2 space-y-2.5">
+                <span className="font-mono text-[10px] text-[#c9963c] uppercase tracking-wider block font-semibold">
+                  WHAT CAN I DO? (CHOOSE YOUR PATHWAY)
+                </span>
+                <div className="flex flex-wrap gap-2.5 items-center">
+                  <Link
+                    to="/membership"
+                    className="px-5 py-3 rounded-[2px] bg-[#b6842a] hover:bg-[#c9963c] text-[#10241f] font-semibold text-xs font-mono uppercase tracking-wider transition-all hover:shadow-[3px_3px_0px_rgba(255,253,247,0.85)] hover:-translate-y-0.5 flex items-center gap-1.5"
+                  >
+                    <span>1. Join</span>
+                    <CaretRight size={14} weight="bold" />
+                  </Link>
+
+                  <Link
+                    to="/chapters"
+                    className="px-5 py-3 rounded-[2px] bg-[#1f3f37] hover:bg-[#2c5347] text-[#fffdf7] border border-[#2c5347] font-semibold text-xs font-mono uppercase tracking-wider transition-all hover:-translate-y-0.5 flex items-center gap-1.5"
+                  >
+                    <span>2. Connect</span>
+                    <ShareNetwork size={14} weight="bold" />
+                  </Link>
+
+                  <Link
+                    to="/about"
+                    className="px-5 py-3 rounded-[2px] bg-transparent border border-[#aebf9e]/40 hover:border-[#fffdf7] text-[#fffdf7] font-medium text-xs font-mono uppercase tracking-wider transition-all hover:-translate-y-0.5 inline-flex items-center gap-1.5"
+                  >
+                    <span>3. Learn More</span>
+                  </Link>
+
+                  <Link
+                    to="/leadership"
+                    className="px-5 py-3 rounded-[2px] bg-transparent border border-[#aebf9e]/40 hover:border-[#fffdf7] text-[#e3c375] font-medium text-xs font-mono uppercase tracking-wider transition-all hover:-translate-y-0.5 inline-flex items-center gap-1.5"
+                  >
+                    <span>4. Contact</span>
+                    <ArrowUpRight size={13} weight="bold" />
+                  </Link>
                 </div>
               </div>
             </motion.div>
 
-            {/* Right: Accreditation Specimen */}
+            {/* Right Column: 5 Questions Instant-Read Overview Card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5"
             >
-              <div className="bg-[#f1ecde] text-[#20241d] p-7 border border-[#10241f] specimen-shadow rounded-[2px] relative">
-                <div className="font-mono text-[11px] text-[#b6842a] tracking-widest uppercase pb-3 mb-4 border-b border-dashed border-[#cfc6a6] flex justify-between items-center">
-                  <span>REGISTRY RECORD: ANYV/2026/FUD-CHARTER</span>
-                  <span className="flex items-center gap-1">
+              <div className="bg-[#fffdf7] text-[#20241d] p-6 sm:p-7 border border-[#10241f] specimen-shadow rounded-[2px] relative">
+                {/* Card Header */}
+                <div className="font-mono text-[11px] text-[#b6842a] tracking-widest uppercase pb-3 mb-4 border-b border-dashed border-[#cfc6a6] flex justify-between items-center font-semibold">
+                  <span>EXECUTIVE BRIEF &bull; 5 ESSENTIALS</span>
+                  <span className="flex items-center gap-1 text-[#10241f]">
                     <Sparkle size={12} weight="fill" className="text-[#b6842a]" />
-                    <span>Active</span>
+                    <span>Instant Overview</span>
                   </span>
                 </div>
 
-                <div className="flex items-center gap-3 mb-3">
-                  <img
-                    src="/logo.png"
-                    alt="ANYV Official Emblem"
-                    className="w-12 h-12 object-contain drop-shadow-[1px_1px_0px_rgba(182,132,42,0.8)] shrink-0"
-                  />
-                  <div>
-                    <h3 className="font-display text-lg sm:text-xl font-semibold text-[#10241f] leading-tight">
-                      The Atiku Northern Youth Vanguard
-                    </h3>
-                    <span className="font-mono text-[9px] text-[#b6842a] uppercase tracking-widest font-semibold block mt-0.5">
-                      Organise &bull; Mobilise &bull; Lead
+                {/* 5 Questions Structured Stack */}
+                <div className="space-y-3 text-xs">
+                  {/* WHO */}
+                  <div className="p-2.5 rounded-[2px] bg-[#faf7ef] border border-[#e7e0cb]">
+                    <span className="font-mono text-[10px] text-[#b6842a] uppercase font-bold tracking-wider block">
+                      WHO?
+                    </span>
+                    <div className="font-display text-base font-bold text-[#10241f] mt-0.5">
+                      Atiku Northern Youth Vanguard (ANYV)
+                    </div>
+                  </div>
+
+                  {/* WHAT */}
+                  <div className="p-2.5 rounded-[2px] bg-[#faf7ef] border border-[#e7e0cb]">
+                    <span className="font-mono text-[10px] text-[#b6842a] uppercase font-bold tracking-wider block">
+                      WHAT?
+                    </span>
+                    <p className="font-semibold text-[#10241f] text-xs mt-0.5 leading-snug">
+                      A youth-focused platform connecting young people across Northern Nigeria.
+                    </p>
+                  </div>
+
+                  {/* WHERE */}
+                  <div className="p-2.5 rounded-[2px] bg-[#faf7ef] border border-[#e7e0cb]">
+                    <span className="font-mono text-[10px] text-[#b6842a] uppercase font-bold tracking-wider block">
+                      WHERE?
+                    </span>
+                    <div className="font-bold text-[#10241f] text-xs mt-0.5">
+                      The 19 Northern States &amp; FCT
+                    </div>
+                    <span className="text-[10px] font-mono text-[#666c5c] block mt-0.5">
+                      Covering 419 Local Government Areas (North-West, North-East, North-Central).
                     </span>
                   </div>
-                </div>
-                <p className="text-xs text-[#666c5c] mb-5 leading-relaxed">
-                  A platform for Northern youths to transition from passive election observers to active contributors to governance, enterprise, and civic leadership.
-                </p>
 
-                <div className="space-y-2 text-xs border-t border-[#e7e0cb] pt-3">
-                  <div className="flex justify-between py-1.5 border-b border-[#e7e0cb]">
-                    <span className="text-[#666c5c]">Core Ethos</span>
-                    <span className="font-semibold text-[#10241f]">Developing Leaders, Not Followers</span>
+                  {/* WHAT DOES IT DO? */}
+                  <div className="p-2.5 rounded-[2px] bg-[#faf7ef] border border-[#e7e0cb]">
+                    <span className="font-mono text-[10px] text-[#b6842a] uppercase font-bold tracking-wider block mb-1">
+                      WHAT DOES IT DO?
+                    </span>
+                    <div className="flex flex-wrap gap-1 font-mono text-[10px]">
+                      <span className="bg-[#fffdf7] border border-[#cfc6a6] px-1.5 py-0.5 rounded-[2px] text-[#10241f] font-medium">Leadership</span>
+                      <span className="bg-[#fffdf7] border border-[#cfc6a6] px-1.5 py-0.5 rounded-[2px] text-[#10241f] font-medium">Mentorship</span>
+                      <span className="bg-[#fffdf7] border border-[#cfc6a6] px-1.5 py-0.5 rounded-[2px] text-[#10241f] font-medium">Human Capital</span>
+                      <span className="bg-[#fffdf7] border border-[#cfc6a6] px-1.5 py-0.5 rounded-[2px] text-[#10241f] font-medium">Innovation</span>
+                      <span className="bg-[#fffdf7] border border-[#cfc6a6] px-1.5 py-0.5 rounded-[2px] text-[#10241f] font-medium">Youth Participation</span>
+                      <span className="bg-[#fffdf7] border border-[#cfc6a6] px-1.5 py-0.5 rounded-[2px] text-[#10241f] font-medium">Community Development</span>
+                    </div>
                   </div>
-                  <div className="flex justify-between py-1.5 border-b border-[#e7e0cb]">
-                    <span className="text-[#666c5c]">Regional Scope</span>
-                    <span className="font-mono text-[#10241f]">19 Northern States &amp; FCT</span>
-                  </div>
-                  <div className="flex justify-between py-1.5 border-b border-[#e7e0cb]">
-                    <span className="text-[#666c5c]">Operational Nature</span>
-                    <span className="font-semibold text-[#10241f]">Civic, Development &amp; Forward-Looking</span>
-                  </div>
-                  <div className="flex justify-between py-1.5 border-b border-[#e7e0cb]">
-                    <span className="text-[#666c5c]">Inspiration</span>
-                    <span className="font-mono text-[#10241f]">Alhaji Atiku Abubakar 2027 Vision</span>
-                  </div>
-                  <div className="flex justify-between py-1.5 border-b border-[#e7e0cb]">
-                    <span className="text-[#666c5c]">Key Priority</span>
-                    <span className="font-semibold text-[#b6842a]">Education &bull; Skills &bull; Mentorship</span>
-                  </div>
-                  <div className="flex justify-between py-1.5">
-                    <span className="text-[#666c5c]">Accreditation</span>
-                    <span className="font-mono text-[#10241f]">Open to All Northern Youths</span>
-                  </div>
-                </div>
 
-                <div className="mt-6 pt-4 border-t border-[#cfc6a6]">
-                  <Link
-                    to="/membership"
-                    className="w-full py-2.5 rounded-[2px] bg-[#10241f] text-[#fffdf7] text-xs font-mono uppercase tracking-wider font-semibold border border-[#10241f] hover:bg-[#1f3f37] transition-colors flex items-center justify-center gap-2"
-                  >
-                    <span>Register Your Membership Pass</span>
-                    <ArrowRight size={14} />
-                  </Link>
+                  {/* WHAT CAN I DO? */}
+                  <div className="p-3 rounded-[2px] bg-[#10241f] text-[#f1ecde] border border-[#10241f]">
+                    <span className="font-mono text-[10px] text-[#e3c375] uppercase font-bold tracking-wider block mb-2">
+                      WHAT CAN I DO?
+                    </span>
+                    <div className="grid grid-cols-2 gap-2 font-mono text-[11px]">
+                      <Link
+                        to="/membership"
+                        className="py-1.5 px-2 rounded-[2px] bg-[#b6842a] hover:bg-[#c9963c] text-[#10241f] font-bold text-center transition-colors flex items-center justify-center gap-1"
+                      >
+                        <span>Join</span>
+                        <ArrowRight size={12} weight="bold" />
+                      </Link>
+                      <Link
+                        to="/chapters"
+                        className="py-1.5 px-2 rounded-[2px] bg-[#1f3f37] hover:bg-[#2c5347] text-[#fffdf7] border border-[#2c5347] text-center transition-colors flex items-center justify-center gap-1"
+                      >
+                        <span>Connect</span>
+                        <ArrowRight size={12} weight="bold" />
+                      </Link>
+                      <Link
+                        to="/about"
+                        className="py-1.5 px-2 rounded-[2px] bg-transparent hover:bg-[#1f3f37] text-[#aebf9e] hover:text-[#fffdf7] border border-[#2c5347] text-center transition-colors"
+                      >
+                        Learn More
+                      </Link>
+                      <Link
+                        to="/leadership"
+                        className="py-1.5 px-2 rounded-[2px] bg-transparent hover:bg-[#1f3f37] text-[#e3c375] border border-[#2c5347] text-center transition-colors"
+                      >
+                        Contact
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
 
+          </div>
+
+          {/* Quick-Scan Strip across Base of Screen */}
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-px bg-[#cfc6a6]/20 border border-[#cfc6a6]/20 mt-12 rounded-[2px] overflow-hidden text-xs">
+            <div className="bg-[#10241f] p-3.5">
+              <span className="font-mono text-[10px] text-[#c9963c] uppercase block font-semibold">1. WHO</span>
+              <strong className="text-[#fffdf7] font-display text-sm block mt-0.5">ANYV Vanguard</strong>
+              <span className="text-[10px] text-[#aebf9e] font-mono">Youth Mobilization</span>
+            </div>
+            <div className="bg-[#10241f] p-3.5">
+              <span className="font-mono text-[10px] text-[#c9963c] uppercase block font-semibold">2. WHAT</span>
+              <strong className="text-[#fffdf7] font-display text-sm block mt-0.5">Youth Platform</strong>
+              <span className="text-[10px] text-[#aebf9e] font-mono">Connecting Leaders</span>
+            </div>
+            <div className="bg-[#10241f] p-3.5">
+              <span className="font-mono text-[10px] text-[#c9963c] uppercase block font-semibold">3. WHERE</span>
+              <strong className="text-[#fffdf7] font-display text-sm block mt-0.5">19 Northern States</strong>
+              <span className="text-[10px] text-[#aebf9e] font-mono">419 LGAs &amp; FCT</span>
+            </div>
+            <div className="bg-[#10241f] p-3.5">
+              <span className="font-mono text-[10px] text-[#c9963c] uppercase block font-semibold">4. WHAT IT DOES</span>
+              <strong className="text-[#fffdf7] font-display text-sm block mt-0.5">Leadership &bull; Dev</strong>
+              <span className="text-[10px] text-[#aebf9e] font-mono">Mentorship &amp; Innovation</span>
+            </div>
+            <div className="bg-[#10241f] p-3.5 col-span-2 sm:col-span-1">
+              <span className="font-mono text-[10px] text-[#c9963c] uppercase block font-semibold">5. WHAT YOU CAN DO</span>
+              <strong className="text-[#e3c375] font-display text-sm block mt-0.5">Join &bull; Connect</strong>
+              <span className="text-[10px] text-[#aebf9e] font-mono">Learn More &bull; Contact</span>
+            </div>
           </div>
         </div>
       </section>
