@@ -20,8 +20,8 @@ import SEO from '../components/SEO'
 
 export default function CmsPage() {
   const [selectedZone, setSelectedZone] = useState('all')
-  const [emailInput, setEmailInput] = useState('admin@atikunorthernyouthvanguard.com')
-  const [passwordInput, setPasswordInput] = useState('password123')
+  const [emailInput, setEmailInput] = useState('')
+  const [passwordInput, setPasswordInput] = useState('')
   const [copiedEmail, setCopiedEmail] = useState(null)
   const [authStatus, setAuthStatus] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -32,7 +32,6 @@ export default function CmsPage() {
       id: 1,
       name: 'National Super Admin',
       email: 'admin@atikunorthernyouthvanguard.com',
-      password: 'password123',
       role: 'super_admin',
       roleLabel: 'National Super Administrator',
       zone: 'National',
@@ -44,7 +43,6 @@ export default function CmsPage() {
       id: 2,
       name: 'Bauchi State Admin',
       email: 'bauchi.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Bauchi State Chapter Admin',
       zone: 'North-East',
@@ -55,7 +53,6 @@ export default function CmsPage() {
       id: 3,
       name: 'Adamawa State Admin',
       email: 'adamawa.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Adamawa State Chapter Admin',
       zone: 'North-East',
@@ -66,7 +63,6 @@ export default function CmsPage() {
       id: 4,
       name: 'Borno State Admin',
       email: 'borno.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Borno State Chapter Admin',
       zone: 'North-East',
@@ -77,7 +73,6 @@ export default function CmsPage() {
       id: 5,
       name: 'Gombe State Admin',
       email: 'gombe.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Gombe State Chapter Admin',
       zone: 'North-East',
@@ -88,7 +83,6 @@ export default function CmsPage() {
       id: 6,
       name: 'Taraba State Admin',
       email: 'taraba.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Taraba State Chapter Admin',
       zone: 'North-East',
@@ -99,7 +93,6 @@ export default function CmsPage() {
       id: 7,
       name: 'Yobe State Admin',
       email: 'yobe.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Yobe State Chapter Admin',
       zone: 'North-East',
@@ -111,7 +104,6 @@ export default function CmsPage() {
       id: 8,
       name: 'Jigawa State Admin',
       email: 'jigawa.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Jigawa State Chapter Admin',
       zone: 'North-West',
@@ -122,7 +114,6 @@ export default function CmsPage() {
       id: 9,
       name: 'Kaduna State Admin',
       email: 'kaduna.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Kaduna State Chapter Admin',
       zone: 'North-West',
@@ -133,7 +124,6 @@ export default function CmsPage() {
       id: 10,
       name: 'Kano State Admin',
       email: 'kano.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Kano State Chapter Admin',
       zone: 'North-West',
@@ -144,7 +134,6 @@ export default function CmsPage() {
       id: 11,
       name: 'Katsina State Admin',
       email: 'katsina.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Katsina State Chapter Admin',
       zone: 'North-West',
@@ -155,7 +144,6 @@ export default function CmsPage() {
       id: 12,
       name: 'Kebbi State Admin',
       email: 'kebbi.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Kebbi State Chapter Admin',
       zone: 'North-West',
@@ -166,7 +154,6 @@ export default function CmsPage() {
       id: 13,
       name: 'Sokoto State Admin',
       email: 'sokoto.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Sokoto State Chapter Admin',
       zone: 'North-West',
@@ -177,7 +164,6 @@ export default function CmsPage() {
       id: 14,
       name: 'Zamfara State Admin',
       email: 'zamfara.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Zamfara State Chapter Admin',
       zone: 'North-West',
@@ -189,7 +175,6 @@ export default function CmsPage() {
       id: 15,
       name: 'Benue State Admin',
       email: 'benue.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Benue State Chapter Admin',
       zone: 'North-Central',
@@ -200,7 +185,6 @@ export default function CmsPage() {
       id: 16,
       name: 'Kogi State Admin',
       email: 'kogi.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Kogi State Chapter Admin',
       zone: 'North-Central',
@@ -211,7 +195,6 @@ export default function CmsPage() {
       id: 17,
       name: 'Kwara State Admin',
       email: 'kwara.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Kwara State Chapter Admin',
       zone: 'North-Central',
@@ -222,7 +205,6 @@ export default function CmsPage() {
       id: 18,
       name: 'Nasarawa State Admin',
       email: 'nasarawa.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Nasarawa State Chapter Admin',
       zone: 'North-Central',
@@ -233,7 +215,6 @@ export default function CmsPage() {
       id: 19,
       name: 'Niger State Admin',
       email: 'niger.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Niger State Chapter Admin',
       zone: 'North-Central',
@@ -244,7 +225,6 @@ export default function CmsPage() {
       id: 20,
       name: 'Plateau State Admin',
       email: 'plateau.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'Plateau State Chapter Admin',
       zone: 'North-Central',
@@ -255,7 +235,6 @@ export default function CmsPage() {
       id: 21,
       name: 'FCT Abuja Admin',
       email: 'fct.admin@anyv.org',
-      password: 'password123',
       role: 'state_admin',
       roleLabel: 'FCT Territory Chapter Admin',
       zone: 'North-Central',
@@ -278,7 +257,8 @@ export default function CmsPage() {
 
   const handleSelectAccount = (acc) => {
     setEmailInput(acc.email)
-    setPasswordInput(acc.password)
+    setPasswordInput('')
+    setAuthStatus(null)
     window.scrollTo({ top: 400, behavior: 'smooth' })
   }
 
@@ -390,13 +370,13 @@ export default function CmsPage() {
 
             <div className="p-4 bg-[#fffdf7] border border-[#cfc6a6] rounded-[2px] space-y-1.5 specimen-shadow">
               <span className="font-mono text-[10px] text-[#b6842a] uppercase font-bold tracking-wider block">
-                DEFAULT SYSTEM CREDENTIALS
+                CREDENTIAL ACCESS POLICY
               </span>
               <div className="font-mono text-xs font-bold text-[#10241f]">
-                Password: <span className="bg-[#e7e0cb] px-1.5 py-0.5 rounded text-[#10241f]">password123</span>
+                Status: <span className="bg-[#10241f] text-[#c9963c] px-1.5 py-0.5 rounded text-[11px]">Protected &bull; Restricted</span>
               </div>
               <p className="text-xs text-[#666c5c]">
-                Uniform default security key for initial rollout across all 21 administrative accounts.
+                Administrative credentials for state and LGA chapter heads are confidential and issued exclusively by National Secretariat.
               </p>
             </div>
           </div>
@@ -455,7 +435,7 @@ export default function CmsPage() {
                   <input
                     type="password"
                     required
-                    placeholder="password123"
+                    placeholder="••••••••••••"
                     value={passwordInput}
                     onChange={e => setPasswordInput(e.target.value)}
                     className="w-full px-3.5 py-2.5 bg-[#fffdf7] border border-[#cfc6a6] rounded-[2px] text-xs font-sans text-[#10241f] focus:outline-none focus:border-[#b6842a]"
@@ -465,7 +445,7 @@ export default function CmsPage() {
 
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
                 <span className="text-[11px] text-[#666c5c]">
-                  Tip: Select any of the 21 admin accounts below to auto-fill these fields.
+                  Tip: Select any state chapter below to fill the official administrator email.
                 </span>
                 <button
                   type="submit"
@@ -606,9 +586,9 @@ export default function CmsPage() {
                       </div>
 
                       <div className="pt-1.5 border-t border-[#e7e0cb] flex items-center justify-between text-[11px]">
-                        <span className="text-[#666c5c]">Password:</span>
-                        <span className="bg-[#e7e0cb] px-1.5 py-0.2 rounded font-bold text-[#10241f]">
-                          {acc.password}
+                        <span className="text-[#666c5c]">Access Status:</span>
+                        <span className="bg-[#10241f] text-[#c9963c] px-1.5 py-0.2 rounded text-[10px] font-bold">
+                          Confidential &bull; HQ Issued
                         </span>
                       </div>
                     </div>
