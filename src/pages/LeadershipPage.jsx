@@ -23,7 +23,8 @@ import {
   X,
   At,
   Phone,
-  GithubLogo
+  GithubLogo,
+  MapPin
 } from '@phosphor-icons/react'
 
 function OfficialCard({ official }) {
@@ -35,6 +36,17 @@ function OfficialCard({ official }) {
       className="bg-[#fffdf7] border border-[#cfc6a6] p-7 rounded-[2px] flex flex-col justify-between hover:border-[#b6842a] transition-all specimen-shadow"
     >
       <div>
+        {/* State Name Header Banner for State Members */}
+        {official.category === 'state' && official.state && (
+          <div className="mb-3.5 px-3 py-1.5 bg-[#10241f] text-[#e3c375] font-mono text-xs uppercase tracking-wider font-bold rounded-[2px] flex items-center justify-between border border-[#1f3f37] shadow-sm">
+            <div className="flex items-center gap-1.5">
+              <MapPin size={13} weight="fill" className="text-[#b6842a]" />
+              <span>{official.state} STATE CHAPTER</span>
+            </div>
+            <span className="text-[10px] text-[#aebf9e] font-normal">State Official</span>
+          </div>
+        )}
+
         {/* Official Card Top Bar */}
         <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#e7e0cb]">
           <span className="font-mono text-[10px] text-[#b6842a] font-semibold tracking-wider uppercase">
@@ -234,6 +246,15 @@ export default function LeadershipPage() {
     return matchesCategory && matchesSearch
   })
 
+  const stateOfficialsByState = filteredStateOfficials.reduce((acc, official) => {
+    const stateName = official.state || 'Other'
+    if (!acc[stateName]) {
+      acc[stateName] = []
+    }
+    acc[stateName].push(official)
+    return acc
+  }, {})
+
   const totalFilteredCount = filteredNationalOfficials.length + filteredStateOfficials.length
 
   return (
@@ -423,27 +444,47 @@ export default function LeadershipPage() {
             </div>
           )}
 
-          {/* State Chapter Executives Section (Rendered after National Officials) */}
+          {/* State Chapter Executives Section (Grouped by State with State Name prominently written above members) */}
           {filteredStateOfficials.length > 0 && (
             <div className="mb-16">
-              <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#cfc6a6]">
+              <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#cfc6a6]">
                 <div>
                   <span className="eyebrow text-[#b6842a]">GRASSROOTS CHAPTER LEADERSHIP</span>
                   <h3 className="font-display text-2xl font-bold text-[#10241f] mt-0.5">
                     State Chapter Executive Councils
                   </h3>
                   <p className="text-xs text-[#666c5c] mt-0.5">
-                    Accredited State Coordinators, Deputy Coordinators, and Secretaries across Northern states.
+                    Accredited State Coordinators, Deputy Coordinators, and Secretaries organized by State Chapter.
                   </p>
                 </div>
                 <span className="font-mono text-xs text-[#b6842a] font-semibold bg-[#fcf8ed] px-2.5 py-1 border border-[#cfc6a6] rounded-[2px] self-start sm:self-auto">
-                  {filteredStateOfficials.length} State Chapter Executives
+                  {filteredStateOfficials.length} State Chapter Executives &bull; {Object.keys(stateOfficialsByState).length} Active States
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredStateOfficials.map(official => (
-                  <OfficialCard key={official.id} official={official} />
+              {/* State Groups: State Name written clearly above each state's members */}
+              <div className="space-y-12">
+                {Object.entries(stateOfficialsByState).map(([stateName, officials]) => (
+                  <div key={stateName} className="space-y-4">
+                    {/* State Header above state members */}
+                    <div className="flex items-center justify-between pb-3 border-b-2 border-[#b6842a] bg-[#f7f3e8] px-4 py-3 rounded-[2px] border border-[#cfc6a6]">
+                      <div className="flex items-center gap-2.5">
+                        <MapPin size={20} weight="fill" className="text-[#b6842a]" />
+                        <h4 className="font-display text-xl sm:text-2xl font-bold text-[#10241f]">
+                          {stateName} State Chapter Leadership
+                        </h4>
+                      </div>
+                      <span className="font-mono text-xs text-[#b6842a] font-semibold bg-[#fffdf7] px-3 py-1 border border-[#cfc6a6] rounded-[2px]">
+                        {officials.length}/3 Appointed Executives
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {officials.map(official => (
+                        <OfficialCard key={official.id} official={official} />
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
