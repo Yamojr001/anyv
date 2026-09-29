@@ -23,7 +23,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="min-h-screen bg-[#f1ecde] text-[#20241d] font-sans flex flex-col selection:bg-[#c9963c]/30 selection:text-[#10241f]">
+      <div className="min-h-screen w-full bg-[#f1ecde] text-[#20241d] font-sans flex flex-col selection:bg-[#c9963c]/30 selection:text-[#10241f] overflow-x-hidden">
         
         {/* Navigation Bar */}
         <Navbar onVerifyClick={() => setTrackModalOpen(true)} />

@@ -91,8 +91,10 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
   background-color: var(--parchment);
   color: var(--ink-900);
   font-family: var(--font-body);
