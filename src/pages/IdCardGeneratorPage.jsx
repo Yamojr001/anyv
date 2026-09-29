@@ -9,7 +9,6 @@ import {
   CheckCircle, 
   ShieldCheck, 
   QrCode, 
-  Sparkle, 
   ArrowRight, 
   Copy, 
   ShareNetwork, 
@@ -313,27 +312,20 @@ export default function IdCardGeneratorPage() {
                   /* CARD FRONT                                           */
                   /* ==================================================== */
                   <div className="h-full flex flex-col justify-between relative z-10">
-                    {/* Top Row: National Seal, Org Name, Chip/Hologram */}
-                    <div className="flex items-start justify-between border-b border-[#c9963c]/30 pb-3">
-                      <div className="flex items-center gap-3">
-                        <img
-                          src="/logo.png"
-                          alt="Seal"
-                          className="w-12 h-12 object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
-                        />
-                        <div>
-                          <span className="font-display font-bold text-sm sm:text-base tracking-tight text-[#fffdf7] block leading-tight">
-                            Atiku Northern Youth Vanguard
-                          </span>
-                          <span className="font-mono text-[9px] text-[#e3c375] uppercase tracking-widest block font-medium">
-                            Federal Republic of Nigeria &bull; National Registry
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Holographic Security Seal */}
-                      <div className="w-10 h-10 rounded-full border border-[#c9963c]/60 bg-gradient-to-tr from-[#c9963c]/20 via-[#e3c375]/40 to-[#c9963c]/10 flex items-center justify-center shadow-inner">
-                        <Sparkle size={18} weight="fill" className="text-[#e3c375] animate-pulse" />
+                    {/* Top Row: National Seal & Organization Title */}
+                    <div className="flex items-center gap-3 sm:gap-3.5 border-b border-[#c9963c]/30 pb-3">
+                      <img
+                        src="/logo.png"
+                        alt="ANYV Crest"
+                        className="w-14 h-14 sm:w-15 sm:h-15 rounded-full object-cover border-2 border-[#c9963c] shadow-[0_2px_8px_rgba(0,0,0,0.6)] shrink-0"
+                      />
+                      <div className="min-w-0 flex-1">
+                        <span className="font-display font-bold text-sm sm:text-base tracking-tight text-[#fffdf7] block leading-tight">
+                          Atiku Northern Youth Vanguard
+                        </span>
+                        <span className="font-mono text-[9px] text-[#e3c375] uppercase tracking-widest block font-medium mt-0.5">
+                          Federal Republic of Nigeria &bull; National Registry
+                        </span>
                       </div>
                     </div>
 
