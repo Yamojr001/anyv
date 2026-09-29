@@ -1,6 +1,6 @@
 # ==============================================================================
 # Atiku Northern Youth Vanguard (ANYV) — Robots.txt
-# Official Platform: https://anyv.ng
+# Official Platform: https://atikunorthernyouthvanguard.com
 # ==============================================================================
 
 User-agent: *
@@ -64,4 +64,4 @@ User-agent: CCBot
 Allow: /
 
 # Canonical XML Sitemap
-Sitemap: https://anyv.ng/sitemap.xml
+Sitemap: https://atikunorthernyouthvanguard.com/sitemap.xml

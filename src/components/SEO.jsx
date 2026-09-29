@@ -11,7 +11,7 @@ export default function SEO({
   description,
   keywords,
   canonical,
-  ogImage = 'https://anyv.ng/logo.png',
+  ogImage = 'https://atikunorthernyouthvanguard.com/logo.png',
   ogType = 'website'
 }) {
   const location = useLocation()
@@ -57,7 +57,7 @@ export default function SEO({
     }
 
     // 3. Canonical URL
-    const currentCanonical = canonical || `https://anyv.ng${location.pathname}`
+    const currentCanonical = canonical || `https://atikunorthernyouthvanguard.com${location.pathname}`
     setLinkTag('canonical', currentCanonical)
 
     // 4. Open Graph Metadata

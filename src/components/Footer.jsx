@@ -44,8 +44,8 @@ export default function Footer({ onVerifyClick }) {
               National Coordination Office &bull; Northern Regional Secretariat
             </p>
             <p className="text-xs font-mono text-[#7c9473]">
-              registry@anyv.ng<br />
-              coordination@anyv.ng
+              registry@atikunorthernyouthvanguard.com<br />
+              coordination@atikunorthernyouthvanguard.com
             </p>
             <div className="mt-4">
               <button
