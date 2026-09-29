@@ -22,7 +22,9 @@ import {
   CaretUp,
   Tag,
   Buildings,
-  ShareNetwork
+  ShareNetwork,
+  IdentificationCard,
+  Newspaper
 } from '@phosphor-icons/react'
 import { northernStates, stateChapterOfficials } from '../data/leadershipData'
 import SEO from '../components/SEO'
@@ -384,19 +386,100 @@ export default function HomePage({ onOpenReg }) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
+            {/* 1. State Chapter Dashboard */}
             <Link
-              to="/leadership"
+              to="/state-dashboard"
               className="bg-[#fffdf7] border border-[#cfc6a6] p-7 rounded-[2px] flex flex-col justify-between hover:border-[#b6842a] transition-all specimen-shadow group"
             >
               <div>
                 <span className="font-mono text-[10px] text-[#b6842a] uppercase tracking-wider block mb-1">PORTAL &bull; 01</span>
                 <h3 className="font-display text-xl font-semibold text-[#10241f] group-hover:text-[#b6842a] transition-colors mb-2">
+                  State Chapter Dashboard
+                </h3>
+                <p className="text-xs text-[#666c5c] leading-relaxed">
+                  Interactive state-by-state dashboard covering all 19 Northern states: executive coordinators, verified phone contacts, and local LGA rosters.
+                </p>
+              </div>
+              <div className="mt-8 pt-4 border-t border-[#e7e0cb] flex items-center justify-between font-mono text-xs text-[#10241f]">
+                <span>Explore 19 States</span>
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            {/* 2. Official Gazette & News */}
+            <Link
+              to="/news"
+              className="bg-[#fffdf7] border border-[#cfc6a6] p-7 rounded-[2px] flex flex-col justify-between hover:border-[#b6842a] transition-all specimen-shadow group"
+            >
+              <div>
+                <span className="font-mono text-[10px] text-[#b6842a] uppercase tracking-wider block mb-1">PORTAL &bull; 02</span>
+                <h3 className="font-display text-xl font-semibold text-[#10241f] group-hover:text-[#b6842a] transition-colors mb-2">
+                  Official Gazette &amp; News
+                </h3>
+                <p className="text-xs text-[#666c5c] leading-relaxed">
+                  Filter and read exclusive news dispatches from any single state or regional national communiqués with real-time updates.
+                </p>
+              </div>
+              <div className="mt-8 pt-4 border-t border-[#e7e0cb] flex items-center justify-between font-mono text-xs text-[#10241f]">
+                <span>Read Dispatches</span>
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            {/* 3. Membership Accreditation Verifier */}
+            <Link
+              to="/verify"
+              className="bg-[#fffdf7] border border-[#cfc6a6] p-7 rounded-[2px] flex flex-col justify-between hover:border-[#b6842a] transition-all specimen-shadow group"
+            >
+              <div>
+                <span className="font-mono text-[10px] text-[#b6842a] uppercase tracking-wider block mb-1">PORTAL &bull; 03</span>
+                <h3 className="font-display text-xl font-semibold text-[#10241f] group-hover:text-[#b6842a] transition-colors mb-2">
+                  Membership Verifier
+                </h3>
+                <p className="text-xs text-[#666c5c] leading-relaxed">
+                  Instantly verify official ANYV accreditation numbers, chapter delegates, and executive ratified credentials in the national registry.
+                </p>
+              </div>
+              <div className="mt-8 pt-4 border-t border-[#e7e0cb] flex items-center justify-between font-mono text-xs text-[#10241f]">
+                <span>Verify Credential</span>
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            {/* 4. Digital ID Card Studio */}
+            <Link
+              to="/id-card"
+              className="bg-[#fffdf7] border border-[#cfc6a6] p-7 rounded-[2px] flex flex-col justify-between hover:border-[#b6842a] transition-all specimen-shadow group"
+            >
+              <div>
+                <span className="font-mono text-[10px] text-[#b6842a] uppercase tracking-wider block mb-1">PORTAL &bull; 04</span>
+                <h3 className="font-display text-xl font-semibold text-[#10241f] group-hover:text-[#b6842a] transition-colors mb-2">
+                  Digital ID Card Studio
+                </h3>
+                <p className="text-xs text-[#666c5c] leading-relaxed">
+                  Generate, customize with your photograph, and print your security-encoded CR80 wallet pass with official QR verification.
+                </p>
+              </div>
+              <div className="mt-8 pt-4 border-t border-[#e7e0cb] flex items-center justify-between font-mono text-xs text-[#10241f]">
+                <span>Generate ID Pass</span>
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            {/* 5. Executive Leadership Directory */}
+            <Link
+              to="/leadership"
+              className="bg-[#fffdf7] border border-[#cfc6a6] p-7 rounded-[2px] flex flex-col justify-between hover:border-[#b6842a] transition-all specimen-shadow group"
+            >
+              <div>
+                <span className="font-mono text-[10px] text-[#b6842a] uppercase tracking-wider block mb-1">PORTAL &bull; 05</span>
+                <h3 className="font-display text-xl font-semibold text-[#10241f] group-hover:text-[#b6842a] transition-colors mb-2">
                   Leadership Directory
                 </h3>
                 <p className="text-xs text-[#666c5c] leading-relaxed">
-                  Full directory of national executive officers, zonal vice coordinators, directorates, and the board of patrons.
+                  Directory of national executive officers, state coordinators, secretaries, directorates, and the board of patrons.
                 </p>
               </div>
               <div className="mt-8 pt-4 border-t border-[#e7e0cb] flex items-center justify-between font-mono text-xs text-[#10241f]">
@@ -405,31 +488,13 @@ export default function HomePage({ onOpenReg }) {
               </div>
             </Link>
 
-            <Link
-              to="/chapters"
-              className="bg-[#fffdf7] border border-[#cfc6a6] p-7 rounded-[2px] flex flex-col justify-between hover:border-[#b6842a] transition-all specimen-shadow group"
-            >
-              <div>
-                <span className="font-mono text-[10px] text-[#b6842a] uppercase tracking-wider block mb-1">PORTAL &bull; 02</span>
-                <h3 className="font-display text-xl font-semibold text-[#10241f] group-hover:text-[#b6842a] transition-colors mb-2">
-                  19 State Chapters
-                </h3>
-                <p className="text-xs text-[#666c5c] leading-relaxed">
-                  Explore chapter liaison councils, regional innovation hubs, and contact details across the 19 Northern states and FCT.
-                </p>
-              </div>
-              <div className="mt-8 pt-4 border-t border-[#e7e0cb] flex items-center justify-between font-mono text-xs text-[#10241f]">
-                <span>Browse Chapters</span>
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
-
+            {/* 6. Action Programs & Grants */}
             <Link
               to="/programs"
               className="bg-[#fffdf7] border border-[#cfc6a6] p-7 rounded-[2px] flex flex-col justify-between hover:border-[#b6842a] transition-all specimen-shadow group"
             >
               <div>
-                <span className="font-mono text-[10px] text-[#b6842a] uppercase tracking-wider block mb-1">PORTAL &bull; 03</span>
+                <span className="font-mono text-[10px] text-[#b6842a] uppercase tracking-wider block mb-1">PORTAL &bull; 06</span>
                 <h3 className="font-display text-xl font-semibold text-[#10241f] group-hover:text-[#b6842a] transition-colors mb-2">
                   Action Programs
                 </h3>

@@ -16,10 +16,11 @@ export default function Navbar({ onVerifyClick }) {
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About & Charter' },
     { to: '/leadership', label: 'Leadership' },
-    { to: '/programs', label: 'Programs' },
-    { to: '/chapters', label: 'State Chapters' },
-    { to: '/news', label: 'Gazette & News', badge: 'Soon' },
-    { to: '/cms', label: 'Secretariat CMS', badge: 'Portal' }
+    { to: '/state-dashboard', label: 'State Dashboard', badge: '19 States' },
+    { to: '/news', label: 'News & Gazette', badge: 'Live' },
+    { to: '/verify', label: 'Verify Member' },
+    { to: '/id-card', label: 'ID Card Studio', badge: 'Pass' },
+    { to: '/cms', label: 'Secretariat CMS', badge: 'Admin' }
   ]
 
   return (

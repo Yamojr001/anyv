@@ -30,10 +30,11 @@ export default function Footer({ onVerifyClick }) {
             <ul className="space-y-2 text-xs text-[#aebf9e]">
               <li><Link to="/about" className="hover:text-[#fffdf7] transition-colors">Why ANYV Was Created</Link></li>
               <li><Link to="/leadership" className="hover:text-[#fffdf7] transition-colors">Executive Directory</Link></li>
-              <li><Link to="/programs" className="hover:text-[#fffdf7] transition-colors">Programs &amp; Grants</Link></li>
-              <li><Link to="/chapters" className="hover:text-[#fffdf7] transition-colors">19 State Chapters</Link></li>
+              <li><Link to="/state-dashboard" className="hover:text-[#fffdf7] transition-colors">State Chapter Dashboard</Link></li>
+              <li><Link to="/news" className="hover:text-[#fffdf7] transition-colors">News &amp; Gazette</Link></li>
               <li><Link to="/membership" className="hover:text-[#fffdf7] transition-colors">Membership Accreditation</Link></li>
-              <li><Link to="/news" className="hover:text-[#fffdf7] transition-colors">Gazette &amp; Communiques (Soon)</Link></li>
+              <li><Link to="/id-card" className="hover:text-[#fffdf7] transition-colors">Digital ID Card Studio</Link></li>
+              <li><Link to="/verify" className="hover:text-[#fffdf7] transition-colors">Verify Member Pass</Link></li>
               <li><Link to="/cms" className="hover:text-[#fffdf7] transition-colors">Secretariat CMS (Portal)</Link></li>
             </ul>
           </div>

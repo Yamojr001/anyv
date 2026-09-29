@@ -12,6 +12,9 @@ import ProgramsPage from './pages/ProgramsPage'
 import ChaptersPage from './pages/ChaptersPage'
 import MembershipPage from './pages/MembershipPage'
 import NewsPage from './pages/NewsPage'
+import VerifierPage from './pages/VerifierPage'
+import IdCardGeneratorPage from './pages/IdCardGeneratorPage'
+import StateDashboardPage from './pages/StateDashboardPage'
 import CmsPage from './pages/CmsPage'
 
 export default function App() {
@@ -35,6 +38,9 @@ export default function App() {
             <Route path="/chapters" element={<ChaptersPage />} />
             <Route path="/membership" element={<MembershipPage />} />
             <Route path="/news" element={<NewsPage />} />
+            <Route path="/verify" element={<VerifierPage />} />
+            <Route path="/id-card" element={<IdCardGeneratorPage />} />
+            <Route path="/state-dashboard" element={<StateDashboardPage />} />
             <Route path="/cms" element={<CmsPage />} />
           </Routes>
         </main>
