@@ -15,7 +15,10 @@ import {
   X, 
   ShareNetwork, 
   CheckCircle, 
-  EnvelopeSimple 
+  EnvelopeSimple,
+  Images,
+  CaretLeft,
+  CaretRight 
 } from '@phosphor-icons/react'
 import SEO from '../components/SEO'
 import { initialNewsArticles, newsCategories, fetchNewsArticles } from '../data/newsData'
@@ -27,6 +30,7 @@ export default function NewsPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [articles, setArticles] = useState(initialNewsArticles)
   const [activeArticle, setActiveArticle] = useState(null)
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
 
   // Subscription state
@@ -202,60 +206,90 @@ export default function NewsPage() {
 
           {/* Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredArticles.map((article) => (
-              <article
-                key={article.id}
-                onClick={() => setActiveArticle(article)}
-                className="bg-[#fffdf7] border border-[#cfc6a6] rounded-[2px] specimen-shadow hover:border-[#b6842a] transition-all hover:-translate-y-0.5 cursor-pointer flex flex-col justify-between overflow-hidden group"
-              >
-                <div>
-                  {/* Article Banner Image */}
-                  <div className="h-48 overflow-hidden bg-[#10241f] relative">
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute top-3 left-3 flex gap-2">
-                      <span className="px-2 py-0.5 rounded-[2px] bg-[#10241f]/90 text-[#f1ecde] font-mono text-[10px] font-semibold uppercase tracking-wider border border-[#1f3f37] flex items-center gap-1 backdrop-blur-sm">
-                        <MapPin size={11} className="text-[#c9963c]" />
-                        {article.state} Chapter
-                      </span>
+            {filteredArticles.map((article) => {
+              const cardImages = Array.isArray(article.images) && article.images.length > 0 
+                ? article.images 
+                : [article.image];
+
+              return (
+                <article
+                  key={article.id}
+                  onClick={() => {
+                    setActiveArticle(article);
+                    setActiveImageIndex(0);
+                  }}
+                  className="bg-[#fffdf7] border border-[#cfc6a6] rounded-[2px] specimen-shadow hover:border-[#b6842a] transition-all hover:-translate-y-0.5 cursor-pointer flex flex-col justify-between overflow-hidden group"
+                >
+                  <div>
+                    {/* Article Banner Image */}
+                    <div className="h-48 overflow-hidden bg-[#10241f] relative">
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute top-3 left-3 flex gap-2">
+                        <span className="px-2 py-0.5 rounded-[2px] bg-[#10241f]/90 text-[#f1ecde] font-mono text-[10px] font-semibold uppercase tracking-wider border border-[#1f3f37] flex items-center gap-1 backdrop-blur-sm">
+                          <MapPin size={11} className="text-[#c9963c]" />
+                          {article.state} Chapter
+                        </span>
+                      </div>
+
+                      {/* Multiple Photos Badge */}
+                      {cardImages.length > 1 && (
+                        <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-0.5 rounded-[2px] bg-[#10241f]/90 text-[#e3c375] font-mono text-[10px] font-bold uppercase tracking-wider border border-[#1f3f37] backdrop-blur-sm shadow">
+                          <Images size={12} weight="fill" />
+                          <span>{cardImages.length} Photos</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Additional Photos Mini Strip */}
+                    {cardImages.length > 1 && (
+                      <div className="bg-[#10241f] px-4 py-1.5 border-b border-[#1f3f37] flex items-center gap-1.5 overflow-hidden">
+                        <span className="text-[9px] font-mono text-[#aebf9e] uppercase tracking-wider">Gallery:</span>
+                        {cardImages.slice(0, 4).map((img, i) => (
+                          <img key={i} src={img} alt="" className="w-5 h-5 rounded-[1px] object-cover border border-[#1f3f37] opacity-80" />
+                        ))}
+                        {cardImages.length > 4 && (
+                          <span className="text-[9px] font-mono text-[#e3c375]">+{cardImages.length - 4}</span>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Body Content */}
+                    <div className="p-6 space-y-3">
+                      <div className="flex items-center justify-between font-mono text-[10px] text-[#666c5c]">
+                        <span className="text-[#b6842a] font-semibold">{article.category}</span>
+                        <span className="flex items-center gap-1">
+                          <CalendarBlank size={12} />
+                          {article.date}
+                        </span>
+                      </div>
+
+                      <h3 className="font-display text-lg font-semibold text-[#10241f] leading-snug group-hover:text-[#b6842a] transition-colors line-clamp-2">
+                        {article.title}
+                      </h3>
+
+                      <p className="text-xs text-[#666c5c] leading-relaxed line-clamp-3">
+                        {article.excerpt}
+                      </p>
                     </div>
                   </div>
 
-                  {/* Body Content */}
-                  <div className="p-6 space-y-3">
-                    <div className="flex items-center justify-between font-mono text-[10px] text-[#666c5c]">
-                      <span className="text-[#b6842a] font-semibold">{article.category}</span>
-                      <span className="flex items-center gap-1">
-                        <CalendarBlank size={12} />
-                        {article.date}
-                      </span>
-                    </div>
-
-                    <h3 className="font-display text-lg font-semibold text-[#10241f] leading-snug group-hover:text-[#b6842a] transition-colors line-clamp-2">
-                      {article.title}
-                    </h3>
-
-                    <p className="text-xs text-[#666c5c] leading-relaxed line-clamp-3">
-                      {article.excerpt}
-                    </p>
+                  {/* Footer Meta */}
+                  <div className="px-6 py-3.5 bg-[#faf7ef] border-t border-[#cfc6a6] flex items-center justify-between text-xs font-mono">
+                    <span className="text-[#666c5c] text-[11px] truncate max-w-[160px]">
+                      {article.author}
+                    </span>
+                    <span className="text-[#10241f] font-semibold flex items-center gap-1 group-hover:text-[#b6842a]">
+                      <span>Read Record</span>
+                      <ArrowRight size={13} weight="bold" />
+                    </span>
                   </div>
-                </div>
-
-                {/* Footer Meta */}
-                <div className="px-6 py-3.5 bg-[#faf7ef] border-t border-[#cfc6a6] flex items-center justify-between text-xs font-mono">
-                  <span className="text-[#666c5c] text-[11px] truncate max-w-[160px]">
-                    {article.author}
-                  </span>
-                  <span className="text-[#10241f] font-semibold flex items-center gap-1 group-hover:text-[#b6842a]">
-                    <span>Read Record</span>
-                    <ArrowRight size={13} weight="bold" />
-                  </span>
-                </div>
-              </article>
-            ))}
+                </article>
+              );
+            })}
 
             {filteredArticles.length === 0 && (
               <div className="col-span-full py-16 bg-[#fffdf7] border border-[#cfc6a6] rounded-[2px] text-center space-y-3 p-8">
@@ -298,20 +332,83 @@ export default function NewsPage() {
                 <X size={18} weight="bold" />
               </button>
 
-              {/* Modal Image */}
-              <div className="h-64 sm:h-72 w-full overflow-hidden bg-[#10241f] relative">
-                <img
-                  src={activeArticle.image}
-                  alt={activeArticle.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#10241f] via-transparent to-transparent opacity-80" />
-                <div className="absolute bottom-4 left-6 right-6">
-                  <span className="px-2.5 py-1 rounded-[2px] bg-[#c9963c] text-[#10241f] font-mono text-xs font-bold uppercase tracking-wider">
-                    {activeArticle.state} State Chapter &bull; {activeArticle.category}
-                  </span>
-                </div>
-              </div>
+              {/* Modal Image Carousel / Multi-Picture Gallery */}
+              {(() => {
+                const articleImages = Array.isArray(activeArticle.images) && activeArticle.images.length > 0 
+                  ? activeArticle.images 
+                  : [activeArticle.image];
+                const currentPhoto = articleImages[activeImageIndex] || articleImages[0];
+
+                return (
+                  <div>
+                    <div className="h-72 sm:h-96 w-full overflow-hidden bg-[#10241f] relative group">
+                      <img
+                        src={currentPhoto}
+                        alt={activeArticle.title}
+                        className="w-full h-full object-cover transition-all duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#10241f] via-transparent to-transparent opacity-80" />
+
+                      {/* Prev / Next controls if multiple photos */}
+                      {articleImages.length > 1 && (
+                        <>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActiveImageIndex(prev => (prev === 0 ? articleImages.length - 1 : prev - 1));
+                            }}
+                            className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition backdrop-blur-sm shadow-lg z-10"
+                            aria-label="Previous photo"
+                          >
+                            <CaretLeft size={20} weight="bold" />
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActiveImageIndex(prev => (prev === articleImages.length - 1 ? 0 : prev + 1));
+                            }}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition backdrop-blur-sm shadow-lg z-10"
+                            aria-label="Next photo"
+                          >
+                            <CaretRight size={20} weight="bold" />
+                          </button>
+
+                          <div className="absolute top-4 left-4 px-2.5 py-1 rounded-[2px] bg-black/70 text-[#e3c375] font-mono text-[10px] font-bold border border-black/40 flex items-center gap-1.5 backdrop-blur-md">
+                            <Images size={13} weight="fill" />
+                            <span>PHOTO {activeImageIndex + 1} OF {articleImages.length}</span>
+                          </div>
+                        </>
+                      )}
+
+                      <div className="absolute bottom-4 left-6 right-6">
+                        <span className="px-2.5 py-1 rounded-[2px] bg-[#c9963c] text-[#10241f] font-mono text-xs font-bold uppercase tracking-wider shadow">
+                          {activeArticle.state} State Chapter &bull; {activeArticle.category}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Thumbnail gallery strip */}
+                    {articleImages.length > 1 && (
+                      <div className="bg-[#10241f] px-6 py-2.5 border-b border-[#1f3f37] flex items-center gap-2 overflow-x-auto">
+                        <span className="text-[10px] font-mono text-[#aebf9e] uppercase font-bold tracking-wider whitespace-nowrap mr-1">
+                          Press Photos ({articleImages.length}):
+                        </span>
+                        {articleImages.map((img, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => setActiveImageIndex(idx)}
+                            className={`relative w-14 h-11 rounded-[2px] overflow-hidden border-2 transition shrink-0 ${
+                              activeImageIndex === idx ? 'border-[#c9963c] scale-105 shadow-md' : 'border-[#1f3f37] opacity-60 hover:opacity-100'
+                            }`}
+                          >
+                            <img src={img} alt="" className="w-full h-full object-cover" />
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })()}
 
               {/* Modal Body */}
               <div className="p-6 sm:p-8 space-y-6">
