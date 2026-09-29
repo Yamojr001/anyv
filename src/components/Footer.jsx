@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 export default function Footer({ onVerifyClick }) {
   return (
-    <footer className="mt-auto bg-[#10241f] text-[#f1ecde] py-14 border-t border-[#1f3f37]">
+    <footer className="print:hidden mt-auto bg-[#10241f] text-[#f1ecde] py-14 border-t border-[#1f3f37]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           

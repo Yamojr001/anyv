@@ -26,7 +26,7 @@ export default function Navbar({ onVerifyClick }) {
   return (
     <>
       {/* Top Archival Gazette Bar */}
-      <div className="bg-[#10241f] text-[#aebf9e] border-b border-[#1f3f37] text-[10px] sm:text-[11px] py-1 px-2.5 sm:px-4 lg:px-5">
+      <div className="print:hidden bg-[#10241f] text-[#aebf9e] border-b border-[#1f3f37] text-[10px] sm:text-[11px] py-1 px-2.5 sm:px-4 lg:px-5">
         <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 font-mono">
           <div className="flex items-center gap-1.5 shrink-0">
             <span className="inline-block w-1.5 h-1.5 bg-[#c9963c] animate-pulse"></span>
@@ -49,7 +49,7 @@ export default function Navbar({ onVerifyClick }) {
       </div>
 
       {/* Main Navigation */}
-      <header className="sticky top-0 z-40 bg-[#f1ecde]/95 backdrop-blur-md border-b border-[#cfc6a6]">
+      <header className="print:hidden sticky top-0 z-40 bg-[#f1ecde]/95 backdrop-blur-md border-b border-[#cfc6a6]">
         <div className="max-w-[1440px] mx-auto px-2.5 sm:px-4 lg:px-5 h-15 sm:h-16 flex items-center justify-between gap-1.5 xl:gap-3">
           
           {/* Logo & Brand (Compact, never squeezes nav tabs) */}
