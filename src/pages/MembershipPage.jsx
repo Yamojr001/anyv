@@ -8,6 +8,7 @@ import {
   Printer
 } from '@phosphor-icons/react'
 import MembershipCardPreview from '../components/MembershipCardPreview'
+import SEO from '../components/SEO'
 
 export default function MembershipPage() {
   const [formData, setFormData] = useState({
@@ -56,6 +57,11 @@ export default function MembershipPage() {
 
   return (
     <div className="space-y-0">
+      <SEO
+        title="Membership Accreditation & Digital Card Registry"
+        description="Official membership registration and digital card verification for the Atiku Northern Youth Vanguard (ANYV). Join the vanguard across 19 Northern states and the FCT."
+        keywords="ANYV membership registration, digital ID card ANYV, Atiku Youth Vanguard accreditation, Northern Nigeria youth membership, verify ANYV certificate"
+      />
       
       {/* Header */}
       <section className="bg-[#10241f] text-[#f1ecde] py-16 border-b border-[#1f3f37]">

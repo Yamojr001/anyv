@@ -20,36 +20,15 @@ import {
   Globe
 } from '@phosphor-icons/react'
 import {
-  stateChapterOfficials
+  stateChapterOfficials,
+  northernStates
 } from '../data/leadershipData'
+import SEO from '../components/SEO'
 
 export default function ChaptersPage() {
   const [activeZone, setActiveZone] = useState('all')
   const [search, setSearch] = useState('')
   const [selectedState, setSelectedState] = useState(null)
-
-  const northernStates = [
-    { name: 'Adamawa', zone: 'North-East', capital: 'Yola', hub: 'Active Chapter', lgas: 21, liaison: 'Yola Secretariat' },
-    { name: 'Bauchi', zone: 'North-East', capital: 'Bauchi', hub: 'Active Chapter', lgas: 20, liaison: 'Bauchi Central' },
-    { name: 'Benue', zone: 'North-Central', capital: 'Makurdi', hub: 'Organizing Council', lgas: 23, liaison: 'Makurdi Liaison' },
-    { name: 'Borno', zone: 'North-East', capital: 'Maiduguri', hub: 'Active Chapter', lgas: 27, liaison: 'Maiduguri Chapter' },
-    { name: 'Gombe', zone: 'North-East', capital: 'Gombe', hub: 'Innovation Hub', lgas: 11, liaison: 'Gombe State Council' },
-    { name: 'Jigawa', zone: 'North-West', capital: 'Dutse', hub: 'Active Chapter', lgas: 27, liaison: 'Dutse Secretariat' },
-    { name: 'Kaduna', zone: 'North-West', capital: 'Kaduna', hub: 'Regional Liaison', lgas: 23, liaison: 'Kaduna Regional Office' },
-    { name: 'Kano', zone: 'North-West', capital: 'Kano', hub: 'Commerce & Enterprise Hub', lgas: 44, liaison: 'Kano Central Office' },
-    { name: 'Katsina', zone: 'North-West', capital: 'Katsina', hub: 'Active Chapter', lgas: 34, liaison: 'Katsina Chapter' },
-    { name: 'Kebbi', zone: 'North-West', capital: 'Birnin Kebbi', hub: 'Agri-Enterprise Hub', lgas: 21, liaison: 'Birnin Kebbi Council' },
-    { name: 'Kogi', zone: 'North-Central', capital: 'Lokoja', hub: 'Active Chapter', lgas: 21, liaison: 'Lokoja Secretariat' },
-    { name: 'Kwara', zone: 'North-Central', capital: 'Ilorin', hub: 'Active Chapter', lgas: 16, liaison: 'Ilorin Liaison' },
-    { name: 'Nasarawa', zone: 'North-Central', capital: 'Lafia', hub: 'Active Chapter', lgas: 13, liaison: 'Lafia Chapter' },
-    { name: 'Niger', zone: 'North-Central', capital: 'Minna', hub: 'Civic Chapter', lgas: 25, liaison: 'Minna Youth Council' },
-    { name: 'Plateau', zone: 'North-Central', capital: 'Jos', hub: 'Youth Peace Forum', lgas: 17, liaison: 'Jos Regional Hub' },
-    { name: 'Sokoto', zone: 'North-West', capital: 'Sokoto', hub: 'Active Chapter', lgas: 23, liaison: 'Sokoto Chapter' },
-    { name: 'Taraba', zone: 'North-East', capital: 'Jalingo', hub: 'Active Chapter', lgas: 16, liaison: 'Jalingo Secretariat' },
-    { name: 'Yobe', zone: 'North-East', capital: 'Damaturu', hub: 'Active Chapter', lgas: 17, liaison: 'Damaturu Chapter' },
-    { name: 'Zamfara', zone: 'North-West', capital: 'Gusau', hub: 'Active Chapter', lgas: 14, liaison: 'Gusau Secretariat' },
-    { name: 'FCT Abuja', zone: 'North-Central', capital: 'Abuja', hub: 'National Secretariat', lgas: 6, liaison: 'National HQ' }
-  ]
 
   const getStateLeaders = (stateName) => {
     return stateChapterOfficials.filter(
@@ -65,6 +44,11 @@ export default function ChaptersPage() {
 
   return (
     <div className="space-y-0">
+      <SEO
+        title="19 State Chapters & FCT Directory"
+        description="Official directory of the Atiku Northern Youth Vanguard (ANYV) across the 19 Northern States and FCT. Appointed state coordinators, secretariat liaison offices, and LGA youth councils."
+        keywords="ANYV chapters, Northern Nigeria state coordinators, Benue ANYV, Bauchi ANYV, Katsina ANYV, Zamfara ANYV, Jigawa ANYV, Kwara ANYV, Kogi ANYV, Kaduna ANYV, Kano ANYV, Hon. Dr. Levi Aondohemba Orhii, Hon. Babayo Musa, Zechariah Nehemiah, Halliru Ibrahim Sk, Saifullahi Sule Sanda, Jamilu Yusuf Musa, Smart Olaitan, Adam Ustaz Ubaidullah"
+      />
       
       {/* Header */}
       <section className="bg-[#10241f] text-[#f1ecde] py-16 border-b border-[#1f3f37]">

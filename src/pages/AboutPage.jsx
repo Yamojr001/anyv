@@ -13,6 +13,7 @@ import {
   CheckCircle,
   ArrowRight
 } from '@phosphor-icons/react'
+import SEO from '../components/SEO'
 
 export default function AboutPage() {
   const missionDirectives = [
@@ -68,6 +69,11 @@ export default function AboutPage() {
 
   return (
     <div className="space-y-0">
+      <SEO
+        title="About the Charter & Movement"
+        description="The Constitutional Charter and founding mission of the Atiku Northern Youth Vanguard (ANYV). Learn why ANYV was created, our 8 core directives, and our commitment to Northern youth development."
+        keywords="About ANYV, Atiku Northern Youth Vanguard charter, Northern Nigeria youth development, 8 directives, youth empowerment Nigeria, democratic participation, ethical governance, Arewa youth renaissance"
+      />
       
       {/* Header Banner */}
       <section className="bg-[#10241f] text-[#f1ecde] py-16 border-b border-[#1f3f37]">

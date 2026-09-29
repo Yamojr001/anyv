@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://anyv.ng/</loc>
+    <lastmod>2026-09-29T05:00:00+01:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Leadership Directory & Officials Registry -->
+  <url>
+    <loc>https://anyv.ng/leadership</loc>
+    <lastmod>2026-09-29T05:00:00+01:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- 19 Northern State Chapters & FCT Liaison Directory -->
+  <url>
+    <loc>https://anyv.ng/chapters</loc>
+    <lastmod>2026-09-29T05:00:00+01:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Constitutional Charter & Institutional Mission -->
+  <url>
+    <loc>https://anyv.ng/about</loc>
+    <lastmod>2026-09-29T05:00:00+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Membership Accreditation & Digital ID Registry -->
+  <url>
+    <loc>https://anyv.ng/membership</loc>
+    <lastmod>2026-09-29T05:00:00+01:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Vanguard Development Programs & Grants -->
+  <url>
+    <loc>https://anyv.ng/programs</loc>
+    <lastmod>2026-09-29T05:00:00+01:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Official Communiqués, Dispatches & News -->
+  <url>
+    <loc>https://anyv.ng/news</loc>
+    <lastmod>2026-09-29T05:00:00+01:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+</urlset>

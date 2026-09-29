@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom'
 import { Scroll, Newspaper, Clock, Sparkle, ArrowRight, Bell } from '@phosphor-icons/react'
+import SEO from '../components/SEO'
 
 export default function NewsPage() {
   return (
     <div className="space-y-0">
+      <SEO
+        title="Official Gazette & Dispatches"
+        description="Official communiqués, press statements, and news dispatches from the National Secretariat and 19 State Chapters of the Atiku Northern Youth Vanguard (ANYV)."
+        keywords="ANYV news, Atiku Youth Vanguard press release, Northern Nigeria youth news, national communique ANYV, Arewa youth summits"
+      />
       
       {/* Header */}
       <section className="bg-[#10241f] text-[#f1ecde] py-16 border-b border-[#1f3f37]">

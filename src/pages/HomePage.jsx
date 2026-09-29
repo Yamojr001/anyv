@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
@@ -10,12 +11,80 @@ import {
   Briefcase,
   Scales,
   HeartStraight,
-  ArrowUpRight
+  ArrowUpRight,
+  MagnifyingGlass,
+  MapPin,
+  Phone,
+  IdentificationBadge,
+  Question,
+  CheckCircle,
+  CaretDown,
+  CaretUp,
+  Tag,
+  Buildings
 } from '@phosphor-icons/react'
+import { northernStates, stateChapterOfficials } from '../data/leadershipData'
+import SEO from '../components/SEO'
 
 export default function HomePage({ onOpenReg }) {
+  const [activeZone, setActiveZone] = useState('all')
+  const [searchQuery, setSearchQuery] = useState('')
+  const [openFaq, setOpenFaq] = useState(0)
+
+  const getStateOfficials = (stateName) => {
+    return stateChapterOfficials.filter(
+      (o) => o.state.toLowerCase() === stateName.toLowerCase()
+    )
+  }
+
+  const filteredStates = northernStates.filter((s) => {
+    const matchesZone = activeZone === 'all' || s.zone.toLowerCase().replace('-', '') === activeZone
+    const leaders = getStateOfficials(s.name)
+    const matchesSearch =
+      s.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      s.capital.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      s.hub.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      leaders.some(
+        (o) =>
+          o.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (o.socials?.phone && o.socials.phone.includes(searchQuery))
+      )
+    return matchesZone && matchesSearch
+  })
+
+  const faqItems = [
+    {
+      q: 'What is the Atiku Northern Youth Vanguard (ANYV)?',
+      a: 'The Atiku Northern Youth Vanguard (ANYV) is the official grassroots youth mobilization and civic leadership movement uniting progressive young citizens across the 19 Northern Nigerian States and the Federal Capital Territory (FCT). Founded on the democratic principles and visionary leadership of His Excellency Alhaji Atiku Abubakar, GCON (Wazirin Adamawa), ANYV mobilizes youth for good governance, economic enterprise, digital skills, and peaceful political participation.'
+    },
+    {
+      q: 'Who are the official ANYV State Coordinators across Northern Nigeria?',
+      a: 'Appointed state coordinators and secretaries include: Hon. Dr. Levi Aondohemba Orhii (Benue State Coordinator, 08035023507) with State Secretary Pius Monday; Hon. Babayo Musa (Bauchi State Coordinator, 08031844595) with State Secretary Zechariah Nehemiah (08036398658); Halliru Ibrahim Sk (Katsina State Coordinator, 08035337510); Saifullahi Sule Sanda (Zamfara State Coordinator, 07079220159); Jamilu Yusuf Musa (Jigawa State Coordinator, +2349018710083) with Deputy Rukayya Musa Muhammad and Secretary Hon. Sulaiman Uwaisu Idris; Smart Olaitan (Kwara State Coordinator, 07068995671); Adam Ustaz Ubaidullah (Kogi State Coordinator, 08140337306) with Assistant Salihu Sumaiya and Secretary Zakari Idozi; Comrade Nasiru Abdulhamid (Kaduna State Coordinator), alongside executive leaders across all other Northern state chapters.'
+    },
+    {
+      q: 'How can Northern youths register and get their official ANYV Digital Membership Pass?',
+      a: 'Membership registration is open to all Northern youths aged 18 to 40. Navigate to the Membership Accreditation Portal at anyv.ng/membership, complete the 60-second verification form with your name, state of origin, LGA, and area of civic interest, and instantly generate your accredited digital membership pass complete with an official QR verification badge.'
+    },
+    {
+      q: 'What are the core development programs and grants offered by ANYV?',
+      a: 'ANYV executes four flagship initiatives: (1) Northern Youth Leadership Academy (NYLA) offering ethical governance and public administration fellowships; (2) Agro-Tech Incubator Grants supporting youth agripreneurs with seed venture funding; (3) Civic Participation & Voter Education mobilizing grassroots communities; and (4) Digital Skills and Technology Fellowships equipping young leaders for high-demand digital careers.'
+    },
+    {
+      q: 'Which states and Local Government Areas (LGAs) are covered by ANYV?',
+      a: 'ANYV has active chapter structures across all 19 Northern States and the FCT, covering 419 Local Government Areas: North-Central (Benue, Kogi, Kwara, Nasarawa, Niger, Plateau, FCT Abuja), North-East (Adamawa, Bauchi, Borno, Gombe, Taraba, Yobe), and North-West (Jigawa, Kaduna, Kano, Katsina, Kebbi, Sokoto, Zamfara).'
+    },
+    {
+      q: 'How does ANYV promote youth political inclusion and representation?',
+      a: 'ANYV advocates for youth representation across legislative and executive councils, mentorship for student union leaders (including SUG, NAUS, and NANS alumni), and grassroots mobilization to ensure young people take center stage in policy formulation, community development, and democratic decision-making.'
+    }
+  ]
   return (
     <div className="space-y-0">
+      <SEO
+        title="Official National Platform | Organise. Mobilise. Lead."
+        description="Official digital portal of the Atiku Northern Youth Vanguard (ANYV). Uniting Northern Nigerian youths across 19 Northern states and the FCT into a continuous force for grassroots mobilization, civic leadership, youth inclusion, and national progress. Explore state coordinators, leadership registries, digital membership, and development programs."
+        keywords="Atiku Northern Youth Vanguard, ANYV, anyv.ng, Atiku Abubakar, Atiku Abubakar 2027, Atiku Youth Vanguard, Northern Youth Vanguard, Arewa Youths for Atiku, Atiku Campaign Organisation, Wazirin Adamawa, Hon. Dr. Levi Aondohemba Orhii, Hon. Babayo Musa, Zechariah Nehemiah, Adam Ustaz Ubaidullah, Salihu Sumaiya, Zakari Idozi, Smart Olaitan, Idris Usman Mohammed, Jejelola Abdulganiyu O., Halliru Ibrahim Sk, Abubakar Ibrahim Marke, Ahmad Abdulrazak Bakori, Saifullahi Sule Sanda, Hidayatu Lawal, Samaila Sani Janbako, Jamilu Yusuf Musa, Rukayya Musa Muhammad, Hon. Sulaiman Uwaisu Idris, Comrade Nasiru Abdulhamid, Gaddafi Adamu, Veronica James, Engr. Salim Sharubutu Yusuf, Dr. Benjamin Maina, Nafiu Sani Gulumbe, Ibrahim Akibu Jaafaru, Zaharadeen Ismail Sabo, QS Salisu Adamu, Micah Musa, Samuel Christopher Daleng, Aisha Muhammad Kachalla, Kano ANYV, Kaduna ANYV, Katsina ANYV, Jigawa ANYV, Bauchi ANYV, Benue ANYV, Kogi ANYV, Kwara ANYV, Zamfara ANYV, Sokoto ANYV, Kebbi ANYV, Plateau ANYV, Taraba ANYV, Adamawa ANYV, Borno ANYV, Yobe ANYV, Gombe ANYV, Niger ANYV, Nasarawa ANYV, Abuja FCT ANYV"
+      />
       
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[#10241f] text-[#f1ecde] py-20 lg:py-28 border-b border-[#1f3f37]">
@@ -299,6 +368,267 @@ export default function HomePage({ onOpenReg }) {
               </div>
             </Link>
 
+          </div>
+        </div>
+      </section>
+
+      {/* Northern Regional Chapter Directory & Executive Index (Extreme SEO Section) */}
+      <section className="py-20 bg-[#faf7ef] border-b border-[#cfc6a6]">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <span className="eyebrow text-[#b6842a] justify-center">REGIONAL DIRECTORY &bull; 19 NORTHERN STATES &amp; FCT</span>
+            <h2 className="font-display text-3xl sm:text-4xl font-semibold text-[#10241f] mt-2">
+              Northern Nigeria State Chapters &amp; Executive Leadership Index
+            </h2>
+            <p className="text-sm text-[#666c5c] mt-3 leading-relaxed">
+              Official roster of Atiku Northern Youth Vanguard (ANYV) chapters spanning 419 Local Government Areas across North-West, North-East, and North-Central geopolitical zones. Explore state coordinators, secretariat liaisons, and grassroots councils.
+            </p>
+          </div>
+
+          {/* Interactive Search & Filter Controls */}
+          <div className="bg-[#fffdf7] border border-[#cfc6a6] p-4 sm:p-5 rounded-[2px] specimen-shadow mb-8 space-y-4">
+            <div className="flex flex-col sm:flex-row gap-3 items-center justify-between">
+              {/* Search Bar */}
+              <div className="relative w-full sm:max-w-md">
+                <MagnifyingGlass size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8b9180]" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search by state, capital, coordinator name, or phone..."
+                  className="w-full pl-9 pr-4 py-2 text-xs bg-[#faf7ef] border border-[#cfc6a6] rounded-[2px] text-[#10241f] placeholder:text-[#8b9180] focus:outline-none focus:border-[#b6842a] font-mono"
+                />
+              </div>
+
+              {/* Zone Filter Tabs */}
+              <div className="flex items-center gap-1.5 flex-wrap w-full sm:w-auto">
+                {[
+                  { id: 'all', label: 'All Zones (20)' },
+                  { id: 'northwest', label: 'North-West (7)' },
+                  { id: 'northeast', label: 'North-East (6)' },
+                  { id: 'northcentral', label: 'North-Central (7)' }
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveZone(tab.id)}
+                    className={`px-3 py-1.5 rounded-[2px] text-xs font-mono transition-all ${
+                      activeZone === tab.id
+                        ? 'bg-[#10241f] text-[#e3c375] font-semibold'
+                        : 'bg-[#faf7ef] text-[#666c5c] hover:text-[#10241f] border border-[#cfc6a6]'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Filter Counts */}
+            <div className="text-[11px] font-mono text-[#8b9180] flex items-center justify-between border-t border-[#e7e0cb] pt-3">
+              <span>Displaying {filteredStates.length} State Chapter Directories</span>
+              <span>Constitutional Standard: 3 Executives Per Council</span>
+            </div>
+          </div>
+
+          {/* State Chapters Directory Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {filteredStates.map((state) => {
+              const officials = getStateOfficials(state.name)
+              const coordinator = officials.find((o) => o.roleType === 'coordinator')
+              const viceCoordinator = officials.find((o) => o.roleType === 'vice_coordinator')
+              const secretary = officials.find((o) => o.roleType === 'secretary')
+              const isFormed = officials.length === 3
+
+              return (
+                <div
+                  key={state.name}
+                  className="bg-[#fffdf7] border border-[#cfc6a6] p-5 rounded-[2px] specimen-shadow flex flex-col justify-between hover:border-[#b6842a] transition-all"
+                >
+                  <div>
+                    {/* Top Bar */}
+                    <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-[#e7e0cb]">
+                      <span className="font-mono text-[10px] text-[#b6842a] uppercase font-semibold">
+                        {state.zone}
+                      </span>
+                      <span
+                        className={`font-mono text-[9px] px-2 py-0.5 rounded-[2px] font-medium uppercase ${
+                          isFormed
+                            ? 'bg-[#10241f] text-[#e3c375]'
+                            : officials.length > 0
+                            ? 'bg-[#f7f3e8] text-[#b6842a] border border-[#cfc6a6]'
+                            : 'bg-[#f1ecde] text-[#8b9180]'
+                        }`}
+                      >
+                        {officials.length > 0 ? `${officials.length}/3 Appointed` : 'Forming Council'}
+                      </span>
+                    </div>
+
+                    {/* State Header */}
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <h3 className="font-display text-lg font-bold text-[#10241f]">
+                          {state.name} State
+                        </h3>
+                        <p className="text-xs text-[#666c5c] font-mono mt-0.5">
+                          Capital: {state.capital} &bull; {state.lgas} LGAs
+                        </p>
+                      </div>
+                      <span className="text-[10px] font-mono bg-[#faf7ef] border border-[#cfc6a6] px-2 py-1 rounded-[2px] text-[#666c5c]">
+                        {state.hub}
+                      </span>
+                    </div>
+
+                    {/* State Leadership Snapshot */}
+                    <div className="bg-[#faf7ef] border border-[#e7e0cb] p-3 rounded-[2px] space-y-2 mb-4 text-xs">
+                      <div>
+                        <span className="text-[10px] font-mono text-[#8b9180] uppercase block">State Coordinator</span>
+                        <div className="font-semibold text-[#10241f] mt-0.5">
+                          {coordinator ? coordinator.name : <span className="text-[#8b9180] italic">Appointment Pending</span>}
+                        </div>
+                        {coordinator?.socials?.phone && (
+                          <div className="text-[11px] text-[#b6842a] font-mono flex items-center gap-1 mt-0.5">
+                            <Phone size={11} />
+                            <span>{coordinator.socials.phone}</span>
+                          </div>
+                        )}
+                      </div>
+
+                      {secretary && (
+                        <div className="border-t border-[#e7e0cb] pt-1.5">
+                          <span className="text-[10px] font-mono text-[#8b9180] uppercase block">State Secretary</span>
+                          <div className="font-medium text-[#10241f] mt-0.5">
+                            {secretary.name}
+                          </div>
+                          {secretary.socials?.phone && (
+                            <div className="text-[11px] text-[#b6842a] font-mono flex items-center gap-1 mt-0.5">
+                              <Phone size={11} />
+                              <span>{secretary.socials.phone}</span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Card Bottom Link */}
+                  <Link
+                    to={`/chapters?search=${encodeURIComponent(state.name)}`}
+                    className="pt-3 border-t border-[#e7e0cb] flex items-center justify-between font-mono text-xs text-[#10241f] hover:text-[#b6842a] transition-colors"
+                  >
+                    <span>View Chapter Roster</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
+              )
+            })}
+          </div>
+
+          {filteredStates.length === 0 && (
+            <div className="text-center py-12 bg-[#fffdf7] border border-dashed border-[#cfc6a6] rounded-[2px] p-6">
+              <p className="text-sm text-[#10241f] font-semibold mb-1">No matching state chapters found</p>
+              <p className="text-xs text-[#666c5c]">Try clearing your search query or switching zone filters.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions (FAQ) & Knowledge Base (Extreme SEO Section) */}
+      <section className="py-20 bg-[#f1ecde] border-b border-[#cfc6a6]">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="eyebrow text-[#b6842a] justify-center">CIVIC KNOWLEDGE BASE &bull; FREQUENTLY ASKED QUESTIONS</span>
+            <h2 className="font-display text-3xl sm:text-4xl font-semibold text-[#10241f] mt-2">
+              Everything You Need to Know About ANYV
+            </h2>
+            <p className="text-sm text-[#666c5c] mt-2">
+              Verified answers to common inquiries regarding the movement, state chapters, membership accreditation, and youth empowerment mandates.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {faqItems.map((item, index) => {
+              const isOpen = openFaq === index
+              return (
+                <div
+                  key={index}
+                  className="bg-[#fffdf7] border border-[#cfc6a6] rounded-[2px] specimen-shadow overflow-hidden transition-all"
+                >
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 hover:bg-[#faf7ef] transition-colors"
+                  >
+                    <span className="font-display text-base sm:text-lg font-semibold text-[#10241f]">
+                      {item.q}
+                    </span>
+                    <span className="w-7 h-7 rounded-[2px] bg-[#f7f3e8] border border-[#cfc6a6] text-[#b6842a] flex items-center justify-center shrink-0">
+                      {isOpen ? <CaretUp size={16} weight="bold" /> : <CaretDown size={16} weight="bold" />}
+                    </span>
+                  </button>
+
+                  {isOpen && (
+                    <div className="px-5 pb-5 sm:px-6 sm:pb-6 text-sm text-[#666c5c] leading-relaxed border-t border-[#e7e0cb] pt-4 font-sans">
+                      <p>{item.a}</p>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Vanguard Civic Taxonomy & Regional Index (Extreme SEO Semantic Tags) */}
+      <section className="py-16 bg-[#faf7ef] border-b border-[#cfc6a6]">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <span className="eyebrow text-[#b6842a] justify-center">REGIONAL CIVIC INDEX &bull; TOPICAL TAXONOMY</span>
+            <h3 className="font-display text-2xl font-semibold text-[#10241f] mt-1">
+              Explore Northern Mobilization by State &amp; Focus Area
+            </h3>
+            <p className="text-xs text-[#666c5c] mt-1.5">
+              Comprehensive index connecting state councils, appointed leaders, university liaisons, and grassroots policy directorates.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-2 justify-center max-w-5xl mx-auto">
+            {[
+              { label: 'Atiku Abubakar 2027 Vision', link: '/about' },
+              { label: 'Benue State (Hon. Dr. Levi Aondohemba Orhii)', link: '/chapters?search=Benue' },
+              { label: 'Bauchi State (Hon. Babayo Musa)', link: '/chapters?search=Bauchi' },
+              { label: 'Katsina State (Halliru Ibrahim Sk)', link: '/chapters?search=Katsina' },
+              { label: 'Zamfara State (Saifullahi Sule Sanda)', link: '/chapters?search=Zamfara' },
+              { label: 'Jigawa State (Jamilu Yusuf Musa)', link: '/chapters?search=Jigawa' },
+              { label: 'Kwara State (Smart Olaitan)', link: '/chapters?search=Kwara' },
+              { label: 'Kogi State (Adam Ustaz Ubaidullah)', link: '/chapters?search=Kogi' },
+              { label: 'Kaduna State (Comrade Nasiru Abdulhamid)', link: '/chapters?search=Kaduna' },
+              { label: 'Kano Central Youth Enterprise Hub', link: '/chapters?search=Kano' },
+              { label: 'Sokoto Caliphate Civic Council', link: '/chapters?search=Sokoto' },
+              { label: 'Plateau Youth Peace Council Jos', link: '/chapters?search=Plateau' },
+              { label: 'Taraba Jalingo Organizing Council', link: '/chapters?search=Taraba' },
+              { label: 'Adamawa Yola Mobilisation Hub', link: '/chapters?search=Adamawa' },
+              { label: 'Borno Maiduguri Community Council', link: '/chapters?search=Borno' },
+              { label: 'Yobe Damaturu Resilience Hub', link: '/chapters?search=Yobe' },
+              { label: 'Gombe State Development Hub', link: '/chapters?search=Gombe' },
+              { label: 'Niger State Minna Youth Council', link: '/chapters?search=Niger' },
+              { label: 'Nasarawa Lafia Innovation Circle', link: '/chapters?search=Nasarawa' },
+              { label: 'Kebbi Birnin Kebbi Agro-Allied Council', link: '/chapters?search=Kebbi' },
+              { label: 'FCT Abuja National Secretariat', link: '/chapters?search=Abuja' },
+              { label: 'Northern Youth Leadership Academy', link: '/programs' },
+              { label: 'Agro-Tech Incubator Grants', link: '/programs' },
+              { label: 'Digital Membership ID Card', link: '/membership' },
+              { label: 'Student Union Governance (SUG FUD, NAUS, NANS)', link: '/about' },
+              { label: '419 Northern Local Governments', link: '/chapters' },
+              { label: 'Women Leadership & Inclusion', link: '/leadership' }
+            ].map((tag, i) => (
+              <Link
+                key={i}
+                to={tag.link}
+                className="px-3 py-1.5 rounded-[2px] bg-[#fffdf7] hover:bg-[#10241f] text-[#10241f] hover:text-[#e3c375] border border-[#cfc6a6] hover:border-[#10241f] text-xs font-mono transition-all flex items-center gap-1.5 shadow-sm"
+              >
+                <Tag size={11} className="text-[#b6842a]" />
+                <span>{tag.label}</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

@@ -2,10 +2,16 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { programsData } from '../data/programsData'
 import { ArrowRight, CheckCircle, Sparkle, CaretRight } from '@phosphor-icons/react'
+import SEO from '../components/SEO'
 
 export default function ProgramsPage() {
   return (
     <div className="space-y-0">
+      <SEO
+        title="Vanguard Programs & Grants"
+        description="Official development programs of the Atiku Northern Youth Vanguard (ANYV). Northern Youth Leadership Academy, Agro-Tech Incubator Grants, Civic Fellowship, and Digital Skills initiatives."
+        keywords="ANYV programs, Northern youth leadership academy, agro tech grants Northern Nigeria, civic fellowship Nigeria, youth venture funding, technology innovation northern youths"
+      />
       
       {/* Header */}
       <section className="bg-[#10241f] text-[#f1ecde] py-16 border-b border-[#1f3f37]">

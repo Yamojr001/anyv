@@ -7,6 +7,7 @@ import {
   presidentialPrincipals,
   stateChapterOfficials
 } from '../data/leadershipData'
+import SEO from '../components/SEO'
 import {
   Sparkle,
   IdentificationBadge,
@@ -237,6 +238,11 @@ export default function LeadershipPage() {
 
   return (
     <div className="space-y-0">
+      <SEO
+        title="Official Leadership & State Executives Registry"
+        description="Comprehensive leadership directory of the Atiku Northern Youth Vanguard (ANYV). National executive council, state coordinators, and secretariat leadership across Northern Nigeria."
+        keywords="ANYV leadership directory, Atiku Youth Vanguard executives, Hon. Dr. Levi Aondohemba Orhii, Hon. Babayo Musa, Zechariah Nehemiah, Adam Ustaz Ubaidullah, Salihu Sumaiya, Zakari Idozi, Smart Olaitan, Idris Usman Mohammed, Jejelola Abdulganiyu O., Halliru Ibrahim Sk, Abubakar Ibrahim Marke, Ahmad Abdulrazak Bakori, Saifullahi Sule Sanda, Hidayatu Lawal, Samaila Sani Janbako, Jamilu Yusuf Musa, Rukayya Musa Muhammad, Hon. Sulaiman Uwaisu Idris, Comrade Nasiru Abdulhamid, Engr. Salim Sharubutu Yusuf, Dr. Benjamin Maina, Nafiu Sani Gulumbe, Ibrahim Akibu Jaafaru, Zaharadeen Ismail Sabo, QS Salisu Adamu, Micah Musa, Samuel Christopher Daleng, Aisha Muhammad Kachalla"
+      />
       
       {/* Page Header */}
       <section className="bg-[#10241f] text-[#f1ecde] py-16 border-b border-[#1f3f37]">

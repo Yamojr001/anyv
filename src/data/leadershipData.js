@@ -1,4 +1,27 @@
 // Placeholder structure ready for official records
+export const northernStates = [
+  { name: 'Adamawa', zone: 'North-East', capital: 'Yola', hub: 'Mobilisation Hub', lgas: 21, liaison: 'Yola Secretariat' },
+  { name: 'Bauchi', zone: 'North-East', capital: 'Bauchi', hub: 'Active Council', lgas: 20, liaison: 'Bauchi Secretariat' },
+  { name: 'Benue', zone: 'North-Central', capital: 'Makurdi', hub: 'Organizing Council', lgas: 23, liaison: 'Makurdi Liaison' },
+  { name: 'Borno', zone: 'North-East', capital: 'Maiduguri', hub: 'Community Council', lgas: 27, liaison: 'Maiduguri Office' },
+  { name: 'Gombe', zone: 'North-East', capital: 'Gombe', hub: 'Development Hub', lgas: 11, liaison: 'Gombe Secretariat' },
+  { name: 'Jigawa', zone: 'North-West', capital: 'Dutse', hub: 'Civic Hub', lgas: 27, liaison: 'Dutse Secretariat' },
+  { name: 'Kaduna', zone: 'North-West', capital: 'Kaduna', hub: 'Strategic Center', lgas: 23, liaison: 'Kaduna Secretariat' },
+  { name: 'Kano', zone: 'North-West', capital: 'Kano', hub: 'Youth Enterprise Hub', lgas: 44, liaison: 'Kano Central Office' },
+  { name: 'Katsina', zone: 'North-West', capital: 'Katsina', hub: 'Grassroots Hub', lgas: 34, liaison: 'Katsina Secretariat' },
+  { name: 'Kebbi', zone: 'North-West', capital: 'Birnin Kebbi', hub: 'Agro-Allied Hub', lgas: 21, liaison: 'Birnin Kebbi Liaison' },
+  { name: 'Kogi', zone: 'North-Central', capital: 'Lokoja', hub: 'Central Gateway', lgas: 21, liaison: 'Lokoja Office' },
+  { name: 'Kwara', zone: 'North-Central', capital: 'Ilorin', hub: 'Civic Chapter', lgas: 16, liaison: 'Ilorin Secretariat' },
+  { name: 'Nasarawa', zone: 'North-Central', capital: 'Lafia', hub: 'Innovation Circle', lgas: 13, liaison: 'Lafia Office' },
+  { name: 'Niger', zone: 'North-Central', capital: 'Minna', hub: 'Power State Hub', lgas: 25, liaison: 'Minna Secretariat' },
+  { name: 'Plateau', zone: 'North-Central', capital: 'Jos', hub: 'Peace & Unity Council', lgas: 17, liaison: 'Jos Liaison' },
+  { name: 'Sokoto', zone: 'North-West', capital: 'Sokoto', hub: 'Heritage Chapter', lgas: 23, liaison: 'Sokoto Secretariat' },
+  { name: 'Taraba', zone: 'North-East', capital: 'Jalingo', hub: 'Nature Council', lgas: 16, liaison: 'Jalingo Office' },
+  { name: 'Yobe', zone: 'North-East', capital: 'Damaturu', hub: 'Resilience Hub', lgas: 17, liaison: 'Damaturu Liaison' },
+  { name: 'Zamfara', zone: 'North-West', capital: 'Gusau', hub: 'Active Chapter', lgas: 14, liaison: 'Gusau Secretariat' },
+  { name: 'FCT Abuja', zone: 'North-Central', capital: 'Abuja', hub: 'National Secretariat', lgas: 6, liaison: 'National HQ' }
+]
+
 export const leadershipCategories = [
   { id: 'all', label: 'All Leadership' },
   { id: 'executive', label: 'National Executive Council' },
