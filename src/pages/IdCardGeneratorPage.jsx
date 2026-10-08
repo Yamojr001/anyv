@@ -16,7 +16,7 @@ import {
   Phone 
 } from '@phosphor-icons/react'
 import SEO from '../components/SEO'
-import { fetchStates, verifyMemberApi } from '../services/api'
+import { fetchStates, verifyMemberApi, uploadImageApi } from '../services/api'
 
 export default function IdCardGeneratorPage() {
   const [searchParams] = useSearchParams()
@@ -83,15 +83,31 @@ export default function IdCardGeneratorPage() {
   }, [memberIdParam])
 
 
-  // Handle Photo Upload
-  const handlePhotoUpload = (e) => {
+  const [isUploadingPhoto, setIsUploadingPhoto] = useState(false)
+
+  // Handle Photo Upload via POST /api/upload
+  const handlePhotoUpload = async (e) => {
     const file = e.target.files?.[0]
-    if (file) {
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        setCardData(prev => ({ ...prev, photoUrl: reader.result }))
+    if (!file) return
+
+    // Fast local preview
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      setCardData(prev => ({ ...prev, photoUrl: reader.result }))
+    }
+    reader.readAsDataURL(file)
+
+    // Persist upload via POST /api/upload
+    try {
+      setIsUploadingPhoto(true)
+      const res = await uploadImageApi(file, 'cards')
+      if (res.success && res.url) {
+        setCardData(prev => ({ ...prev, photoUrl: res.url }))
       }
-      reader.readAsDataURL(file)
+    } catch (err) {
+      console.warn('Server image upload fallback to local preview:', err)
+    } finally {
+      setIsUploadingPhoto(false)
     }
   }
 
@@ -309,9 +325,13 @@ export default function IdCardGeneratorPage() {
                     )}
                   </div>
                   <label className="px-3.5 py-2 rounded-[2px] bg-[#faf7ef] border border-[#cfc6a6] hover:border-[#10241f] text-[#10241f] font-mono text-[11px] uppercase cursor-pointer flex items-center gap-1.5 transition-colors">
-                    <UploadSimple size={14} />
-                    <span>Upload Photo</span>
-                    <input type="file" accept="image/*" onChange={handlePhotoUpload} className="hidden" />
+                    {isUploadingPhoto ? (
+                      <ArrowsClockwise size={14} className="animate-spin text-[#b6842a]" />
+                    ) : (
+                      <UploadSimple size={14} />
+                    )}
+                    <span>{isUploadingPhoto ? 'Uploading...' : 'Upload Photo'}</span>
+                    <input type="file" accept="image/*" onChange={handlePhotoUpload} className="hidden" disabled={isUploadingPhoto} />
                   </label>
                   {cardData.photoUrl && (
                     <button

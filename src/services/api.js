@@ -356,6 +356,33 @@ export async function adminLoginApi(email, password) {
   });
 }
 
+/**
+ * Upload single or multiple images using POST /api/upload
+ * Supports file field aliases ('image', 'images[]', 'photo', 'file')
+ * @param {File|File[]|FileList} fileOrFiles - Single file or array/FileList of images
+ * @param {string} folder - Optional destination folder (e.g. 'uploads', 'leaders', 'news', 'cards')
+ * @returns {Promise<{success: boolean, message: string, url?: string, urls?: string[], data?: any}>}
+ */
+export async function uploadImageApi(fileOrFiles, folder = 'uploads') {
+  const formData = new FormData();
+  formData.append('folder', folder);
+
+  if (fileOrFiles instanceof FileList || Array.isArray(fileOrFiles)) {
+    Array.from(fileOrFiles).forEach((file) => {
+      formData.append('images[]', file);
+    });
+  } else if (fileOrFiles instanceof File) {
+    formData.append('image', fileOrFiles);
+  } else {
+    throw new Error('Please provide a valid image File or FileList/Array.');
+  }
+
+  return await apiFetch('/upload', {
+    method: 'POST',
+    body: formData
+  });
+}
+
 export default {
   API_BASE,
   apiFetch,
@@ -369,8 +396,10 @@ export default {
   subscribeNewsletterApi,
   submitContactApi,
   adminLoginApi,
+  uploadImageApi,
   adaptLeader,
   adaptState,
   adaptNews,
   adaptMember
 };
+
