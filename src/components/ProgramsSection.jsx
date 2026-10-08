@@ -1,8 +1,20 @@
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { programsData } from '../data/programsData'
+import { fetchPrograms } from '../services/api'
 import { Sparkle, ArrowRight, CaretRight } from '@phosphor-icons/react'
 
 export default function ProgramsSection({ onApplyClick }) {
+  const [programs, setPrograms] = useState([])
+
+  useEffect(() => {
+    let isMounted = true
+    fetchPrograms()
+      .then(data => {
+        if (isMounted && Array.isArray(data)) setPrograms(data)
+      })
+      .catch(err => console.warn('ProgramsSection API notice:', err))
+    return () => { isMounted = false }
+  }, [])
   return (
     <section id="programs" className="py-20 bg-[#f1ecde] border-b border-[#cfc6a6]">
       <div className="max-w-6xl mx-auto px-6">
@@ -20,7 +32,7 @@ export default function ProgramsSection({ onApplyClick }) {
 
         {/* Programs Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {programsData.map((prg, idx) => (
+          {programs.map((prg, idx) => (
             <motion.div
               key={idx}
               whileHover={{ y: -4 }}

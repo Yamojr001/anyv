@@ -15,17 +15,70 @@ import {
 } from '@phosphor-icons/react'
 import MembershipCardPreview from '../components/MembershipCardPreview'
 import SEO from '../components/SEO'
-import { northernStates } from '../data/leadershipData'
-import { registerNewMember, verifyMember } from '../data/membersData'
+import { fetchStates, registerMemberApi, verifyMemberApi } from '../services/api'
+
+const NIGERIAN_BANKS = [
+  'Access Bank',
+  'Citibank Nigeria',
+  'Ecobank Nigeria',
+  'Fidelity Bank',
+  'First Bank of Nigeria',
+  'First City Monument Bank (FCMB)',
+  'Guaranty Trust Bank (GTBank)',
+  'Heritage Bank',
+  'Jaiz Bank',
+  'Keystone Bank',
+  'Kuda Bank',
+  'Lotus Bank',
+  'Moniepoint MFB',
+  'OPay (PayCom)',
+  'Optimus Bank',
+  'PalmPay',
+  'Parallex Bank',
+  'Polaris Bank',
+  'PremiumTrust Bank',
+  'Providus Bank',
+  'Signature Bank',
+  'Stanbic IBTC Bank',
+  'Standard Chartered Bank',
+  'Sterling Bank',
+  'SunTrust Bank',
+  'TAJBank',
+  'Titan Trust Bank',
+  'Union Bank of Nigeria',
+  'United Bank for Africa (UBA)',
+  'Unity Bank',
+  'Wema Bank',
+  'Zenith Bank',
+  'Other Bank / Microfinance'
+]
 
 export default function MembershipPage() {
   const [searchParams] = useSearchParams()
   const defaultState = searchParams.get('state') || 'Bauchi'
+  const [states, setStates] = useState([])
+
+  useEffect(() => {
+    let isMounted = true
+    fetchStates()
+      .then(apiStates => {
+        if (isMounted && Array.isArray(apiStates) && apiStates.length > 0) {
+          setStates(apiStates)
+        }
+      })
+      .catch(err => console.warn('MembershipPage states notice:', err))
+    return () => { isMounted = false }
+  }, [])
 
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     phone: '',
+    vinNumber: '',
+    ninNumber: '',
+    bankName: '',
+    customBank: '',
+    accountNumber: '',
     stateOfOrigin: defaultState,
     lga: '',
     ward: '',
@@ -45,17 +98,29 @@ export default function MembershipPage() {
     e.preventDefault()
     setIsSubmitting(true)
     try {
-      const saved = await registerNewMember({
+      const resolvedBankName = formData.bankName === 'Other Bank / Microfinance' && formData.customBank
+        ? formData.customBank
+        : formData.bankName
+
+      const res = await registerMemberApi({
         fullName: formData.fullName,
         email: formData.email,
         phone: formData.phone,
+        vinNumber: formData.vinNumber,
+        ninNumber: formData.ninNumber,
+        accountNumber: formData.accountNumber,
+        bankName: resolvedBankName,
         state: formData.stateOfOrigin,
         lga: formData.lga || 'Central',
         ward: formData.ward || 'Ward 01',
         qualification: formData.qualification,
         interest: formData.interest
       })
-      setRegisteredMember(saved)
+      if (res && res.member) {
+        setRegisteredMember(res.member)
+      }
+    } catch (err) {
+      alert(err.message || 'Registration failed')
     } finally {
       setIsSubmitting(false)
     }
@@ -66,7 +131,7 @@ export default function MembershipPage() {
     if (!verifyQuery.trim()) return
     setVerifyLoading(true)
     try {
-      const res = await verifyMember(verifyQuery)
+      const res = await verifyMemberApi(verifyQuery)
       setVerifyResult(res)
     } finally {
       setVerifyLoading(false)
@@ -167,7 +232,7 @@ export default function MembershipPage() {
                     onChange={e => setFormData({ ...formData, stateOfOrigin: e.target.value })}
                     className="w-full px-3 py-2.5 bg-[#faf7ef] border border-[#cfc6a6] rounded-[2px] focus:outline-none focus:border-[#b6842a]"
                   >
-                    {northernStates.map((s, idx) => (
+                    {states.map((s, idx) => (
                       <option key={idx} value={s.name}>{s.name} State</option>
                     ))}
                   </select>
@@ -218,6 +283,90 @@ export default function MembershipPage() {
                 </div>
               </div>
 
+              {/* Voter & National ID Verification */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="font-mono text-[#10241f] block mb-1 font-semibold flex items-center justify-between">
+                    <span>VOTER ID NUMBER (VIN) *</span>
+                    <span className="text-[10px] text-[#666c5c] font-normal">INEC PVC</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g., 90F5 B029 4528 9012 345"
+                    value={formData.vinNumber}
+                    onChange={e => setFormData({ ...formData, vinNumber: e.target.value.toUpperCase() })}
+                    className="w-full px-3 py-2.5 bg-[#faf7ef] border border-[#cfc6a6] rounded-[2px] font-mono focus:outline-none focus:border-[#b6842a]"
+                  />
+                </div>
+                <div>
+                  <label className="font-mono text-[#10241f] block mb-1 font-semibold flex items-center justify-between">
+                    <span>NIN NUMBER *</span>
+                    <span className="text-[10px] text-[#666c5c] font-normal">11 Digits</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    maxLength={11}
+                    placeholder="e.g., 12345678901"
+                    value={formData.ninNumber}
+                    onChange={e => setFormData({ ...formData, ninNumber: e.target.value.replace(/\D/g, '') })}
+                    className="w-full px-3 py-2.5 bg-[#faf7ef] border border-[#cfc6a6] rounded-[2px] font-mono focus:outline-none focus:border-[#b6842a]"
+                  />
+                </div>
+              </div>
+
+              {/* Banking & Remittance Account Details */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="font-mono text-[#10241f] block mb-1 font-semibold">
+                    BANK NAME *
+                  </label>
+                  <select
+                    required
+                    value={formData.bankName}
+                    onChange={e => setFormData({ ...formData, bankName: e.target.value })}
+                    className="w-full px-3 py-2.5 bg-[#faf7ef] border border-[#cfc6a6] rounded-[2px] focus:outline-none focus:border-[#b6842a]"
+                  >
+                    <option value="">-- Select Bank --</option>
+                    {NIGERIAN_BANKS.map((bank, idx) => (
+                      <option key={idx} value={bank}>{bank}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="font-mono text-[#10241f] block mb-1 font-semibold flex items-center justify-between">
+                    <span>ACCOUNT NUMBER *</span>
+                    <span className="text-[10px] text-[#666c5c] font-normal">10 Digits</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    maxLength={10}
+                    placeholder="e.g., 0123456789"
+                    value={formData.accountNumber}
+                    onChange={e => setFormData({ ...formData, accountNumber: e.target.value.replace(/\D/g, '') })}
+                    className="w-full px-3 py-2.5 bg-[#faf7ef] border border-[#cfc6a6] rounded-[2px] font-mono focus:outline-none focus:border-[#b6842a]"
+                  />
+                </div>
+              </div>
+
+              {formData.bankName === 'Other Bank / Microfinance' && (
+                <div>
+                  <label className="font-mono text-[#10241f] block mb-1 font-semibold">
+                    SPECIFY BANK / MICROFINANCE NAME *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter official bank or MFB name"
+                    value={formData.customBank}
+                    onChange={e => setFormData({ ...formData, customBank: e.target.value })}
+                    className="w-full px-3 py-2.5 bg-[#faf7ef] border border-[#cfc6a6] rounded-[2px] focus:outline-none focus:border-[#b6842a]"
+                  />
+                </div>
+              )}
+
               <div className="pt-2">
                 <button
                   type="submit"
@@ -241,6 +390,42 @@ export default function MembershipPage() {
                     <span className="font-bold block">Accreditation successfully issued and codified into the ANYV National Register!</span>
                     <span className="font-mono text-[11px] text-[#b6842a]">Membership ID: {registeredMember.membershipNumber}</span>
                   </div>
+                </div>
+
+                {/* Verified Credentials Summary */}
+                <div className="p-4 bg-[#fffdf7] border border-[#cfc6a6] rounded-[2px] text-xs space-y-2 font-mono">
+                  <div className="flex justify-between items-center border-b border-[#e7e0cb] pb-1.5">
+                    <span className="text-[#666c5c]">DELEGATE:</span>
+                    <span className="text-[#10241f] font-bold">{registeredMember.fullName}</span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-[#e7e0cb] pb-1.5">
+                    <span className="text-[#666c5c]">STATE &amp; LGA:</span>
+                    <span className="text-[#10241f]">{registeredMember.state} State &bull; {registeredMember.lga} LGA</span>
+                  </div>
+                  {registeredMember.vinNumber && (
+                    <div className="flex justify-between items-center border-b border-[#e7e0cb] pb-1.5">
+                      <span className="text-[#666c5c]">INEC VIN:</span>
+                      <span className="text-[#10241f] font-semibold">{registeredMember.vinNumber}</span>
+                    </div>
+                  )}
+                  {registeredMember.ninNumber && (
+                    <div className="flex justify-between items-center border-b border-[#e7e0cb] pb-1.5">
+                      <span className="text-[#666c5c]">NIN NUMBER:</span>
+                      <span className="text-[#10241f] font-semibold">{registeredMember.ninNumber}</span>
+                    </div>
+                  )}
+                  {registeredMember.bankName && (
+                    <div className="flex justify-between items-center border-b border-[#e7e0cb] pb-1.5">
+                      <span className="text-[#666c5c]">SETTLEMENT BANK:</span>
+                      <span className="text-[#10241f] font-semibold">{registeredMember.bankName}</span>
+                    </div>
+                  )}
+                  {registeredMember.accountNumber && (
+                    <div className="flex justify-between items-center">
+                      <span className="text-[#666c5c]">ACCOUNT NUMBER:</span>
+                      <span className="text-[#10241f] font-semibold">{registeredMember.accountNumber}</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Card Preview Component */}

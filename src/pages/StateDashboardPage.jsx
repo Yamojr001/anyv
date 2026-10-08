@@ -19,9 +19,7 @@ import {
   ShareNetwork 
 } from '@phosphor-icons/react'
 import SEO from '../components/SEO'
-import { northernStates, stateChapterOfficials } from '../data/leadershipData'
-import { initialNewsArticles, fetchNewsArticles } from '../data/newsData'
-import { getAllMembers } from '../data/membersData'
+import { fetchStates, fetchLeaders, fetchNews, fetchMembers } from '../services/api'
 
 export default function StateDashboardPage() {
   const [searchParams] = useSearchParams()
@@ -32,25 +30,49 @@ export default function StateDashboardPage() {
   const [stateNews, setStateNews] = useState([])
   const [selectedArticle, setSelectedArticle] = useState(null)
   const [registeredMembers, setRegisteredMembers] = useState([])
+  const [states, setStates] = useState([])
+  const [allLeaders, setAllLeaders] = useState([])
+
+  useEffect(() => {
+    let isMounted = true
+    Promise.all([fetchStates(), fetchLeaders()])
+      .then(([apiStates, apiLeaders]) => {
+        if (!isMounted) return
+        if (Array.isArray(apiStates) && apiStates.length > 0) setStates(apiStates)
+        if (Array.isArray(apiLeaders) && apiLeaders.length > 0) setAllLeaders(apiLeaders)
+      })
+      .catch(err => console.warn('StateDashboardPage API notice:', err))
+    return () => { isMounted = false }
+  }, [])
 
   // Find selected state metadata
-  const currentState = northernStates.find(s => s.name.toLowerCase() === selectedStateName.toLowerCase()) || northernStates[1] // Bauchi default
+  const defaultStateObj = { name: selectedStateName, zone: 'North-East', capital: selectedStateName, lgas: 20, hub: 'Active Council', liaison: 'Secretariat' }
+  const currentState = states.find(s => (s.name || '').toLowerCase() === selectedStateName.toLowerCase()) || states[0] || defaultStateObj
 
   // Leaders for this state
-  const stateLeaders = stateChapterOfficials.filter(
-    o => o.state.toLowerCase() === currentState.name.toLowerCase()
+  const stateLeaders = allLeaders.filter(
+    o => (o.state || '').toLowerCase() === (currentState.name || '').toLowerCase()
   )
 
   useEffect(() => {
-    // Load members
-    const all = getAllMembers()
-    const forThisState = all.filter(m => (m.state || '').toLowerCase() === currentState.name.toLowerCase())
-    setRegisteredMembers(forThisState)
+    let isMounted = true
+    if (!currentState.name) return
 
-    // Load news for state
-    fetchNewsArticles(currentState.name).then(res => {
-      setStateNews(res.filter(n => n.state?.toLowerCase() === currentState.name.toLowerCase() || n.state === 'National'))
-    })
+    // Load members from API
+    fetchMembers({ state: currentState.name })
+      .then(members => {
+        if (isMounted && Array.isArray(members)) setRegisteredMembers(members)
+      })
+      .catch(err => console.warn('Members fetch error:', err))
+
+    // Load news for state from API
+    fetchNews({ state: currentState.name })
+      .then(news => {
+        if (isMounted && Array.isArray(news)) setStateNews(news)
+      })
+      .catch(err => console.warn('News fetch error:', err))
+
+    return () => { isMounted = false }
   }, [currentState.name])
 
   const zoneFilters = [
@@ -60,9 +82,11 @@ export default function StateDashboardPage() {
     { id: 'north-central', label: 'North-Central (7)' }
   ]
 
-  const filteredStatesList = northernStates.filter(s => {
+  const filteredStatesList = states.filter(s => {
     if (activeZone === 'all') return true
-    return s.zone.toLowerCase() === activeZone
+    const sZone = (s.zone || '').toLowerCase().replace(/[^a-z]/g, '')
+    const activeClean = activeZone.toLowerCase().replace(/[^a-z]/g, '')
+    return sZone.includes(activeClean) || activeClean.includes(sZone)
   })
 
   return (

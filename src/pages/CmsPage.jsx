@@ -10,6 +10,11 @@ import {
   Buildings
 } from '@phosphor-icons/react'
 import SEO from '../components/SEO'
+import { adminLoginApi } from '../services/api'
+
+const CMS_DESTINATION = import.meta.env.VITE_CMS_URL || 
+  import.meta.env.VITE_BACKEND_URL || 
+  (typeof window !== 'undefined' && window.location.port === '5173' ? 'http://localhost:8000' : '/')
 
 export default function CmsPage() {
   const [emailInput, setEmailInput] = useState('')
@@ -35,11 +40,7 @@ export default function CmsPage() {
     }
 
     try {
-      const res = await fetch('/api/admin/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      }).then(r => r.json())
+      const res = await adminLoginApi(email, password)
 
       if (res.success && res.user) {
         localStorage.setItem('anyv_admin_token', res.token || 'auth')
@@ -53,7 +54,7 @@ export default function CmsPage() {
 
         // Redirect to CMS dashboard
         setTimeout(() => {
-          window.location.href = 'http://localhost:8000'
+          window.location.href = CMS_DESTINATION
         }, 1200)
       } else {
         setAuthStatus({
@@ -62,39 +63,10 @@ export default function CmsPage() {
         })
       }
     } catch (err) {
-      // In case frontend dev server is on port 5173 and backend is on port 8000
-      try {
-        const directRes = await fetch('http://localhost:8000/api/admin/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password })
-        }).then(r => r.json())
-
-        if (directRes.success && directRes.user) {
-          localStorage.setItem('anyv_admin_token', directRes.token || 'auth')
-          localStorage.setItem('anyv_admin_user', JSON.stringify(directRes.user))
-          
-          setAuthStatus({
-            success: true,
-            message: `Authentication verified for ${directRes.user.name}. Redirecting to Secretariat CMS...`,
-            user: directRes.user
-          })
-
-          setTimeout(() => {
-            window.location.href = 'http://localhost:8000'
-          }, 1200)
-        } else {
-          setAuthStatus({
-            success: false,
-            message: directRes.message || 'Access denied: Invalid administrator credentials.'
-          })
-        }
-      } catch (backendErr) {
-        setAuthStatus({
-          success: false,
-          message: 'Unable to reach the Secretariat Authentication Server. Please verify the backend service is running.'
-        })
-      }
+      setAuthStatus({
+        success: false,
+        message: err.message || 'Unable to reach the Secretariat Authentication Server. Please verify the backend service is running.'
+      })
     } finally {
       setIsLoading(false)
     }

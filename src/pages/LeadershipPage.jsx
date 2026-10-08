@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import {
-  leadershipCategories,
-  leadershipOfficials,
-  presidentialPrincipals,
-  stateChapterOfficials
-} from '../data/leadershipData'
+import { fetchLeaders, LEADERSHIP_CATEGORIES } from '../services/api'
 import SEO from '../components/SEO'
 import {
   Sparkle,
@@ -218,6 +213,25 @@ export default function LeadershipPage() {
   const [searchParams] = useSearchParams()
   const [activeCategory, setActiveCategory] = useState('all')
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || searchParams.get('state') || '')
+  const [principals, setPrincipals] = useState([])
+  const [nationalOfficials, setNationalOfficials] = useState([])
+  const [stateOfficials, setStateOfficials] = useState([])
+
+  useEffect(() => {
+    let isMounted = true
+    fetchLeaders()
+      .then(data => {
+        if (!isMounted || !Array.isArray(data) || data.length === 0) return
+        const p = data.filter(l => l.category === 'principal')
+        const s = data.filter(l => l.category === 'state' || (l.state_id !== null && l.category !== 'principal'))
+        const n = data.filter(l => l.category !== 'principal' && l.category !== 'state')
+        if (p.length > 0) setPrincipals(p)
+        if (s.length > 0) setStateOfficials(s)
+        if (n.length > 0) setNationalOfficials(n)
+      })
+      .catch(err => console.warn('LeadershipPage API notice:', err))
+    return () => { isMounted = false }
+  }, [])
 
   useEffect(() => {
     const q = searchParams.get('search') || searchParams.get('state')
@@ -226,23 +240,23 @@ export default function LeadershipPage() {
     }
   }, [searchParams])
 
-  const filteredNationalOfficials = leadershipOfficials.filter((official) => {
+  const filteredNationalOfficials = nationalOfficials.filter((official) => {
     const matchesCategory = activeCategory === 'all' || official.category === activeCategory
     const matchesSearch =
-      official.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      official.rankTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      official.state.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      official.badgeCode.toLowerCase().includes(searchQuery.toLowerCase())
+      (official.name || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (official.rankTitle || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (official.state || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (official.badgeCode || '').toLowerCase().includes(searchQuery.toLowerCase())
     return matchesCategory && matchesSearch
   })
 
-  const filteredStateOfficials = stateChapterOfficials.filter((official) => {
+  const filteredStateOfficials = stateOfficials.filter((official) => {
     const matchesCategory = activeCategory === 'all' || activeCategory === 'state'
     const matchesSearch =
-      official.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      official.rankTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      official.state.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      official.badgeCode.toLowerCase().includes(searchQuery.toLowerCase())
+      (official.name || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (official.rankTitle || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (official.state || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (official.badgeCode || '').toLowerCase().includes(searchQuery.toLowerCase())
     return matchesCategory && matchesSearch
   })
 
@@ -292,7 +306,7 @@ export default function LeadershipPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {presidentialPrincipals.map((principal) => (
+            {principals.map((principal) => (
               <motion.div
                 key={principal.id}
                 whileHover={{ y: -3 }}
@@ -389,7 +403,7 @@ export default function LeadershipPage() {
 
             {/* Category Filter Tabs */}
             <div className="flex flex-wrap gap-2">
-              {leadershipCategories.map(cat => (
+              {LEADERSHIP_CATEGORIES.map(cat => (
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}

@@ -71,13 +71,19 @@ export default function MembershipCardPreview({ member, onPrint }) {
             <div className="grid grid-cols-2 gap-2 pt-2 text-[11px] font-mono">
               <div>
                 <span className="text-[#aebf9e] block text-[9px]">STATE CHAPTER</span>
-                <span className="text-[#e3c375] font-medium">{member.stateOfOrigin || 'Northern Nigeria'}</span>
+                <span className="text-[#e3c375] font-medium">{member.state || member.stateOfOrigin || 'Northern Nigeria'}</span>
               </div>
               <div>
                 <span className="text-[#aebf9e] block text-[9px]">SECTOR TRACK</span>
-                <span className="text-[#fffdf7] font-medium truncate block">{member.interest || 'Leadership & Policy'}</span>
+                <span className="text-[#fffdf7] font-medium truncate block">{member.interest || member.track || 'Leadership & Policy'}</span>
               </div>
             </div>
+            {(member.vinNumber || member.ninNumber) && (
+              <div className="flex flex-wrap gap-2 pt-1.5 text-[9px] font-mono text-[#aebf9e]">
+                {member.vinNumber && <span className="bg-[#1f3f37] px-1.5 py-0.5 rounded-[2px] border border-[#2c5347]">VIN: <strong className="text-[#fffdf7]">{member.vinNumber}</strong></span>}
+                {member.ninNumber && <span className="bg-[#1f3f37] px-1.5 py-0.5 rounded-[2px] border border-[#2c5347]">NIN: <strong className="text-[#fffdf7]">{member.ninNumber}</strong></span>}
+              </div>
+            )}
           </div>
         </div>
 
@@ -86,7 +92,7 @@ export default function MembershipCardPreview({ member, onPrint }) {
           <div>
             <span className="text-[#7c9473] block text-[8px]">MEMBERSHIP NUMBER</span>
             <span className="text-[#e3c375] font-semibold">
-              ANYV-2026-{Math.floor(1000 + Math.random() * 9000)}
+              {member.membershipNumber || `ANYV-2026-${Math.floor(1000 + Math.random() * 9000)}`}
             </span>
           </div>
           <div className="text-right">

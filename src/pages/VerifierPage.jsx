@@ -15,7 +15,7 @@ import {
   CalendarBlank 
 } from '@phosphor-icons/react'
 import SEO from '../components/SEO'
-import { verifyMember, initialVerifiedMembers } from '../data/membersData'
+import { verifyMemberApi } from '../services/api'
 
 export default function VerifierPage() {
   const [searchParams] = useSearchParams()
@@ -31,7 +31,7 @@ export default function VerifierPage() {
     setLoading(true)
     setHasSearched(true)
     try {
-      const data = await verifyMember(searchStr)
+      const data = await verifyMemberApi(searchStr)
       setResult(data)
     } finally {
       setLoading(false)
@@ -39,9 +39,18 @@ export default function VerifierPage() {
   }
 
   useEffect(() => {
-    if (initialQuery) {
-      performVerification(initialQuery)
-    }
+    if (!initialQuery) return
+    let isMounted = true
+    setLoading(true)
+    setHasSearched(true)
+    verifyMemberApi(initialQuery)
+      .then(data => {
+        if (isMounted) setResult(data)
+      })
+      .finally(() => {
+        if (isMounted) setLoading(false)
+      })
+    return () => { isMounted = false }
   }, [initialQuery])
 
   const handleSubmit = (e) => {
@@ -120,14 +129,14 @@ export default function VerifierPage() {
               {/* Quick Sample Links for testing */}
               <div className="flex flex-wrap items-center gap-2 pt-2 text-[11px] font-mono text-[#666c5c]">
                 <span>Sample Records:</span>
-                {initialVerifiedMembers.slice(0, 3).map(m => (
+                {['ANYV/BAU/0001', 'ANYV/BEN/0002', 'ANYV/KAT/0003'].map(sampleId => (
                   <button
-                    key={m.id}
+                    key={sampleId}
                     type="button"
-                    onClick={() => { setQuery(m.membershipNumber); performVerification(m.membershipNumber); }}
+                    onClick={() => { setQuery(sampleId); performVerification(sampleId); }}
                     className="underline text-[#10241f] hover:text-[#b6842a]"
                   >
-                    {m.membershipNumber}
+                    {sampleId}
                   </button>
                 ))}
               </div>
@@ -200,6 +209,30 @@ export default function VerifierPage() {
                         <span className="font-mono text-[#10241f] block mt-0.5">{result.phone || 'Phone on Record'}</span>
                         <span className="text-[#666c5c] text-[11px] block">{result.email}</span>
                       </div>
+                      {(result.vinNumber || result.ninNumber || result.bankName) && (
+                        <div className="pt-2 border-t border-[#e7e0cb] space-y-1 font-mono text-[11px]">
+                          {result.vinNumber && (
+                            <div>
+                              <span className="text-[#666c5c]">INEC VIN: </span>
+                              <span className="font-semibold text-[#10241f]">{result.vinNumber}</span>
+                            </div>
+                          )}
+                          {result.ninNumber && (
+                            <div>
+                              <span className="text-[#666c5c]">NIN NUMBER: </span>
+                              <span className="font-semibold text-[#10241f]">{result.ninNumber}</span>
+                            </div>
+                          )}
+                          {result.bankName && (
+                            <div>
+                              <span className="text-[#666c5c]">SETTLEMENT BANK: </span>
+                              <span className="font-semibold text-[#10241f]">
+                                {result.bankName} {result.accountNumber ? `(${result.accountNumber})` : ''}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </div>
 
                     <div className="space-y-3 bg-[#faf7ef] p-5 rounded-[2px] border border-[#cfc6a6]">

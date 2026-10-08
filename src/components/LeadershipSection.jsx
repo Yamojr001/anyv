@@ -1,10 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import {
-  leadershipCategories,
-  leadershipOfficials,
-  presidentialPrincipals
-} from '../data/leadershipData'
+import { fetchLeaders, LEADERSHIP_CATEGORIES } from '../services/api'
 import {
   Sparkle,
   IdentificationBadge,
@@ -22,10 +18,26 @@ import {
 
 export default function LeadershipSection({ onEnlistClick }) {
   const [activeCategory, setActiveCategory] = useState('all')
+  const [principals, setPrincipals] = useState([])
+  const [officials, setOfficials] = useState([])
+
+  useEffect(() => {
+    let isMounted = true
+    fetchLeaders()
+      .then(data => {
+        if (!isMounted || !Array.isArray(data) || data.length === 0) return
+        const p = data.filter(l => l.category === 'principal')
+        const o = data.filter(l => l.category !== 'principal' && l.category !== 'state')
+        if (p.length > 0) setPrincipals(p)
+        if (o.length > 0) setOfficials(o)
+      })
+      .catch(err => console.warn('LeadershipSection API sync notice:', err))
+    return () => { isMounted = false }
+  }, [])
 
   const filteredOfficials = activeCategory === 'all'
-    ? leadershipOfficials
-    : leadershipOfficials.filter(o => o.category === activeCategory)
+    ? officials
+    : officials.filter(o => o.category === activeCategory)
 
   return (
     <section id="leadership" className="py-20 bg-[#faf7ef] border-b border-[#cfc6a6]">
@@ -44,7 +56,7 @@ export default function LeadershipSection({ onEnlistClick }) {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {presidentialPrincipals.map((principal) => (
+            {principals.map((principal) => (
               <motion.div
                 key={principal.id}
                 whileHover={{ y: -3 }}
@@ -133,7 +145,7 @@ export default function LeadershipSection({ onEnlistClick }) {
 
           {/* Category Filter Tabs */}
           <div className="flex flex-wrap gap-2">
-            {leadershipCategories.map(cat => (
+            {LEADERSHIP_CATEGORIES.map(cat => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}

@@ -16,8 +16,7 @@ import {
   Phone 
 } from '@phosphor-icons/react'
 import SEO from '../components/SEO'
-import { northernStates } from '../data/leadershipData'
-import { getAllMembers } from '../data/membersData'
+import { fetchStates, verifyMemberApi } from '../services/api'
 
 export default function IdCardGeneratorPage() {
   const [searchParams] = useSearchParams()
@@ -46,31 +45,43 @@ export default function IdCardGeneratorPage() {
 
   const [isFlipped, setIsFlipped] = useState(false)
   const [copiedLink, setCopiedLink] = useState(false)
+  const [states, setStates] = useState([])
 
-  // Look up member if memberIdParam passed
+  // Load states from API
+  useEffect(() => {
+    let isMounted = true
+    fetchStates()
+      .then(apiStates => {
+        if (isMounted && Array.isArray(apiStates) && apiStates.length > 0) {
+          setStates(apiStates)
+        }
+      })
+      .catch(err => console.warn('IdCardGenerator states notice:', err))
+    return () => { isMounted = false }
+  }, [])
+
+  // Look up member if memberIdParam passed (querying live backend first)
   useEffect(() => {
     if (memberIdParam) {
-      const all = getAllMembers()
-      const found = all.find(m => 
-        (m.membershipNumber || '').toLowerCase().replace(/[\s\-\/]/g, '') === 
-        memberIdParam.toLowerCase().replace(/[\s\-\/]/g, '')
-      )
-      if (found) {
-        setCardData(prev => ({
-          ...prev,
-          fullName: found.fullName,
-          membershipNumber: found.membershipNumber,
-          state: found.state,
-          lga: found.lga,
-          phone: found.phone,
-          role: found.role || 'Accredited Member',
-          track: found.track || 'Vanguard Youth Delegate',
-          issuedDate: found.issuedDate || 'September 2026',
-          expiryDate: found.expiryDate || 'September 2028'
-        }))
-      }
+      verifyMemberApi(memberIdParam).then(found => {
+        if (found && (found.found || found.fullName)) {
+          setCardData(prev => ({
+            ...prev,
+            fullName: found.fullName,
+            membershipNumber: found.membershipNumber,
+            state: found.state,
+            lga: found.lga,
+            phone: found.phone,
+            role: found.role || 'Accredited Member',
+            track: found.track || 'Vanguard Youth Delegate',
+            issuedDate: found.issuedDate || 'September 2026',
+            expiryDate: found.expiryDate || 'September 2028'
+          }))
+        }
+      })
     }
   }, [memberIdParam])
+
 
   // Handle Photo Upload
   const handlePhotoUpload = (e) => {
@@ -361,7 +372,7 @@ export default function IdCardGeneratorPage() {
                     onChange={e => setCardData({ ...cardData, state: e.target.value })}
                     className="w-full px-3 py-2.5 bg-[#faf7ef] border border-[#cfc6a6] rounded-[2px] focus:outline-none focus:border-[#b6842a]"
                   >
-                    {northernStates.map((s, idx) => (
+                    {states.map((s, idx) => (
                       <option key={idx} value={s.name}>{s.name} State</option>
                     ))}
                   </select>

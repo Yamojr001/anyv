@@ -5,6 +5,8 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import TrackingModal from './components/TrackingModal'
 
+import ErrorBoundary from './components/ErrorBoundary'
+
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import LeadershipPage from './pages/LeadershipPage'
@@ -30,19 +32,21 @@ export default function App() {
 
         {/* Dynamic Route Pages */}
         <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/leadership" element={<LeadershipPage />} />
-            <Route path="/programs" element={<ProgramsPage />} />
-            <Route path="/chapters" element={<ChaptersPage />} />
-            <Route path="/membership" element={<MembershipPage />} />
-            <Route path="/news" element={<NewsPage />} />
-            <Route path="/verify" element={<VerifierPage />} />
-            <Route path="/id-card" element={<IdCardGeneratorPage />} />
-            <Route path="/state-dashboard" element={<StateDashboardPage />} />
-            <Route path="/cms" element={<CmsPage />} />
-          </Routes>
+          <ErrorBoundary>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/leadership" element={<LeadershipPage />} />
+              <Route path="/programs" element={<ProgramsPage />} />
+              <Route path="/chapters" element={<ChaptersPage />} />
+              <Route path="/membership" element={<MembershipPage />} />
+              <Route path="/news" element={<NewsPage />} />
+              <Route path="/verify" element={<VerifierPage />} />
+              <Route path="/id-card" element={<IdCardGeneratorPage />} />
+              <Route path="/state-dashboard" element={<StateDashboardPage />} />
+              <Route path="/cms" element={<CmsPage />} />
+            </Routes>
+          </ErrorBoundary>
         </main>
 
         {/* Global Institutional Footer */}

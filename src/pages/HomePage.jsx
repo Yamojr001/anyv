@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
@@ -26,21 +26,38 @@ import {
   IdentificationCard,
   Newspaper
 } from '@phosphor-icons/react'
-import { northernStates, stateChapterOfficials } from '../data/leadershipData'
+import { fetchStates, fetchLeaders } from '../services/api'
 import SEO from '../components/SEO'
 
 export default function HomePage({ onOpenReg }) {
   const [activeZone, setActiveZone] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
   const [openFaq, setOpenFaq] = useState(0)
+  const [states, setStates] = useState([])
+  const [officials, setOfficials] = useState([])
+
+  useEffect(() => {
+    let isMounted = true
+    Promise.all([fetchStates(), fetchLeaders()])
+      .then(([apiStates, apiLeaders]) => {
+        if (!isMounted) return
+        if (Array.isArray(apiStates) && apiStates.length > 0) setStates(apiStates)
+        if (Array.isArray(apiLeaders) && apiLeaders.length > 0) {
+          const stateLeaders = apiLeaders.filter(l => l.category === 'state' || l.state)
+          if (stateLeaders.length > 0) setOfficials(stateLeaders)
+        }
+      })
+      .catch(err => console.warn('HomePage API notice:', err))
+    return () => { isMounted = false }
+  }, [])
 
   const getStateOfficials = (stateName) => {
-    return stateChapterOfficials.filter(
-      (o) => o.state.toLowerCase() === stateName.toLowerCase()
+    return officials.filter(
+      (o) => (o.state || '').toLowerCase() === (stateName || '').toLowerCase()
     )
   }
 
-  const filteredStates = northernStates.filter((s) => {
+  const filteredStates = states.filter((s) => {
     const matchesZone = activeZone === 'all' || s.zone.toLowerCase().replace('-', '') === activeZone
     const leaders = getStateOfficials(s.name)
     const matchesSearch =

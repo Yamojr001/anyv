@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -19,26 +19,43 @@ import {
   GithubLogo,
   Globe
 } from '@phosphor-icons/react'
-import {
-  stateChapterOfficials,
-  northernStates
-} from '../data/leadershipData'
+import { fetchStates, fetchLeaders } from '../services/api'
 import SEO from '../components/SEO'
 
 export default function ChaptersPage() {
   const [activeZone, setActiveZone] = useState('all')
   const [search, setSearch] = useState('')
   const [selectedState, setSelectedState] = useState(null)
+  const [states, setStates] = useState([])
+  const [officials, setOfficials] = useState([])
+
+  useEffect(() => {
+    let isMounted = true
+    Promise.all([fetchStates(), fetchLeaders()])
+      .then(([apiStates, apiLeaders]) => {
+        if (!isMounted) return
+        if (Array.isArray(apiStates) && apiStates.length > 0) setStates(apiStates)
+        if (Array.isArray(apiLeaders) && apiLeaders.length > 0) {
+          const stateLeaders = apiLeaders.filter(l => l.category === 'state' || l.state)
+          if (stateLeaders.length > 0) setOfficials(stateLeaders)
+        }
+      })
+      .catch(err => console.warn('ChaptersPage API notice:', err))
+    return () => { isMounted = false }
+  }, [])
 
   const getStateLeaders = (stateName) => {
-    return stateChapterOfficials.filter(
-      o => o.state.toLowerCase() === stateName.toLowerCase()
+    return officials.filter(
+      o => (o.state || '').toLowerCase() === (stateName || '').toLowerCase()
     )
   }
 
-  const filteredStates = northernStates.filter(s => {
-    const matchesZone = activeZone === 'all' || s.zone.toLowerCase().replace('-', '') === activeZone
-    const matchesSearch = s.name.toLowerCase().includes(search.toLowerCase()) || s.capital.toLowerCase().includes(search.toLowerCase())
+  const filteredStates = states.filter(s => {
+    const sZone = (s.zone || '').toLowerCase().replace(/[^a-z]/g, '')
+    const activeClean = activeZone.toLowerCase().replace(/[^a-z]/g, '')
+    const matchesZone = activeClean === 'all' || sZone.includes(activeClean) || activeClean.includes(sZone)
+    const matchesSearch = (s.name || '').toLowerCase().includes(search.toLowerCase()) || 
+                          (s.capital || '').toLowerCase().includes(search.toLowerCase())
     return matchesZone && matchesSearch
   })
 

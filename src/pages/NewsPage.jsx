@@ -21,32 +21,50 @@ import {
   CaretRight 
 } from '@phosphor-icons/react'
 import SEO from '../components/SEO'
-import { initialNewsArticles, newsCategories, fetchNewsArticles } from '../data/newsData'
-import { northernStates } from '../data/leadershipData'
+import { fetchStates, fetchNews, subscribeNewsletterApi, NEWS_CATEGORIES } from '../services/api'
 
 export default function NewsPage() {
   const [selectedState, setSelectedState] = useState('All')
   const [selectedCategory, setSelectedCategory] = useState('All Categories')
   const [searchQuery, setSearchQuery] = useState('')
-  const [articles, setArticles] = useState(initialNewsArticles)
+  const [articles, setArticles] = useState([])
   const [activeArticle, setActiveArticle] = useState(null)
   const [activeImageIndex, setActiveImageIndex] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  const [states, setStates] = useState([])
 
   // Subscription state
   const [subEmail, setSubEmail] = useState('')
   const [subState, setSubState] = useState('All 19 States')
   const [subSuccess, setSubSuccess] = useState(false)
 
+  // Load states from API
+  useEffect(() => {
+    let isMounted = true
+    fetchStates()
+      .then(apiStates => {
+        if (isMounted && Array.isArray(apiStates) && apiStates.length > 0) {
+          setStates(apiStates)
+        }
+      })
+      .catch(err => console.warn('NewsPage states API notice:', err))
+    return () => { isMounted = false }
+  }, [])
+
   // Load articles (with backend sync attempt)
   useEffect(() => {
+    let isMounted = true
     setIsLoading(true)
-    fetchNewsArticles(selectedState)
+    fetchNews({ state: selectedState, category: selectedCategory })
       .then(res => {
-        if (res && res.length > 0) setArticles(res)
+        if (isMounted && Array.isArray(res)) setArticles(res)
       })
-      .finally(() => setIsLoading(false))
-  }, [selectedState])
+      .catch(err => console.warn('NewsPage fetch news notice:', err))
+      .finally(() => {
+        if (isMounted) setIsLoading(false)
+      })
+    return () => { isMounted = false }
+  }, [selectedState, selectedCategory])
 
   // Filter articles
   const filteredArticles = articles.filter(a => {
@@ -67,13 +85,9 @@ export default function NewsPage() {
     if (!subEmail.trim()) return
     setSubSuccess(true)
     try {
-      await fetch('http://localhost:8000/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: subEmail, state_interest: subState })
-      })
+      await subscribeNewsletterApi(subEmail, subState)
     } catch (e) {
-      // Offline fallback
+      // Offline fallback handled
     }
   }
 
@@ -134,7 +148,7 @@ export default function NewsPage() {
               >
                 <option value="All">All 19 States &amp; National</option>
                 <option value="National">National Communiqués Only</option>
-                {northernStates.map((s, idx) => (
+                {states.map((s, idx) => (
                   <option key={idx} value={s.name}>{s.name} State</option>
                 ))}
               </select>
@@ -144,7 +158,7 @@ export default function NewsPage() {
                 onChange={e => setSelectedCategory(e.target.value)}
                 className="px-3 py-2 bg-[#faf7ef] border border-[#cfc6a6] rounded-[2px] text-xs font-mono text-[#10241f] focus:outline-none focus:border-[#b6842a] cursor-pointer"
               >
-                {newsCategories.map((c, idx) => (
+                {NEWS_CATEGORIES.map((c, idx) => (
                   <option key={idx} value={c}>{c}</option>
                 ))}
               </select>
@@ -166,7 +180,7 @@ export default function NewsPage() {
             >
               All States
             </button>
-            {northernStates.map((s, idx) => (
+            {states.map((s, idx) => (
               <button
                 key={idx}
                 onClick={() => setSelectedState(s.name)}
@@ -517,7 +531,7 @@ export default function NewsPage() {
                       className="w-full px-3 py-2.5 bg-[#fffdf7] border border-[#cfc6a6] rounded-[2px] text-xs font-mono text-[#10241f] focus:outline-none focus:border-[#b6842a] cursor-pointer"
                     >
                       <option value="All 19 States">All 19 Northern States</option>
-                      {northernStates.map((s, idx) => (
+                      {states.map((s, idx) => (
                         <option key={idx} value={s.name}>{s.name} State</option>
                       ))}
                     </select>

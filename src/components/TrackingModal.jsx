@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { X, MagnifyingGlass, CheckCircle, WarningCircle, IdentificationBadge, IdentificationCard, ArrowRight } from '@phosphor-icons/react'
-import { verifyMember } from '../data/membersData'
+import { verifyMemberApi } from '../services/api'
 
 export default function TrackingModal({ isOpen, onClose }) {
   const [query, setQuery] = useState('')
@@ -17,7 +17,7 @@ export default function TrackingModal({ isOpen, onClose }) {
     setLoading(true)
     setSearched(true)
     try {
-      const data = await verifyMember(query)
+      const data = await verifyMemberApi(query)
       setResult(data)
     } finally {
       setLoading(false)

@@ -1,10 +1,23 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { programsData } from '../data/programsData'
+import { fetchPrograms } from '../services/api'
 import { ArrowRight, CheckCircle, Sparkle, CaretRight } from '@phosphor-icons/react'
 import SEO from '../components/SEO'
 
 export default function ProgramsPage() {
+  const [programs, setPrograms] = useState([])
+
+  useEffect(() => {
+    let isMounted = true
+    fetchPrograms()
+      .then(data => {
+        if (isMounted && Array.isArray(data)) setPrograms(data)
+      })
+      .catch(err => console.warn('ProgramsPage API notice:', err))
+    return () => { isMounted = false }
+  }, [])
+
   return (
     <div className="space-y-0">
       <SEO
@@ -29,7 +42,7 @@ export default function ProgramsPage() {
       {/* Programs List */}
       <section className="py-20 bg-[#faf7ef] border-b border-[#cfc6a6]">
         <div className="max-w-6xl mx-auto px-6 space-y-12">
-          {programsData.map((prg, idx) => (
+          {programs.map((prg, idx) => (
             <div
               key={idx}
               className="bg-[#fffdf7] border border-[#cfc6a6] p-8 sm:p-10 rounded-[2px] specimen-shadow grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
