@@ -54,18 +54,25 @@ export function adaptLeader(leader) {
   if (!leader) return null;
   const isPrincipal = leader.id === 1 || leader.id === 2 || 
     (leader.role && (leader.role.includes('Presidential') || leader.role.includes('Standard Bearer')));
-  const isState = leader.state_id !== null || 
-    (leader.state_name && !leader.state_name.startsWith('National')) ||
-    (leader.role && leader.role.includes('State'));
-  const isDirectorate = leader.role && leader.role.includes('Director');
+  const roleLower = (leader.role || '').toLowerCase();
+  const isNationalLeader = roleLower.includes('convener') || 
+    roleLower.includes('national') || 
+    (leader.state_name && leader.state_name.toLowerCase() === 'national') ||
+    (leader.state_id === null || leader.state_id === undefined);
+  const isDirectorate = !isPrincipal && roleLower.includes('director') && !roleLower.includes('state');
+  const isState = !isPrincipal && !isNationalLeader && !isDirectorate && (
+    (leader.state_id !== null && leader.state_id !== undefined && leader.state_id !== '') || 
+    (leader.state_name && !leader.state_name.toLowerCase().startsWith('national')) ||
+    roleLower.includes('state')
+  );
 
   let category = 'executive';
   if (isPrincipal) category = 'principal';
-  else if (isState) category = 'state';
   else if (isDirectorate) category = 'directorate';
+  else if (isState) category = 'state';
+  else category = 'executive';
 
   let roleType = 'coordinator';
-  const roleLower = (leader.role || '').toLowerCase();
   if (roleLower.includes('vice') || roleLower.includes('deputy') || roleLower.includes('assistant')) {
     roleType = 'vice_coordinator';
   } else if (roleLower.includes('secretary')) {

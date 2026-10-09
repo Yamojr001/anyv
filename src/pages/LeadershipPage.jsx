@@ -59,6 +59,10 @@ function OfficialCard({ official }) {
             <img
               src={official.photoUrl}
               alt={official.name}
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(official.name)}&background=10241f&color=c9963c`;
+              }}
               className="w-20 h-20 object-cover object-top rounded-[2px] border border-[#10241f] shadow-[2px_2px_0px_rgba(182,132,42,0.6)] shrink-0"
             />
           ) : (
@@ -319,6 +323,10 @@ export default function LeadershipPage() {
                     <img
                       src={principal.photoUrl}
                       alt={principal.name}
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(principal.name)}&background=10241f&color=c9963c`;
+                      }}
                       className="w-full h-full object-cover object-top rounded-[2px] border border-[#10241f] shadow-[3px_3px_0px_rgba(182,132,42,0.6)]"
                     />
                   ) : (

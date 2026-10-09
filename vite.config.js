@@ -22,6 +22,10 @@ export default defineConfig(({ mode }) => {
           target: backendTarget,
           changeOrigin: true,
         },
+        '/storage': {
+          target: backendTarget,
+          changeOrigin: true,
+        },
       },
     },
     preview: {
