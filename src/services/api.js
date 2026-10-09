@@ -101,6 +101,7 @@ export function adaptLeader(leader) {
     state: stateClean,
     category,
     roleType,
+    order: typeof leader.order === 'number' ? leader.order : (parseInt(leader.order, 10) || 99),
     photoUrl: leader.photo_url || '',
     initials: getInitials(leader.name),
     bio: leader.bio || '',
@@ -126,6 +127,7 @@ export function adaptState(state) {
     zone: state.zone || 'North',
     capital: state.capital || state.name,
     hub: state.description || `${state.name} Chapter Council`,
+    order: typeof state.order === 'number' ? state.order : (parseInt(state.order, 10) || state.id),
     lgas: state.lgas || 0,
     liaison: `${state.capital || state.name} Secretariat`,
     leadersCount: state.leaders_count || 0,
@@ -221,7 +223,7 @@ export const NEWS_CATEGORIES = [
 export async function fetchStates() {
   const res = await apiFetch('/states');
   const states = res.data || [];
-  return states.map(adaptState);
+  return states.map(adaptState).sort((a, b) => (a.order ?? a.id) - (b.order ?? b.id));
 }
 
 /**
@@ -240,7 +242,7 @@ export async function fetchStateById(id) {
   const data = res.data;
   return {
     ...adaptState(data),
-    leaders: (data.leaders || []).map(adaptLeader),
+    leaders: (data.leaders || []).map(adaptLeader).sort((a, b) => (a.order ?? 99) - (b.order ?? 99)),
     news: (data.news || []).map(adaptNews),
     totalMembers: data.total_members || 0
   };
@@ -255,7 +257,7 @@ export async function fetchLeaders(params = {}) {
   const qs = query.toString() ? `?${query.toString()}` : '';
   const res = await apiFetch(`/leaders${qs}`);
   const leaders = res.data || [];
-  return leaders.map(adaptLeader);
+  return leaders.map(adaptLeader).sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
 }
 
 /**
