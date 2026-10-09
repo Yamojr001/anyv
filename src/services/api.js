@@ -3,10 +3,56 @@
  * Connects frontend directly to the Laravel CMS Backend API
  */
 
-const RAW_API_BASE = import.meta.env.VITE_API_URL || 
+const env = (typeof import.meta !== 'undefined' && import.meta?.env) 
+  ? import.meta.env 
+  : (typeof process !== 'undefined' && process?.env ? process.env : {});
+
+const RAW_API_BASE = env.VITE_API_URL || 
   (typeof window !== 'undefined' && window.location.port === '5173' ? 'http://localhost:8000/api' : '/api');
 
 export const API_BASE = RAW_API_BASE.replace(/\/+$/, '');
+
+export const BACKEND_URL = (
+  env.VITE_BACKEND_URL || 
+  (env.VITE_API_URL ? String(env.VITE_API_URL).replace(/\/api\/?$/, '') : '') ||
+  (typeof window !== 'undefined' && window.location.port === '5173' ? 'http://localhost:8000' : '')
+).replace(/\/+$/, '');
+
+/**
+ * Universal media URL resolver for uploaded photos, cards, and assets.
+ * Converts backend relative storage paths (/storage/...) into full accessible URLs
+ * while preserving external URLs (https://...) and frontend-local static assets (/images/...).
+ */
+export function resolveMediaUrl(url) {
+  if (!url || typeof url !== 'string') return '';
+  let clean = url.trim();
+  if (!clean) return '';
+
+  if (clean.startsWith('data:') || clean.startsWith('blob:')) {
+    return clean;
+  }
+
+  // Already an absolute HTTP/HTTPS URL
+  if (clean.startsWith('http://') || clean.startsWith('https://')) {
+    // If it points to localhost:8000 or 127.0.0.1:8000 but BACKEND_URL is configured to a non-localhost host
+    if (BACKEND_URL && (clean.startsWith('http://localhost:8000') || clean.startsWith('http://127.0.0.1:8000'))) {
+      if (!BACKEND_URL.includes('localhost:8000') && !BACKEND_URL.includes('127.0.0.1:8000')) {
+        return clean.replace(/^http:\/\/(localhost|127\.0\.0\.1):8000/, BACKEND_URL);
+      }
+    }
+    return clean;
+  }
+
+  const path = clean.startsWith('/') ? clean : `/${clean}`;
+
+  // If it's a backend storage path (/storage/...) or upload path (/uploads/...)
+  if (path.startsWith('/storage/') || path.startsWith('/uploads/')) {
+    return BACKEND_URL ? `${BACKEND_URL}${path}` : path;
+  }
+
+  // Local frontend public images (/images/...)
+  return path;
+}
 
 /**
  * Universal fetch wrapper with error handling and JSON parsing
@@ -58,10 +104,10 @@ export function adaptLeader(leader) {
   const isNationalLeader = roleLower.includes('convener') || 
     roleLower.includes('national') || 
     (leader.state_name && leader.state_name.toLowerCase() === 'national') ||
-    (leader.state_id === null || leader.state_id === undefined);
+    (!leader.state_id && (!leader.state_name || leader.state_name.toLowerCase() === 'national'));
   const isDirectorate = !isPrincipal && roleLower.includes('director') && !roleLower.includes('state');
   const isState = !isPrincipal && !isNationalLeader && !isDirectorate && (
-    (leader.state_id !== null && leader.state_id !== undefined && leader.state_id !== '') || 
+    Boolean(leader.state_id) || 
     (leader.state_name && !leader.state_name.toLowerCase().startsWith('national')) ||
     roleLower.includes('state')
   );
@@ -91,6 +137,8 @@ export function adaptLeader(leader) {
   return {
     id: leader.id,
     apiId: leader.id,
+    stateId: leader.state_id ?? null,
+    state_id: leader.state_id ?? null,
     name: leader.name,
     roleLabel: (leader.role || '').toUpperCase(),
     rankTitle: leader.role,
@@ -102,7 +150,7 @@ export function adaptLeader(leader) {
     category,
     roleType,
     order: typeof leader.order === 'number' ? leader.order : (parseInt(leader.order, 10) || 99),
-    photoUrl: leader.photo_url || '',
+    photoUrl: resolveMediaUrl(leader.photo_url || ''),
     initials: getInitials(leader.name),
     bio: leader.bio || '',
     quote: leader.quote || (leader.bio ? leader.bio.split('.')[0] + '.' : 'Championing youth empowerment, unity, and progress across Northern Nigeria.'),
@@ -138,10 +186,11 @@ export function adaptState(state) {
 
 export function adaptNews(item) {
   if (!item) return null;
-  const itemImages = Array.isArray(item.images) && item.images.length > 0
+  const rawImages = Array.isArray(item.images) && item.images.length > 0
     ? item.images
     : (item.image_url ? [item.image_url] : []);
-  const coverImage = item.image_url || itemImages[0] || '';
+  const itemImages = rawImages.map(resolveMediaUrl);
+  const coverImage = resolveMediaUrl(item.image_url) || itemImages[0] || '';
 
   return {
     id: item.id,
@@ -394,6 +443,8 @@ export async function uploadImageApi(fileOrFiles, folder = 'uploads') {
 
 export default {
   API_BASE,
+  BACKEND_URL,
+  resolveMediaUrl,
   apiFetch,
   fetchStates,
   fetchStateById,

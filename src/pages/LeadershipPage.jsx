@@ -228,7 +228,7 @@ export default function LeadershipPage() {
         if (!isMounted || !Array.isArray(data) || data.length === 0) return
         const p = data.filter(l => l.category === 'principal')
           .sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
-        const s = data.filter(l => l.category === 'state' || (l.state_id !== null && l.category !== 'principal'))
+        const s = data.filter(l => l.category === 'state')
           .sort((a, b) => {
             const stateComp = (a.state || '').localeCompare(b.state || '')
             if (stateComp !== 0) return stateComp
@@ -236,9 +236,9 @@ export default function LeadershipPage() {
           })
         const n = data.filter(l => l.category !== 'principal' && l.category !== 'state')
           .sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
-        if (p.length > 0) setPrincipals(p)
-        if (s.length > 0) setStateOfficials(s)
-        if (n.length > 0) setNationalOfficials(n)
+        setPrincipals(p)
+        setStateOfficials(s)
+        setNationalOfficials(n)
       })
       .catch(err => console.warn('LeadershipPage API notice:', err))
     return () => { isMounted = false }

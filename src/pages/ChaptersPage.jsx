@@ -312,6 +312,10 @@ export default function ChaptersPage() {
                             <img
                               src={leader.photoUrl}
                               alt={leader.name}
+                              onError={(e) => {
+                                e.currentTarget.onerror = null;
+                                e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(leader.name)}&background=10241f&color=c9963c`;
+                              }}
                               className="w-16 h-16 object-cover object-top rounded-[2px] border border-[#10241f] shadow-[2px_2px_0px_rgba(182,132,42,0.6)] shrink-0"
                             />
                           ) : (
